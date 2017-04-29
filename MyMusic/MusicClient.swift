@@ -35,6 +35,17 @@ class MusicClient:NSObject{
         
     }
     
+    
+    func deactivateAccount(musicServiceType:String){
+        
+        let userDefaults = UserDefaults.standard
+        if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
+            userDefaults.removeObject(forKey: "SpotifySession")
+            Spartan.authorizationToken = nil
+        }
+        
+    }
+    
     }
     
 
