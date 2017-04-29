@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42456EFB73996FDD638C0E2E /* Pods_MyMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */; };
 		4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC397491EB0254100FCBA4C /* AppDelegate.swift */; };
 		4DC3974C1EB0254100FCBA4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3974B1EB0254100FCBA4C /* ViewController.swift */; };
 		4DC3974F1EB0254100FCBA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3974D1EB0254100FCBA4C /* Main.storyboard */; };
@@ -15,9 +16,18 @@
 		4DC3975C1EB0260B00FCBA4C /* PlayList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3975B1EB0260B00FCBA4C /* PlayList.storyboard */; };
 		4DC3975E1EB0262000FCBA4C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3975D1EB0262000FCBA4C /* Login.storyboard */; };
 		4DC397601EB030C700FCBA4C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3975F1EB030C700FCBA4C /* Settings.storyboard */; };
+		4DC397631EB2776700FCBA4C /* MusicClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC397621EB2776700FCBA4C /* MusicClient.swift */; };
+		4DC398D31EB40B0800FCBA4C /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC398841EB40B0800FCBA4C /* SpotifyAudioPlayback.framework */; };
+		4DC398D41EB40B0800FCBA4C /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC398851EB40B0800FCBA4C /* SpotifyAuthentication.framework */; };
+		4DC398D51EB40B0800FCBA4C /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC398861EB40B0800FCBA4C /* SpotifyMetadata.framework */; };
+		4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 4DC398DD1EB411C200FCBA4C /* MyMusic-Bridging-Header.h */; };
+		4DC398E71EB45EC700FCBA4C /* PagingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC398E61EB45EC700FCBA4C /* PagingObject.swift */; };
+		4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC398E91EB4E72F00FCBA4C /* MusicAccount.swift */; };
+		4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC398EC1EB4EB6F00FCBA4C /* SpotifyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		4DC397461EB0254100FCBA4C /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC397491EB0254100FCBA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DC3974B1EB0254100FCBA4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +38,16 @@
 		4DC3975B1EB0260B00FCBA4C /* PlayList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayList.storyboard; sourceTree = "<group>"; };
 		4DC3975D1EB0262000FCBA4C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4DC3975F1EB030C700FCBA4C /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		4DC397621EB2776700FCBA4C /* MusicClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicClient.swift; sourceTree = "<group>"; };
+		4DC398841EB40B0800FCBA4C /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		4DC398851EB40B0800FCBA4C /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		4DC398861EB40B0800FCBA4C /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		4DC398DD1EB411C200FCBA4C /* MyMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyMusic-Bridging-Header.h"; sourceTree = "<group>"; };
+		4DC398E61EB45EC700FCBA4C /* PagingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingObject.swift; sourceTree = "<group>"; };
+		4DC398E91EB4E72F00FCBA4C /* MusicAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicAccount.swift; sourceTree = "<group>"; };
+		4DC398EC1EB4EB6F00FCBA4C /* SpotifyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
+		BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +55,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DC398D41EB40B0800FCBA4C /* SpotifyAuthentication.framework in Frameworks */,
+				4DC398D51EB40B0800FCBA4C /* SpotifyMetadata.framework in Frameworks */,
+				4DC398D31EB40B0800FCBA4C /* SpotifyAudioPlayback.framework in Frameworks */,
+				42456EFB73996FDD638C0E2E /* Pods_MyMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +70,8 @@
 			children = (
 				4DC397481EB0254100FCBA4C /* MyMusic */,
 				4DC397471EB0254100FCBA4C /* Products */,
+				848877D62D1BF157F824561C /* Pods */,
+				612873B253C2C2354A119C37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +86,10 @@
 		4DC397481EB0254100FCBA4C /* MyMusic */ = {
 			isa = PBXGroup;
 			children = (
+				4DC398EB1EB4EAF800FCBA4C /* Services */,
+				4DC398E51EB45E7800FCBA4C /* Models */,
+				4DC398231EB40B0800FCBA4C /* Spofity Frameworks */,
+				4DC397611EB2774B00FCBA4C /* Client */,
 				4DC397491EB0254100FCBA4C /* AppDelegate.swift */,
 				4DC3974B1EB0254100FCBA4C /* ViewController.swift */,
 				4DC3974D1EB0254100FCBA4C /* Main.storyboard */,
@@ -69,8 +99,62 @@
 				4DC3975B1EB0260B00FCBA4C /* PlayList.storyboard */,
 				4DC3975D1EB0262000FCBA4C /* Login.storyboard */,
 				4DC3975F1EB030C700FCBA4C /* Settings.storyboard */,
+				4DC398DD1EB411C200FCBA4C /* MyMusic-Bridging-Header.h */,
+				4DC398E91EB4E72F00FCBA4C /* MusicAccount.swift */,
 			);
 			path = MyMusic;
+			sourceTree = "<group>";
+		};
+		4DC397611EB2774B00FCBA4C /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				4DC397621EB2776700FCBA4C /* MusicClient.swift */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		4DC398231EB40B0800FCBA4C /* Spofity Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DC398841EB40B0800FCBA4C /* SpotifyAudioPlayback.framework */,
+				4DC398851EB40B0800FCBA4C /* SpotifyAuthentication.framework */,
+				4DC398861EB40B0800FCBA4C /* SpotifyMetadata.framework */,
+			);
+			name = "Spofity Frameworks";
+			path = "ios-sdk-master";
+			sourceTree = "<group>";
+		};
+		4DC398E51EB45E7800FCBA4C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4DC398E61EB45EC700FCBA4C /* PagingObject.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4DC398EB1EB4EAF800FCBA4C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4DC398EC1EB4EB6F00FCBA4C /* SpotifyService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		612873B253C2C2354A119C37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		848877D62D1BF157F824561C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */,
+				E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +164,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DC397581EB0254100FCBA4C /* Build configuration list for PBXNativeTarget "MyMusic" */;
 			buildPhases = (
+				6645E76D68FE2707D18BBEF8 /* [CP] Check Pods Manifest.lock */,
 				4DC397421EB0254000FCBA4C /* Sources */,
 				4DC397431EB0254000FCBA4C /* Frameworks */,
 				4DC397441EB0254000FCBA4C /* Resources */,
+				E291FFDF6DCD303BCDA430FA /* [CP] Embed Pods Frameworks */,
+				3A7BF186FCA04A6A8EE1EA3F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,13 +230,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A7BF186FCA04A6A8EE1EA3F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6645E76D68FE2707D18BBEF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E291FFDF6DCD303BCDA430FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4DC397421EB0254000FCBA4C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */,
 				4DC3974C1EB0254100FCBA4C /* ViewController.swift in Sources */,
 				4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */,
+				4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */,
+				4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */,
+				4DC398E71EB45EC700FCBA4C /* PagingObject.swift in Sources */,
+				4DC397631EB2776700FCBA4C /* MusicClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,24 +410,40 @@
 		};
 		4DC397591EB0254100FCBA4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-master",
+					"$(PROJECT_DIR)/MyMusic/ios-sdk-master",
+				);
 				INFOPLIST_FILE = MyMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerneni.MyMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMusic/MyMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		4DC3975A1EB0254100FCBA4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-master",
+					"$(PROJECT_DIR)/MyMusic/ios-sdk-master",
+				);
 				INFOPLIST_FILE = MyMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerneni.MyMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMusic/MyMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -311,6 +467,7 @@
 				4DC3975A1EB0254100FCBA4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
