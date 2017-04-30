@@ -68,8 +68,11 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
             initializaPlayer(authSession: session)
             
             self.loginButton.isHidden = true
-           
             
+            //Display Playlist Screen
+            let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
+            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+            show(playlistNVC, sender: self)
         }
         
     }
@@ -88,17 +91,17 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
         
     }
     
-    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-        // after a user authenticates a session, the SPTAudioStreamingController is then initialized and this method called
-        print("logged in")
-        self.player?.playSpotifyURI("spotify:track:58s6EuEYJdlb0kO7awm3Vp", startingWith: 0, startingWithPosition: 0, callback: { (error) in
-            if (error != nil) {
-                print("playing!")
-            }
-            
-        })
-        
-    }
+//    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
+//        // after a user authenticates a session, the SPTAudioStreamingController is then initialized and this method called
+//        print("logged in")
+//        self.player?.playSpotifyURI("spotify:track:58s6EuEYJdlb0kO7awm3Vp", startingWith: 0, startingWithPosition: 0, callback: { (error) in
+//            if (error != nil) {
+//                print("playing!")
+//            }
+//            
+//        })
+//        
+//    }
 
 
     
