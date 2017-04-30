@@ -14,7 +14,8 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var tableView: UITableView!
     
     var playlists: [SimplifiedPlaylist] = []
-
+    var player: SPTAudioStreamingController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +31,6 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         }) { (error:Error) in
             print(error.localizedDescription)
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,12 +70,8 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = sender as! PlaylistCell
         let indexPath = tableView.indexPath(for: cell)!
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! ViewController
-        
         let mvc = segue.destination as! MusicPlayerViewController
-        
-        vc.player = mvc.spotifyPlayer
+        mvc.spotifyPlayer = player  //send player reference to musicPlayer
         
         mvc.playlistID = playlists[indexPath.row].id
         mvc.userID = playlists[indexPath.row].owner.id
