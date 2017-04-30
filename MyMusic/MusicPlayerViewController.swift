@@ -89,10 +89,8 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
     
     func loadSongFromURI(uri: String){
         spotifyPlayer?.playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
-        spotifyPlayer?.setIsPlaying(true, callback: nil)
-        
-        playButton.isHidden = false
-        pauseButton.isHidden = true
+        playButton.isHidden = true
+        pauseButton.isHidden = false
     }
     
     func changePlayPause(){
@@ -106,14 +104,14 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-            //ipv.start()
+            ipv.start()
             spotifyPlayer?.setIsPlaying(true, callback: nil)
             changePlayPause()
         
     }
 
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
-            //ipv.stop()
+            ipv.stop()
             spotifyPlayer?.setIsPlaying(false, callback: nil)
             changePlayPause()
         
@@ -122,27 +120,36 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
     
     @IBAction func nextTapped(sender: AnyObject) {
         currentSongIndex += 1
+        
         var trackURI = ""
         if playlistTracks != nil{
             if currentSongIndex < (playlistTracks?.count)!{
                 trackURI = (playlistTracks?[currentSongIndex].track.uri)!
             }
         }
+        
+        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+        
         loadSongFromURI(uri: trackURI)
-        changePlayPause()
+        ipv.stop()
+        ipv.restartWithProgress(duration: Double(duration))
     }
     
     @IBAction func previousTapped(sender: AnyObject) {
-        //self.ipv.restartWithProgress(duration: 10)
         currentSongIndex -= 1
+        
         var trackURI = ""
         if playlistTracks != nil{
             if currentSongIndex > -1{
                 trackURI = (playlistTracks?[currentSongIndex].track.uri)!
             }
         }
+        
+        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+        
         loadSongFromURI(uri: trackURI)
-        changePlayPause()
+        ipv.stop()
+        ipv.restartWithProgress(duration: Double(duration))
     }
     
     /* InteractivePlayerViewDelegate METHODS */
@@ -196,8 +203,11 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
         let trackURI = playlistTracks?[indexPath.row].track.uri
         currentSongIndex = indexPath.row
         
+        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+        
         if trackURI != nil{
             loadSongFromURI(uri: trackURI!)
+            ipv.restartWithProgress(duration: Double(duration))
         }
     }
     
