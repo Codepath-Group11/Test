@@ -13,24 +13,32 @@ import Spartan
 
 class MusicClient:NSObject{
     
-    var simplifiedPlayLists:[SimplifiedPlaylist] = []
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     var spotifyService = SpotifyService()
 
     
-    public func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
+    class func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
         
         //TODO: Use factory pattern based on musicServiceType as we add more services.
         
-        // spotifyService.getUserPlayLists(userId: " ", success: <#T##([SimplifiedPlaylist]) -> ()#>, failure: <#T##(Error) -> ()#>)
+        // spotifyService.getUserPlayLists(userId: " ", success: ([SimplifiedPlaylist]) -> (), failure: (Error) -> ())
         
-        _ = Spartan.getUsersPlaylists(userId: "onlynaresh", limit: 20, offset: 0, success: { (pagingObject) in
-            // Get the playlists via pagingObject.playlists
-            self.simplifiedPlayLists = pagingObject.items as [SimplifiedPlaylist]
-            success(self.simplifiedPlayLists)
-        }, failure: { (error) in
-            print(error)
+//        _ = Spartan.getUsersPlaylists(userId: "onlynaresh", limit: 20, offset: 0, success: { (pagingObject) in
+//            // Get the playlists via pagingObject.playlists
+//            let simplifiedPlayLists = pagingObject.items as [SimplifiedPlaylist]
+//            success(simplifiedPlayLists)
+//        }, failure: { (error) in
+//            print(error)
+//        })
+        
+        _ = Spartan.getMyPlaylists(success: { (PagingObject) in
+            
+            let simplifiedPlayLists = PagingObject.items as [SimplifiedPlaylist]
+            success(simplifiedPlayLists)
+            
+        }, failure: { (error:SpartanError) in
+            print((error.errorMessage))
         })
         
     }
@@ -39,7 +47,7 @@ class MusicClient:NSObject{
     func deactivateAccount(musicServiceType:String){
         
         let userDefaults = UserDefaults.standard
-        if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
+        if let _:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
             userDefaults.removeObject(forKey: "SpotifySession")
             Spartan.authorizationToken = nil
         }

@@ -19,14 +19,16 @@ class SpotifyService {
     
     // Add user id here to pull the play lists.
     _ = Spartan.getUsersPlaylists(userId: "", limit: 20, offset: 0, success: { (pagingObject) in
-    // Get the playlists via pagingObject.playlists
-    self.simplifiedPlayLists = pagingObject.items as [SimplifiedPlaylist]
-    success(self.simplifiedPlayLists)
+        
+        // Get the playlists via pagingObject.playlists
+        self.simplifiedPlayLists = pagingObject.items as [SimplifiedPlaylist]
+        success(self.simplifiedPlayLists)
+        
     }, failure: { (error) in
-    print(error)
+        print(error)
     })
-   // musicClient.getUserPlayLists(userId:userId,musicServiceType:"",success:success,failure:failure)
-       }
+    // musicClient.getUserPlayLists(userId:userId,musicServiceType:"",success:success,failure:failure)
+    }
 
     
   
