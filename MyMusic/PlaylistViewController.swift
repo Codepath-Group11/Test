@@ -21,7 +21,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+    
         // Do any additional setup after loading the view.
         MusicClient.getUserPlayLists(userId: "", musicServiceType: "", success: { (myPlaylists:[SimplifiedPlaylist]) in
             

@@ -10,14 +10,22 @@ import UIKit
 import SafariServices
 import AVFoundation
 import Spartan
+import Foundation
+import UIKit
+import FacebookCore
+import FacebookLogin
+import GoogleSignIn
+import Parse
+import ParseUI
 
 
-class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
+
+class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate ,PFLogInViewControllerDelegate {
 
     var auth = SPTAuth.defaultInstance()!
     var session:SPTSession!
     
-  var simplifiedPlayLists:[SimplifiedPlaylist] = []
+    var simplifiedPlayLists:[SimplifiedPlaylist] = []
     
 
     var player: SPTAudioStreamingController?
@@ -25,6 +33,43 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
     
 
     @IBOutlet weak var loginButton: UIButton!
+ 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLogin()
+    }
+
+    func checkLogin() {
+        if (PFUser.current() == nil) {
+            let loginViewController = LoginBackgroundViewController()
+            //can't be set
+            //loginViewController.emailAsUsername = true
+            //loginViewController.signUpController?.emailAsUsername = true
+            loginViewController.fields =  PFLogInFields(rawValue: PFLogInFields.usernameAndPassword.rawValue | PFLogInFields.logInButton.rawValue | PFLogInFields.signUpButton.rawValue | PFLogInFields.facebook.rawValue | PFLogInFields.twitter.rawValue)
+              loginViewController.delegate = self
+            self.present(loginViewController, animated: false, completion: nil)
+        } else {
+            self.presentLoggedInAlert()
+            self.connectwithSpotify()
+        }
+    }
+
+    func log(_ logInController: PFLogInViewController, didLogIn user: PFUser) {
+        logInController.dismiss(animated: true, completion: nil)
+        presentLoggedInAlert()
+        self.connectwithSpotify()
+    }
+    
+    
+    
+    func presentLoggedInAlert() {
+        let alertController = UIAlertController(title: "You're logged in", message: "My Muisc", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
  
     
     override func viewDidLoad() {
@@ -109,7 +154,7 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
 
 
     
-    @IBAction func loginButtonPressed(_ sender: Any) {
+    func connectwithSpotify() {
         
         if UIApplication.shared.openURL(loginUrl!) {
             

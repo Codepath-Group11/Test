@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EDF6AC81EB6954200494EA5 /* LoginBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF6AC61EB6954200494EA5 /* LoginBackgroundViewController.swift */; };
+		1EDF6ACA1EB6954200494EA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EDF6AC91EB6954200494EA5 /* GoogleService-Info.plist */; };
+		1EDF6ACC1EB696A100494EA5 /* SignUpBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF6ACB1EB696A100494EA5 /* SignUpBackgroundViewController.swift */; };
 		42456EFB73996FDD638C0E2E /* Pods_MyMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */; };
 		4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC397491EB0254100FCBA4C /* AppDelegate.swift */; };
 		4DC3974C1EB0254100FCBA4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3974B1EB0254100FCBA4C /* ViewController.swift */; };
@@ -36,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		1EDF6AC61EB6954200494EA5 /* LoginBackgroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBackgroundViewController.swift; sourceTree = "<group>"; };
+		1EDF6AC91EB6954200494EA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1EDF6ACB1EB696A100494EA5 /* SignUpBackgroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpBackgroundViewController.swift; sourceTree = "<group>"; };
 		4DC397461EB0254100FCBA4C /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC397491EB0254100FCBA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DC3974B1EB0254100FCBA4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +200,8 @@
 		C6A8BE2C1EB61A9800A1C0CA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1EDF6ACB1EB696A100494EA5 /* SignUpBackgroundViewController.swift */,
+				1EDF6AC61EB6954200494EA5 /* LoginBackgroundViewController.swift */,
 				4DC3974B1EB0254100FCBA4C /* ViewController.swift */,
 				C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */,
 				C6A8BE1F1EB5960600A1C0CA /* MusicPlayerViewController.swift */,
@@ -206,6 +214,7 @@
 			children = (
 				C6A8BE261EB5980C00A1C0CA /* InteractivePlayer_source */,
 				4DC397501EB0254100FCBA4C /* Assets.xcassets */,
+				1EDF6AC91EB6954200494EA5 /* GoogleService-Info.plist */,
 				C6A8BE1E1EB5960600A1C0CA /* Player.storyboard */,
 				4DC398DD1EB411C200FCBA4C /* MyMusic-Bridging-Header.h */,
 				4DC397551EB0254100FCBA4C /* Info.plist */,
@@ -259,6 +268,7 @@
 				TargetAttributes = {
 					4DC397451EB0254000FCBA4C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = V4YF8V8WZ6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -293,6 +303,7 @@
 				4DC3974F1EB0254100FCBA4C /* Main.storyboard in Resources */,
 				4DC397601EB030C700FCBA4C /* Settings.storyboard in Resources */,
 				4DC3975E1EB0262000FCBA4C /* Login.storyboard in Resources */,
+				1EDF6ACA1EB6954200494EA5 /* GoogleService-Info.plist in Resources */,
 				C6A8BE241EB5960600A1C0CA /* Player.storyboard in Resources */,
 				4DC3975C1EB0260B00FCBA4C /* PlayList.storyboard in Resources */,
 			);
@@ -328,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E291FFDF6DCD303BCDA430FA /* [CP] Embed Pods Frameworks */ = {
@@ -356,10 +367,12 @@
 				4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */,
 				4DC3974C1EB0254100FCBA4C /* ViewController.swift in Sources */,
 				4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */,
+				1EDF6ACC1EB696A100494EA5 /* SignUpBackgroundViewController.swift in Sources */,
 				4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */,
 				4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */,
+				1EDF6AC81EB6954200494EA5 /* LoginBackgroundViewController.swift in Sources */,
 				C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */,
 				4DC398E71EB45EC700FCBA4C /* PagingObject.swift in Sources */,
 				C6A8BE251EB5960600A1C0CA /* MusicPlayerViewController.swift in Sources */,
@@ -488,6 +501,7 @@
 			baseConfigurationReference = 193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V4YF8V8WZ6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios-sdk-master",
@@ -508,6 +522,7 @@
 			baseConfigurationReference = E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V4YF8V8WZ6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios-sdk-master",

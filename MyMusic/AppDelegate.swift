@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import UIKit
+import FBSDKCoreKit
+import Parse
+import Google
+import GoogleSignIn
+import ParseFacebookUtilsV4
+import ParseTwitterUtils
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,20 +27,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         auth.redirectURL     = URL(string: "mymusicdemo://returnAfterLogin") // insert your redirect URL here
         auth.sessionUserDefaultsKey = "current session"
         
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        // Override point for customization after application launch.
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "com.yerneni.MyMusic"
+            $0.server = "https://mymusic2017.herokuapp.com/parse"
+            $0.clientKey = "5IgO4kEL53"
+        }
+        
+        Parse.initialize(with: configuration)
+        FBSDKSettings.setAppID("1414535481941160")
+        PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
+        PFTwitterUtils.initialize(withConsumerKey: "l8wP09DXjmpAilNYKb8WCLe0b", consumerSecret: "fMZ3HD5vzOhKVfdWSqXRnGBYGFXzFkERIHU9XEYkvpGGmpTsLG")
         return true
     }
+
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift. 
+        // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift.
         
-        if auth.canHandle(auth.redirectURL) {
+         if auth.canHandle(auth.redirectURL) {
             auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
-                
                 
                 if error != nil {
                     print("error!")
                 }
+                
                 let userDefaults = UserDefaults.standard
                 let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
                 print(sessionData)
@@ -40,12 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 userDefaults.synchronize()
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
             })
-            return true
         }
         
-        return false
-        
-        
+        return (false || FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation))
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -63,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+         FBSDKAppEvents.activateApp()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     

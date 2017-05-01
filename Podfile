@@ -8,6 +8,13 @@ target 'MyMusic' do
   # Pods for MyMusic
    pod 'AFNetworking'
    pod 'BDBOAuth1Manager'
-   pod 'Spartan'
-
+   pod 'Spartan'	
+   pod 'FacebookCore'
+   pod 'FacebookLogin'
+   pod 'FacebookShare'
+   pod 'Google/SignIn'
+   pod 'Parse'
+   pod 'ParseFacebookUtilsV4'
+   pod ‘ParseTwitterUtils’
+   pod ‘ParseUI’	
 end
