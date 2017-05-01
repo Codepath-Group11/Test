@@ -17,11 +17,11 @@ The following **required** functionality is completed:
 - [ ] API Services
    - [ ] Setup Parse database with User class
    - [ ] User coming to our app for the first needs to be able to login using google/facebook. The user object should be saved to Parse.
-   - [ ] A user should be able to connect to multiple (more than 1) subscription/free music services securely.
-   - [ ] A user will need to be able to de-activate their a service from their account.
+   - [X] A user should be able to connect to multiple (1 or more) subscription/free music services securely.
+   - [X] A user will need to be able to de-activate their a service from their account.
 - [ ] Playlists
-   - [ ] Pull in all the playlists and songs within the playlists from the services the user has subscribed to.
-   - [ ] Have a in app music player
+   - [X] Pull in all the playlists and songs within the playlists from the services the user has subscribed to.
+   - [X] Have a in app music player
 
 The following **optional** features are implemented:
 
@@ -34,7 +34,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/fPT4iBQ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
