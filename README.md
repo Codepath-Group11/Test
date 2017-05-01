@@ -19,7 +19,7 @@ The following **required** functionality is completed:
    - [ ] User coming to our app for the first needs to be able to login using google/facebook. The user object should be saved to Parse.
    - [X] A user should be able to connect to multiple (1 or more) subscription/free music services securely.
    - [X] A user will need to be able to de-activate their a service from their account.
-- [ ] Playlists
+- [X] Playlists
    - [X] Pull in all the playlists and songs within the playlists from the services the user has subscribed to.
    - [X] Have a in app music player
 
