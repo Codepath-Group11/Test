@@ -32,6 +32,14 @@
 				<string>com.googleusercontent.apps.738804339642-vcba6haaf5a7451h4h41vrgfln5je7gi</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>mymusicdemo</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

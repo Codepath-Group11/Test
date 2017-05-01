@@ -10,41 +10,85 @@ can be entered such as work, home or the gym then a playlist of music is display
 - Arthur Burgin Jr
 - Naresh Yerneni
 
-## User Stories 
+## Parse server setting reference
+on ParseServer index.js
 
-The following **required** functionality is completed:
+var databaseUri = 'mongodb://dbadmin:contnet#2017@ds033116.mlab.com:33116/codepath_mymusic'
 
-- [ ] API Services
-   - [ ] Setup Parse database with User class
-   - [ ] User coming to our app for the first needs to be able to login using google/facebook. The user object should be saved to Parse.
-   - [ ] A user should be able to connect to multiple (more than 1) subscription/free music services securely.
-   - [ ] A user will need to be able to de-activate their a service from their account.
-- [ ] Playlists
-   - [ ] Pull in all the playlists and songs within the playlists from the services the user has subscribed to.
-   - [ ] Have a in app music player
+if (!databaseUri) {
+console.log('DATABASE_URI not specified, falling back to localhost.');
+}
 
-The following **optional** features are implemented:
+var api = new ParseServer({
+databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
+cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
+appId: process.env.APP_ID || 'com.yerneni.MyMusic',
+masterKey: process.env.MASTER_KEY || 'BABCACF1095628409D2801FD7B2D1C8A2794AD0C727B34CA', //Add your master key here. Keep it secret!
+serverURL: process.env.SERVER_URL || 'https://mymusic2017.herokuapp.com/parse',//'http://localhost:1337/parse',  // Don't forget to change to https if needed
+clientKey: 'client key',
+liveQuery: {
+classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+},
+auth: {
+facebook: {
+appIds: "fb app id"
+},
+twitter: { consumer_key: "consumer key", 
+consumer_secret: "consumer secret"
+}
 
-- [ ] Playlists
-   - [ ] Create a custom playlist from the available sources within the app.
-   - [ ] Search on the playlists from all the services based on an artist, genre, and any other tags based on user location.
-   - [ ] Present the user with curated playlist based off a saved location.
+}
+});
+
+## client Parse configure reference 
+Appdelegate.m 
+
+
+let configuration = ParseClientConfiguration {
+    $0.applicationId = "bundle id"
+    $0.server = "https://mymusic2017.herokuapp.com/parse"
+    $0.clientKey = "client key"
+}
+
+Parse.initialize(with: configuration)
+FBSDKSettings.setAppID("fbAppId") //on the fb develper account
+PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
+PFTwitterUtils.initialize(withConsumerKey: "consumer key", consumerSecret: "consumer secrect")
+
+Also need to change the url type in the info plist
+
+## dependancy
+
+parse set up on client side with cocopods  
+pod 'Parse'
+pod 'ParseFacebookUtilsV4'
+pod ‘ParseTwitterUtils’
+pod ‘ParseUI’	
+
+parse setup on serveral side 
+parse sever with mlab + heroku
+server url : 
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented parse login with twitter and fb. 
+Note # need to review the flow since login with social media still require to log in with spotify
+and also spotiy allow to login with fb. might causing user confusion.
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/3o7buaxpLP5LU4qeBy/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+1) This week has a lot freedom but actually also feel much harder since there are no hint and instructions to follow.
+2) configuration sdk and environment taking lots of time and stilly a littly buggy to using the built in function with parse server. Will either find a solution or change to the firebase really soon after more reasearch.
+3) was able to using google sign in sdk on ios only to get access token but having hard time to combine with parse server.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] [name of copyright owner]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
