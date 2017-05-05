@@ -102,13 +102,13 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     @IBAction func nextTapped(sender: AnyObject) {
-        currentSongIndex += 1
-        
         var trackURI = ""
-        if playlistTracks != nil,  currentSongIndex+1 < (playlistTracks?.count)!{
-            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
+        if playlistTracks != nil,  (currentSongIndex+1) < (playlistTracks?.count)!{
+            currentSongIndex += 1
             
             let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+            
+            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
             
             loadSongFromURI(uri: trackURI)
             ipv.stop()
@@ -117,12 +117,14 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func previousTapped(sender: AnyObject) {
-        currentSongIndex -= 1
-        
         var trackURI = ""
-        if playlistTracks != nil, currentSongIndex > -1{
-            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
+        if playlistTracks != nil, (currentSongIndex-1) > -1{
+            currentSongIndex -= 1
+            
             let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+            
+            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
+            
             loadSongFromURI(uri: trackURI)
             ipv.stop()
             ipv.restartWithProgress(duration: Double(duration))
