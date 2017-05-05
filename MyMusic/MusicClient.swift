@@ -21,17 +21,7 @@ class MusicClient:NSObject{
     class func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
         
         //TODO: Use factory pattern based on musicServiceType as we add more services.
-        
-        // spotifyService.getUserPlayLists(userId: " ", success: ([SimplifiedPlaylist]) -> (), failure: (Error) -> ())
-        
-//        _ = Spartan.getUsersPlaylists(userId: "onlynaresh", limit: 20, offset: 0, success: { (pagingObject) in
-//            // Get the playlists via pagingObject.playlists
-//            let simplifiedPlayLists = pagingObject.items as [SimplifiedPlaylist]
-//            success(simplifiedPlayLists)
-//        }, failure: { (error) in
-//            print(error)
-//        })
-        
+
         _ = Spartan.getMyPlaylists(success: { (PagingObject) in
             
             let simplifiedPlayLists = PagingObject.items as [SimplifiedPlaylist]

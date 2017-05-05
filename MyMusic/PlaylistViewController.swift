@@ -71,7 +71,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         let indexPath = tableView.indexPath(for: cell)!
         
         let mvc = segue.destination as! MusicPlayerViewController
-        mvc.spotifyPlayer = player  //send player reference to musicPlayer
+        //mvc.spotifyPlayer = player  //send player reference to musicPlayer
         
         mvc.playlistID = playlists[indexPath.row].id
         mvc.userID = playlists[indexPath.row].owner.id
