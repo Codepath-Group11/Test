@@ -103,12 +103,12 @@
 			isa = PBXGroup;
 			children = (
 				4DC397491EB0254100FCBA4C /* AppDelegate.swift */,
-				4DC398EB1EB4EAF800FCBA4C /* Services */,
 				4DC398E51EB45E7800FCBA4C /* Models */,
 				C6A8BE321EB61BCB00A1C0CA /* View */,
 				C6A8BE2C1EB61A9800A1C0CA /* ViewControllers */,
 				4DC397611EB2774B00FCBA4C /* API */,
 				C6A8BE2B1EB61A7400A1C0CA /* Storyboards */,
+				4DC398EB1EB4EAF800FCBA4C /* Services */,
 				C6A8BE2D1EB61AD000A1C0CA /* Utils */,
 				4DC398231EB40B0800FCBA4C /* Spofity Frameworks */,
 			);

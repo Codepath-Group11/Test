@@ -71,7 +71,7 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func loadSongFromURI(uri: String){
-        SpotifyService.player?.playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
+        MusicClient.player().playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
         playButton.isHidden = true
         pauseButton.isHidden = false
     }
@@ -88,14 +88,14 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
             ipv.start()
-            SpotifyService.player?.setIsPlaying(true, callback: nil)
+            MusicClient.player().setIsPlaying(true, callback: nil)
             changePlayPause()
         
     }
 
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
             ipv.stop()
-            SpotifyService.player?.setIsPlaying(false, callback: nil)
+            MusicClient.player().setIsPlaying(false, callback: nil)
             changePlayPause()
         
     }
@@ -105,34 +105,28 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         currentSongIndex += 1
         
         var trackURI = ""
-        if playlistTracks != nil{
-            if currentSongIndex < (playlistTracks?.count)!{
-                trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            }
+        if playlistTracks != nil,  currentSongIndex+1 < (playlistTracks?.count)!{
+            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
+            
+            let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+            
+            loadSongFromURI(uri: trackURI)
+            ipv.stop()
+            ipv.restartWithProgress(duration: Double(duration))
         }
-        
-        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-        
-        loadSongFromURI(uri: trackURI)
-        ipv.stop()
-        ipv.restartWithProgress(duration: Double(duration))
     }
     
     @IBAction func previousTapped(sender: AnyObject) {
         currentSongIndex -= 1
         
         var trackURI = ""
-        if playlistTracks != nil{
-            if currentSongIndex > -1{
-                trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            }
+        if playlistTracks != nil, currentSongIndex > -1{
+            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
+            let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+            loadSongFromURI(uri: trackURI)
+            ipv.stop()
+            ipv.restartWithProgress(duration: Double(duration))
         }
-        
-        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-        
-        loadSongFromURI(uri: trackURI)
-        ipv.stop()
-        ipv.restartWithProgress(duration: Double(duration))
     }
     
     func makeItRounded(view : UIView!, newSize : CGFloat!){

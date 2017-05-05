@@ -15,8 +15,19 @@ class MusicClient:NSObject{
     
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
-    var spotifyService = SpotifyService()
-
+    private static var service = SpotifyService()
+    
+    class func player() -> SPTAudioStreamingController{
+        return service.player!
+    }
+    
+    class func getLoginURL()->URL{
+        return service.loginUrl!
+    }
+    
+    class func authorization()->SPTAuth{
+        return service.auth
+    }
     
     class func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
         
@@ -34,17 +45,9 @@ class MusicClient:NSObject{
     }
     
     
-    func deactivateAccount(musicServiceType:String){
-        
-        let userDefaults = UserDefaults.standard
-        if let _:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
-            userDefaults.removeObject(forKey: "SpotifySession")
-            Spartan.authorizationToken = nil
-        }
-        
-    }
     
-    }
+    
+}
     
 
 

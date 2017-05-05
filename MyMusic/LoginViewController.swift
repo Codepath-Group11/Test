@@ -10,11 +10,6 @@ import UIKit
 
 
 class LoginViewController: UIViewController{
-    
-    var service: SpotifyService? = nil
-    var player: SPTAudioStreamingController?
-    var loginUrl: URL?
-    
 
     @IBOutlet weak var loginButton: UIButton!
  
@@ -22,14 +17,8 @@ class LoginViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        service = SpotifyService()
-        if service?.loginUrl != nil{
-            loginUrl = service?.loginUrl ?? URL(string: "")
-        }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in
-            
-            self.service?.createUserSession()
             
             let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
             let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
@@ -40,9 +29,9 @@ class LoginViewController: UIViewController{
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         
-        if UIApplication.shared.openURL(loginUrl!) {
+        if UIApplication.shared.openURL(MusicClient.getLoginURL()) {
             
-            if SpotifyService.auth.canHandle(SpotifyService.auth.redirectURL) {
+            if MusicClient.authorization().canHandle(MusicClient.authorization().redirectURL) {
                 // To do - build in error handling
             }
         }
