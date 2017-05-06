@@ -9,14 +9,13 @@
 import UIKit
 import Spartan
 
-class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate, UITableViewDataSource, UITableViewDelegate {
-    
-    
-    @IBOutlet weak var blurBgImage: UIImageView!
+class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet var tableView: UITableView!
-    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var ipv: InteractivePlayerView!
+     @IBOutlet weak var blurBgImage: UIImageView!
+    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var playPauseButtonView: UIView!
@@ -24,10 +23,8 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
     var userID: String?
     var playlistID: String?
     
-    var spotifyPlayer: SPTAudioStreamingController?
     var playlistTracks:[PlaylistTrack]?
     var currentSongIndex: Int = 0
-    var auth = SPTAuth.defaultInstance()!
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,20 +60,6 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    func initializaPlayer(authSession:SPTSession){
-        if self.spotifyPlayer == nil {
-            
-            
-            self.spotifyPlayer = SPTAudioStreamingController.sharedInstance()
-            self.spotifyPlayer!.playbackDelegate = self as! SPTAudioStreamingPlaybackDelegate
-            self.spotifyPlayer!.delegate = self as! SPTAudioStreamingDelegate
-            try! spotifyPlayer?.start(withClientId: auth.clientID)
-            self.spotifyPlayer!.login(withAccessToken: authSession.accessToken)
-            
-        }
-        
-    }
-    
     @IBAction func dismissPlaylistModal(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
         
@@ -88,7 +71,7 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
     }
     
     func loadSongFromURI(uri: String){
-        spotifyPlayer?.playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
+        MusicClient.player().playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
         playButton.isHidden = true
         pauseButton.isHidden = false
     }
@@ -105,77 +88,47 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
             ipv.start()
-            spotifyPlayer?.setIsPlaying(true, callback: nil)
+            MusicClient.player().setIsPlaying(true, callback: nil)
             changePlayPause()
         
     }
 
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
             ipv.stop()
-            spotifyPlayer?.setIsPlaying(false, callback: nil)
+            MusicClient.player().setIsPlaying(false, callback: nil)
             changePlayPause()
         
     }
     
     
     @IBAction func nextTapped(sender: AnyObject) {
-        currentSongIndex += 1
-        
         var trackURI = ""
-        if playlistTracks != nil{
-            if currentSongIndex < (playlistTracks?.count)!{
-                trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            }
+        if playlistTracks != nil,  (currentSongIndex+1) < (playlistTracks?.count)!{
+            currentSongIndex += 1
+            
+            let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+            
+            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
+            
+            loadSongFromURI(uri: trackURI)
+            ipv.stop()
+            ipv.restartWithProgress(duration: Double(duration))
         }
-        
-        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-        
-        loadSongFromURI(uri: trackURI)
-        ipv.stop()
-        ipv.restartWithProgress(duration: Double(duration))
     }
     
     @IBAction func previousTapped(sender: AnyObject) {
-        currentSongIndex -= 1
-        
         var trackURI = ""
-        if playlistTracks != nil{
-            if currentSongIndex > -1{
-                trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            }
+        if playlistTracks != nil, (currentSongIndex-1) > -1{
+            currentSongIndex -= 1
+            
+            let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+            
+            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
+            
+            loadSongFromURI(uri: trackURI)
+            ipv.stop()
+            ipv.restartWithProgress(duration: Double(duration))
         }
-        
-        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-        
-        loadSongFromURI(uri: trackURI)
-        ipv.stop()
-        ipv.restartWithProgress(duration: Double(duration))
-    }
-    
-    /* InteractivePlayerViewDelegate METHODS */
-    func actionOneButtonTapped(sender: UIButton, isSelected: Bool) {
-        print("shuffle \(isSelected.description)")
-    }
-    
-    func actionTwoButtonTapped(sender: UIButton, isSelected: Bool) {
-        print("like \(isSelected.description)")
-    }
-    
-    func actionThreeButtonTapped(sender: UIButton, isSelected: Bool) {
-        print("replay \(isSelected.description)")
-
-    }
-    
-    func interactivePlayerViewDidChangedDuration(playerInteractive: InteractivePlayerView, currentDuration: Double) {
-        print("current Duration : \(currentDuration)")
-    }
-    
-    func interactivePlayerViewDidStartPlaying(playerInteractive: InteractivePlayerView) {
-        print("interactive player did started")
-    }
-    
-    func interactivePlayerViewDidStopPlaying(playerInteractive: InteractivePlayerView) {
-        print("interactive player did stop")
     }
     
     func makeItRounded(view : UIView!, newSize : CGFloat!){
@@ -220,6 +173,36 @@ class MusicPlayerViewController: UIViewController,InteractivePlayerViewDelegate,
         cell.detailTextLabel?.text = track?.artists[0].name
         
         return cell
+    }
+    
+}
+
+extension MusicPlayerViewController: InteractivePlayerViewDelegate{
+    
+    /* InteractivePlayerViewDelegate METHODS */
+    func actionOneButtonTapped(sender: UIButton, isSelected: Bool) {
+        print("shuffle \(isSelected.description)")
+    }
+    
+    func actionTwoButtonTapped(sender: UIButton, isSelected: Bool) {
+        print("like \(isSelected.description)")
+    }
+    
+    func actionThreeButtonTapped(sender: UIButton, isSelected: Bool) {
+        print("replay \(isSelected.description)")
+        
+    }
+    
+    func interactivePlayerViewDidChangedDuration(playerInteractive: InteractivePlayerView, currentDuration: Double) {
+        print("current Duration : \(currentDuration)")
+    }
+    
+    func interactivePlayerViewDidStartPlaying(playerInteractive: InteractivePlayerView) {
+        print("interactive player did started")
+    }
+    
+    func interactivePlayerViewDidStopPlaying(playerInteractive: InteractivePlayerView) {
+        print("interactive player did stop")
     }
     
 }

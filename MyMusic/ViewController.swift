@@ -1,129 +1,75 @@
 //
-//  ViewController.swift
+//  SignUpViewController.swift
 //  MyMusic
 //
-//  Created by Yerneni, Naresh on 4/25/17.
 //  Copyright © 2017 Yerneni, Naresh. All rights reserved.
 //
 
 import UIKit
-import SafariServices
-import AVFoundation
-import Spartan
 
+class SignUpViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , SignUpEntryCellDelegate {
 
-class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
-
-    var auth = SPTAuth.defaultInstance()!
-    var session:SPTSession!
-
-    var simplifiedPlayLists:[SimplifiedPlaylist] = []
-
-    var player: SPTAudioStreamingController?
-    var loginUrl: URL?
-    
-
-    @IBOutlet weak var loginButton: UIButton!
- 
+    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    let inputEntry: [entryType] = [.userName, .email, .password]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        setup()
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
-        
+        signUpBtn.layer.cornerRadius = 12
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 45
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        // Do any additional setup after loading the view.
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let nib = UIStoryboard(name: "Login", bundle: nil)
-        let loginNavi = nib.instantiateViewController(withIdentifier: "loginNavigationViewController")//"SignUpViewController")//"loginNavigationViewController")
-        self.present(loginNavi, animated: true, completion: nil)
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func setup () {
-        // insert redirect your url and client ID below
-        let redirectURL = "mymusicdemo://returnAfterLogin"
-        auth.redirectURL     = URL(string: redirectURL)
-        auth.clientID        = "277edce5ad1741fa8f29c73eec3a132c"
-        auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
-        loginUrl = auth.spotifyWebAuthenticationURL()
+    @IBAction func onTapLogin(_ sender: Any) {
+        let nib = UIStoryboard(name: "Login", bundle: nil)
+        let login = nib.instantiateViewController(withIdentifier: "LoginViewController")
+        UIView.beginAnimations("animation", context: nil)
+        UIView.setAnimationDuration(0.3)
+        self.navigationController?.pushViewController(login, animated: true)
+        UIView.setAnimationTransition(UIViewAnimationTransition.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
+        UIView.commitAnimations()
     }
     
-    
-    func updateAfterFirstLogin () {
-        
-        loginButton.isHidden = true
-        let userDefaults = UserDefaults.standard
-        
-        if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
-            
-            let sessionDataObj = sessionObj as! Data
-            let firstTimeSession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as! SPTSession
-            
-            self.session = firstTimeSession
-           
-            Spartan.authorizationToken = self.session.accessToken
-            
-            initializaPlayer(authSession: session)
-            
-            self.loginButton.isHidden = true
-            
-            //Display Playlist Screen
-            let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
-            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
-            
-            let playlistVC = playlistNVC.viewControllers[0] as! PlaylistViewController
-            playlistVC.player = player  //pass player reference
-            
-            show(playlistNVC, sender: self)
-        }
-        
+    @IBAction func onTapSignUp(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func initializaPlayer(authSession:SPTSession){
-        
-        if player == nil {
-            player = SPTAudioStreamingController.sharedInstance()
-            player!.playbackDelegate = self
-            player!.delegate = self
-            try! player?.start(withClientId: auth.clientID)
-            player!.login(withAccessToken: authSession.accessToken)
-        }
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpEntryCell") as? SignUpEntryCell
+        cell?.entry = inputEntry[indexPath.row]
+        cell?.delegate = self
+        return cell!
     }
     
-//    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-//        // after a user authenticates a session, the SPTAudioStreamingController is then initialized and this method called
-//        print("logged in")
-//        self.player?.playSpotifyURI("spotify:track:58s6EuEYJdlb0kO7awm3Vp", startingWith: 0, startingWithPosition: 0, callback: { (error) in
-//            if (error != nil) {
-//                print("playing!")
-//            }
-//            
-//        })
-//        
-//    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return inputEntry.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func userDidEnterData(in cell: SignUpEntryCell, field: UITextField, type: entryType, data: String) {
+        print(" signUpEntryType \(type.rawValue)")
+        print(" signUp: \(data)")
+    }
 
+    /*
+    // MARK: - Navigation
 
-    
-    @IBAction func loginButtonPressed(_ sender: Any) {
-        
-        if UIApplication.shared.openURL(loginUrl!) {
-            
-            if auth.canHandle(auth.redirectURL) {
-                // To do - build in error handling
-            }
-        }
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-    
-
-    
-    
-    
+    */
 }
