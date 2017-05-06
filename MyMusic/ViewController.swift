@@ -16,9 +16,8 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
 
     var auth = SPTAuth.defaultInstance()!
     var session:SPTSession!
-    
-  var simplifiedPlayLists:[SimplifiedPlaylist] = []
-    
+
+    var simplifiedPlayLists:[SimplifiedPlaylist] = []
 
     var player: SPTAudioStreamingController?
     var loginUrl: URL?
@@ -32,8 +31,15 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
         // Do any additional setup after loading the view, typically from a nib.
         setup()
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let nib = UIStoryboard(name: "Login", bundle: nil)
+        let loginNavi = nib.instantiateViewController(withIdentifier: "loginNavigationViewController")//"SignUpViewController")//"loginNavigationViewController")
+        self.present(loginNavi, animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,7 +53,6 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
         auth.clientID        = "277edce5ad1741fa8f29c73eec3a132c"
         auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
         loginUrl = auth.spotifyWebAuthenticationURL()
-        
     }
     
     
@@ -84,8 +89,6 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
     func initializaPlayer(authSession:SPTSession){
         
         if player == nil {
-            
-            
             player = SPTAudioStreamingController.sharedInstance()
             player!.playbackDelegate = self
             player!.delegate = self
