@@ -32,7 +32,6 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
         auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
         
         createUserSession()
-        
         initializePlayer(authSession: session)
     }
     
