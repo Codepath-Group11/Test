@@ -9,10 +9,13 @@
 import UIKit
 
 
-class LoginViewController: UIViewController{
+class LoginViewController: UIViewController,AuthenticationProtocol{
 
     @IBOutlet weak var loginButton: UIButton!
  
+    @IBOutlet weak var fitBitLogin: UIButton!
+    
+    var authenticationController: FitbitAuthenticationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,10 @@ class LoginViewController: UIViewController{
             
             self.show(playlistNVC, sender: nil)
         }
+       
+        authenticationController = FitbitAuthenticationController(delegate: self)
+
+        
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
@@ -37,10 +44,22 @@ class LoginViewController: UIViewController{
         }
     }
     
+    @IBAction func fitBitButtonPressed(_ sender: Any) {
+        authenticationController?.login(fromParentViewController: self)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func authorizationDidFinish(_ success: Bool) {
+      
+        guard let authToken = authenticationController?.authenticationToken else {
+            return
+        }
+        FitbitAPI.sharedInstance.authorize(with: authToken)
+       
     }
     
 }

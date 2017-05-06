@@ -58,6 +58,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        let notification = Notification(
+            name: Notification.Name(rawValue: "FitBitLaunchNotification"),
+            object:nil,
+            userInfo:[UIApplicationLaunchOptionsKey.url:url])
+        NotificationCenter.default.post(notification)
+        return true
+    }
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
