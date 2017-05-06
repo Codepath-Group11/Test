@@ -15,23 +15,24 @@ class MusicClient:NSObject{
     
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
-    var spotifyService = SpotifyService()
-
+    private static var service = SpotifyService()
+    
+    class func player() -> SPTAudioStreamingController{
+        return service.player!
+    }
+    
+    class func getLoginURL()->URL{
+        return service.loginUrl!
+    }
+    
+    class func authorization()->SPTAuth{
+        return service.auth
+    }
     
     class func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
         
         //TODO: Use factory pattern based on musicServiceType as we add more services.
-        
-        // spotifyService.getUserPlayLists(userId: " ", success: ([SimplifiedPlaylist]) -> (), failure: (Error) -> ())
-        
-//        _ = Spartan.getUsersPlaylists(userId: "onlynaresh", limit: 20, offset: 0, success: { (pagingObject) in
-//            // Get the playlists via pagingObject.playlists
-//            let simplifiedPlayLists = pagingObject.items as [SimplifiedPlaylist]
-//            success(simplifiedPlayLists)
-//        }, failure: { (error) in
-//            print(error)
-//        })
-        
+
         _ = Spartan.getMyPlaylists(success: { (PagingObject) in
             
             let simplifiedPlayLists = PagingObject.items as [SimplifiedPlaylist]
@@ -44,17 +45,9 @@ class MusicClient:NSObject{
     }
     
     
-    func deactivateAccount(musicServiceType:String){
-        
-        let userDefaults = UserDefaults.standard
-        if let _:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
-            userDefaults.removeObject(forKey: "SpotifySession")
-            Spartan.authorizationToken = nil
-        }
-        
-    }
     
-    }
+    
+}
     
 
 

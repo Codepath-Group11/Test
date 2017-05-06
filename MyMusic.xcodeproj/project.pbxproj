@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		42456EFB73996FDD638C0E2E /* Pods_MyMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */; };
 		4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC397491EB0254100FCBA4C /* AppDelegate.swift */; };
-		4DC3974C1EB0254100FCBA4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3974B1EB0254100FCBA4C /* ViewController.swift */; };
+		4DC3974C1EB0254100FCBA4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3974B1EB0254100FCBA4C /* LoginViewController.swift */; };
 		4DC3974F1EB0254100FCBA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3974D1EB0254100FCBA4C /* Main.storyboard */; };
 		4DC397511EB0254100FCBA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC397501EB0254100FCBA4C /* Assets.xcassets */; };
 		4DC397541EB0254100FCBA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC397521EB0254100FCBA4C /* LaunchScreen.storyboard */; };
@@ -38,7 +38,7 @@
 		193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		4DC397461EB0254100FCBA4C /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC397491EB0254100FCBA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4DC3974B1EB0254100FCBA4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4DC3974B1EB0254100FCBA4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4DC3974E1EB0254100FCBA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DC397501EB0254100FCBA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MyMusic/Assets.xcassets; sourceTree = "<group>"; };
 		4DC397531EB0254100FCBA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		C6A8BE1B1EB5960600A1C0CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C6A8BE1C1EB5960600A1C0CA /* InteractivePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractivePlayerView.swift; sourceTree = "<group>"; };
 		C6A8BE1D1EB5960600A1C0CA /* InteractivePlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InteractivePlayerView.xib; sourceTree = "<group>"; };
-		C6A8BE1E1EB5960600A1C0CA /* Player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Player.storyboard; path = MyMusic/Player.storyboard; sourceTree = "<group>"; };
+		C6A8BE1E1EB5960600A1C0CA /* Player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		C6A8BE1F1EB5960600A1C0CA /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 		C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrackCell.swift; path = MyMusic/TrackCell.swift; sourceTree = "<group>"; };
 		C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
@@ -103,12 +103,12 @@
 			isa = PBXGroup;
 			children = (
 				4DC397491EB0254100FCBA4C /* AppDelegate.swift */,
-				4DC398EB1EB4EAF800FCBA4C /* Services */,
 				4DC398E51EB45E7800FCBA4C /* Models */,
 				C6A8BE321EB61BCB00A1C0CA /* View */,
 				C6A8BE2C1EB61A9800A1C0CA /* ViewControllers */,
 				4DC397611EB2774B00FCBA4C /* API */,
 				C6A8BE2B1EB61A7400A1C0CA /* Storyboards */,
+				4DC398EB1EB4EAF800FCBA4C /* Services */,
 				C6A8BE2D1EB61AD000A1C0CA /* Utils */,
 				4DC398231EB40B0800FCBA4C /* Spofity Frameworks */,
 			);
@@ -186,6 +186,7 @@
 				4DC3975B1EB0260B00FCBA4C /* PlayList.storyboard */,
 				4DC3975D1EB0262000FCBA4C /* Login.storyboard */,
 				4DC3975F1EB030C700FCBA4C /* Settings.storyboard */,
+				C6A8BE1E1EB5960600A1C0CA /* Player.storyboard */,
 				4DC397521EB0254100FCBA4C /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -194,7 +195,7 @@
 		C6A8BE2C1EB61A9800A1C0CA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DC3974B1EB0254100FCBA4C /* ViewController.swift */,
+				4DC3974B1EB0254100FCBA4C /* LoginViewController.swift */,
 				C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */,
 				C6A8BE1F1EB5960600A1C0CA /* MusicPlayerViewController.swift */,
 			);
@@ -206,7 +207,6 @@
 			children = (
 				C6A8BE261EB5980C00A1C0CA /* InteractivePlayer_source */,
 				4DC397501EB0254100FCBA4C /* Assets.xcassets */,
-				C6A8BE1E1EB5960600A1C0CA /* Player.storyboard */,
 				4DC398DD1EB411C200FCBA4C /* MyMusic-Bridging-Header.h */,
 				4DC397551EB0254100FCBA4C /* Info.plist */,
 			);
@@ -354,7 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */,
-				4DC3974C1EB0254100FCBA4C /* ViewController.swift in Sources */,
+				4DC3974C1EB0254100FCBA4C /* LoginViewController.swift in Sources */,
 				4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */,
 				4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
