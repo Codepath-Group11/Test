@@ -9,5 +9,5 @@ target 'MyMusic' do
    pod 'AFNetworking'
    pod 'BDBOAuth1Manager'
    pod 'Spartan'
-
+   pod ‘Parse’
 end

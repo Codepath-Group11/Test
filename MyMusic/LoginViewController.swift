@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 enum entryType: String {
     case userName = "User Name"
@@ -15,6 +16,8 @@ enum entryType: String {
 }
 
 class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LogInEntryCellDelegate {
+    var email: String!
+    var password: String!
     
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -46,17 +49,15 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         UIView.commitAnimations()
     }
     
-    
     @IBAction func onTapLogin(_ sender: Any) {
+        if (checkInputEntries()) {
+            
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onConnectWithSpotify(_ sender: Any) {
         if UIApplication.shared.openURL(MusicClient.getLoginURL()) {
-            
-            if MusicClient.authorization().canHandle(MusicClient.authorization().redirectURL) {
-                // To do - build in error handling
-            }
         }
     }
     
@@ -78,8 +79,25 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func userDidEnterData(in cell: LoginEntryCell, field: UITextField, type: entryType, data: String) {
         print(" LoginType \(type.rawValue)")
         print(" login: \(data)")
+        switch type {
+        case .email:
+            email = data
+            break
+        case .password:
+            password = data
+            break
+        default:
+            break
+        }
     }
     
+    func checkInputEntries() -> Bool {
+        if email.isEmpty  || self.password.isEmpty  {
+            return false
+        } else {
+            return true
+        }
+    }
     /*
      // MARK: - Navigation
      
