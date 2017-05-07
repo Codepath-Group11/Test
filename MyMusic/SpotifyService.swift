@@ -109,7 +109,7 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
             }
         })
     }
-    
+
     func deactivateAccount(){
         let userDefaults = UserDefaults.standard
         if let _:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
@@ -118,7 +118,7 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
         }
         
     }
-    
+
     func getLoginUrl()-> URL{
         return loginUrl!
     }
@@ -129,15 +129,17 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
     }
     
     func initializePlayer(authSession:SPTSession){
-        
         if player == nil {
             player = SPTAudioStreamingController.sharedInstance()
             player?.playbackDelegate = self
             player?.delegate = self
-            try! player?.start(withClientId: auth.clientID)
+            let value = try! player?.start(withClientId: auth.clientID)
+            print("player start? \(value)")
             player?.login(withAccessToken: authSession.accessToken)
         }
-        
     }
     
+    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
+            print("player did log in")
+    }
 }
