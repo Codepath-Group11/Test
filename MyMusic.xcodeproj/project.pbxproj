@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */; };
 		1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */; };
+		1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */; };
+		1E345ED91EBFD363005FA0A2 /* SpotifySettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345ED81EBFD363005FA0A2 /* SpotifySettingCell.swift */; };
+		1E345EDB1EBFD378005FA0A2 /* FitBitSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345EDA1EBFD378005FA0A2 /* FitBitSettingCell.swift */; };
 		1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E398A131EBE4D2F0019DE51 /* MainViewController.swift */; };
 		1E398A161EBE4E960019DE51 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E398A151EBE4E960019DE51 /* LoginViewController.swift */; };
 		1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */; };
@@ -44,6 +47,9 @@
 		1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryCell.swift; sourceTree = "<group>"; };
 		1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpEntryCell.swift; sourceTree = "<group>"; };
+		1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		1E345ED81EBFD363005FA0A2 /* SpotifySettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifySettingCell.swift; sourceTree = "<group>"; };
+		1E345EDA1EBFD378005FA0A2 /* FitBitSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitSettingCell.swift; sourceTree = "<group>"; };
 		1E398A131EBE4D2F0019DE51 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1E398A151EBE4E960019DE51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E3F68981EBEC83700ED5CDA /* SpinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinView.swift; sourceTree = "<group>"; };
@@ -210,6 +216,7 @@
 				C6A8BE1F1EB5960600A1C0CA /* MusicPlayerViewController.swift */,
 				1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */,
 				1E398A131EBE4D2F0019DE51 /* MainViewController.swift */,
+				1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -234,6 +241,8 @@
 				C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */,
 				1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */,
 				1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */,
+				1E345ED81EBFD363005FA0A2 /* SpotifySettingCell.swift */,
+				1E345EDA1EBFD378005FA0A2 /* FitBitSettingCell.swift */,
 			);
 			name = View;
 			path = ..;
@@ -370,12 +379,15 @@
 			files = (
 				4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */,
 				4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */,
+				1E345EDB1EBFD378005FA0A2 /* FitBitSettingCell.swift in Sources */,
 				1E3F68991EBEC83700ED5CDA /* SpinView.swift in Sources */,
 				4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */,
 				1E398A161EBE4E960019DE51 /* LoginViewController.swift in Sources */,
+				1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */,
 				4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */,
+				1E345ED91EBFD363005FA0A2 /* SpotifySettingCell.swift in Sources */,
 				1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */,
 				C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */,
 				1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */,

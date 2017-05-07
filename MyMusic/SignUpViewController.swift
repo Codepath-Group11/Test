@@ -49,17 +49,20 @@ class SignUpViewController: UIViewController, UITableViewDataSource, UITableView
             user.password = self.password
             user.username = self.userName
             user.signUpInBackground(block: { (didSignUp, error) in
+                var message =  ""
                 if didSignUp {
+                    message = "Sign up successfuly"
                     print("sign up success")
-                    "next step guide the user to sign up with spotify"
+            
                     
                 } else {
-                    let alert = UIAlertController(title: "Sign Up", message: "failed to sign up, please try again later", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
+                    message = "failed to sign up, please try again later"
                     print ("error \(error?.localizedDescription)")
                 }
+                let alert = UIAlertController(title: "Sign Up", message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             })
             
         }

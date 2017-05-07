@@ -40,7 +40,7 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
         auth.redirectURL = URL(string: redirectURL)
         auth.clientID =   "277edce5ad1741fa8f29c73eec3a132c"
         auth.sessionUserDefaultsKey = "current session"
-        auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
+        auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope,SPTAuthUserReadPrivateScope, SPTAuthUserReadEmailScope]
     }
     
     func checkUserSessionExist () -> Bool  {
@@ -89,7 +89,7 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
             }
         })
     }
-    
+
     func oauth(with url: URL) {
         auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
             if error != nil {
@@ -102,6 +102,8 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
                         userDefaults.set(sessionData, forKey: "SpotifySession")
                         userDefaults.synchronize()
                         NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
+                         Spartan.authorizationToken = session.accessToken
+                         self.auth.session = session
                     } else {
                         userDefaults.removeObject(forKey: "SpotifySession")
                     }
@@ -133,8 +135,7 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
             player = SPTAudioStreamingController.sharedInstance()
             player?.playbackDelegate = self
             player?.delegate = self
-            let value = try! player?.start(withClientId: auth.clientID)
-            print("player start? \(value)")
+            try! player?.start(withClientId: auth.clientID)
             player?.login(withAccessToken: authSession.accessToken)
         }
     }
