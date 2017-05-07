@@ -12,20 +12,33 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in
-            
-            let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
-            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
-            
-            self.show(playlistNVC, sender: nil)
-        }
+        //NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in
+        
+        //}
         
     }
+    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if MusicClient.checkCurrentSession() {
+            showPlaylistInterface()
+        } else {
+            presentLoginInterface()
+        }
+    }
+    
+    func presentLoginInterface() {
         let loginNib = UIStoryboard(name: "Login", bundle: nil)
         let loginNVC = loginNib.instantiateViewController(withIdentifier: "loginNavigationViewController") as! UINavigationController
         self.present(loginNVC, animated: true, completion: nil)
+    }
+    
+    func showPlaylistInterface() {
+        let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
+        let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+        
+        self.show(playlistNVC, sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

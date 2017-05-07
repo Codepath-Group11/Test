@@ -16,8 +16,8 @@ enum entryType: String {
 }
 
 class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LogInEntryCellDelegate {
-    var email: String!
-    var password: String!
+    var email: String?
+    var password: String?
     
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +34,21 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(connectSpotify), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
+    
+    }
+
+    func connectSpotify() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,7 +107,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func checkInputEntries() -> Bool {
-        if email.isEmpty  || self.password.isEmpty  {
+        if (email?.isEmpty ?? true)!  || (self.password?.isEmpty ?? true)!  {
             return false
         } else {
             return true

@@ -37,6 +37,10 @@ class MusicClient: NSObject{
         return service.handleURL(url: url)
     }
     
+    class func checkCurrentSession() -> Bool {
+        return service.checkUserSessionExist()
+    }
+    
     class func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
         
         //TODO: Use factory pattern based on musicServiceType as we add more services.

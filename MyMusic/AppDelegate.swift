@@ -33,9 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift.
         return MusicClient.handleSpotifyURL(url: url)
-        return false
-        
-        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

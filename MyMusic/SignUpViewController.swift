@@ -8,9 +8,9 @@ import UIKit
 import Parse
 
 class SignUpViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , SignUpEntryCellDelegate {
-    var userName: String!
-    var password: String!
-    var email: String!
+    var userName: String?
+    var password: String?
+    var email: String?
     
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -98,12 +98,13 @@ class SignUpViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func checkInputEntries() -> Bool {
-        if email.isEmpty  || self.password.isEmpty || self.userName.isEmpty  {
+        if (email?.isEmpty ?? true)  || (self.password?.isEmpty ?? true) || (self.userName?.isEmpty ?? true) {
             return false
         } else {
             return true
         }
     }
+
     /*
      // MARK: - Navigation
      
