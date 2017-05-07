@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -16,36 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        auth.redirectURL     = URL(string: "mymusicdemo://returnAfterLogin") // insert your redirect URL here
-        auth.sessionUserDefaultsKey = "current session"
+        //auth.redirectURL     = URL(string: "mymusicdemo://returnAfterLogin") // insert your redirect URL here
+        //auth.sessionUserDefaultsKey = "current session"
+        MusicClient.configuSpotifyService()
         
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "com.yerneni.MyMusic"
+            $0.server = "https://mymusic2017.herokuapp.com/parse"
+            $0.clientKey = "5IgO4kEL53"
+        }
+        Parse.initialize(with: configuration)
         return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return MusicClient.handleSpotifyURL(url: url)
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift. 
-        
-        if auth.canHandle(auth.redirectURL) {
-            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
-                
-                
-                if error != nil {
-                    print("error!")
-                }
-                let userDefaults = UserDefaults.standard
-                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session as Any)
-                print(sessionData)
-                userDefaults.set(sessionData, forKey: "SpotifySession")
-                userDefaults.synchronize()
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
-            })
-            return true
-        }
-        
-        return false
-        
-        
+        // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift.
+        return MusicClient.handleSpotifyURL(url: url)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
