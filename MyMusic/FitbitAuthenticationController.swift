@@ -13,7 +13,8 @@ protocol AuthenticationProtocol {
     func authorizationDidFinish(_ success :Bool)
 }
 
-class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate {
+class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate
+{
     let clientID = "228B98"
     let clientSecret = "fa45e772b7807251ffe50f3d4b48b263"
     let baseURL = URL(string: "https://www.fitbit.com/oauth2/authorize")
@@ -32,6 +33,9 @@ class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate {
             let success: Bool
             if let token = FitbitAuthenticationController.extractToken(notification, key: "#access_token") {
                 self?.authenticationToken = token
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(token, forKey: "FitbitToken")
+                userDefaults.synchronize()
                 NSLog("You have successfully authorized")
                 success = true
             } else {
@@ -49,7 +53,7 @@ class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK: Public API
+   
     
     public func login(fromParentViewController viewController: UIViewController) {
         guard let url = URL(string: "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id="+clientID+"&redirect_uri="+FitbitAuthenticationController.redirectURI+"&scope="+defaultScope+"&expires_in=604800") else {
@@ -64,7 +68,7 @@ class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate {
     }
     
     public static func logout() {
-        // TODO
+        
     }
     
     private static func extractToken(_ notification: Notification, key: String) -> String? {
@@ -84,7 +88,7 @@ class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate {
         return self.parametersFromQueryString(strippedURL)[newKey]
     }
     
-    // TODO: this method is horrible and could be an extension and use some functional programming
+   
     private static func parametersFromQueryString(_ queryString: String?) -> [String: String] {
         var parameters = [String: String]()
         if (queryString != nil) {
@@ -107,7 +111,6 @@ class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate {
         return parameters
     }
     
-    // MARK: SFSafariViewControllerDelegate
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         delegate?.authorizationDidFinish(false)

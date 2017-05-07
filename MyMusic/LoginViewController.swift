@@ -60,6 +60,13 @@ class LoginViewController: UIViewController,AuthenticationProtocol{
         }
         FitbitAPI.sharedInstance.authorize(with: authToken)
        
+
+        
+        let _ = FitbitAPI.fetchFavActivities() {[weak self] favActivities,error in
+         
+
+   
+        }
     }
     
 }
