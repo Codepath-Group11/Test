@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */; };
+		1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */; };
+		1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E398A131EBE4D2F0019DE51 /* MainViewController.swift */; };
+		1E398A161EBE4E960019DE51 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E398A151EBE4E960019DE51 /* LoginViewController.swift */; };
+		1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */; };
+		1E3F68991EBEC83700ED5CDA /* SpinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F68981EBEC83700ED5CDA /* SpinView.swift */; };
 		42456EFB73996FDD638C0E2E /* Pods_MyMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */; };
 		4D863C741EBE76E800AE1FE6 /* FitbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D863C731EBE76E800AE1FE6 /* FitbitAPI.swift */; };
 		4DB4AE861EBE87D3002C4DB3 /* FitbitAuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */; };
 		4DB4AE8A1EBF9BFE002C4DB3 /* FavActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4AE891EBF9BFE002C4DB3 /* FavActivities.swift */; };
 		4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC397491EB0254100FCBA4C /* AppDelegate.swift */; };
-		4DC3974C1EB0254100FCBA4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3974B1EB0254100FCBA4C /* LoginViewController.swift */; };
 		4DC3974F1EB0254100FCBA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3974D1EB0254100FCBA4C /* Main.storyboard */; };
 		4DC397511EB0254100FCBA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC397501EB0254100FCBA4C /* Assets.xcassets */; };
 		4DC397541EB0254100FCBA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC397521EB0254100FCBA4C /* LaunchScreen.storyboard */; };
@@ -42,9 +47,14 @@
 		4D863C731EBE76E800AE1FE6 /* FitbitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAPI.swift; sourceTree = "<group>"; };
 		4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAuthenticationController.swift; sourceTree = "<group>"; };
 		4DB4AE891EBF9BFE002C4DB3 /* FavActivities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavActivities.swift; sourceTree = "<group>"; };
+		1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryCell.swift; sourceTree = "<group>"; };
+		1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpEntryCell.swift; sourceTree = "<group>"; };
+		1E398A131EBE4D2F0019DE51 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1E398A151EBE4E960019DE51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1E3F68981EBEC83700ED5CDA /* SpinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinView.swift; sourceTree = "<group>"; };
 		4DC397461EB0254100FCBA4C /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC397491EB0254100FCBA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4DC3974B1EB0254100FCBA4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4DC3974E1EB0254100FCBA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DC397501EB0254100FCBA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MyMusic/Assets.xcassets; sourceTree = "<group>"; };
 		4DC397531EB0254100FCBA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -203,10 +213,12 @@
 		C6A8BE2C1EB61A9800A1C0CA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DC3974B1EB0254100FCBA4C /* LoginViewController.swift */,
+				1E398A151EBE4E960019DE51 /* LoginViewController.swift */,
 				C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */,
 				C6A8BE1F1EB5960600A1C0CA /* MusicPlayerViewController.swift */,
 				4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */,
+				1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */,
+				1E398A131EBE4D2F0019DE51 /* MainViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -226,8 +238,11 @@
 		C6A8BE321EB61BCB00A1C0CA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1E3F68981EBEC83700ED5CDA /* SpinView.swift */,
 				C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */,
 				C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */,
+				1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */,
+				1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */,
 			);
 			name = View;
 			path = ..;
@@ -337,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E291FFDF6DCD303BCDA430FA /* [CP] Embed Pods Frameworks */ = {
@@ -364,14 +379,19 @@
 			files = (
 				4DB4AE8A1EBF9BFE002C4DB3 /* FavActivities.swift in Sources */,
 				4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */,
-				4DC3974C1EB0254100FCBA4C /* LoginViewController.swift in Sources */,
 				4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */,
+				1E3F68991EBEC83700ED5CDA /* SpinView.swift in Sources */,
 				4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */,
+				1E398A161EBE4E960019DE51 /* LoginViewController.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				4DB4AE861EBE87D3002C4DB3 /* FitbitAuthenticationController.swift in Sources */,
 				C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */,
 				4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */,
+				1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */,
 				C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */,
+				1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */,
+				1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */,
+				1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */,
 				4DC398E71EB45EC700FCBA4C /* PagingObject.swift in Sources */,
 				4D863C741EBE76E800AE1FE6 /* FitbitAPI.swift in Sources */,
 				C6A8BE251EB5960600A1C0CA /* MusicPlayerViewController.swift in Sources */,
@@ -442,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -486,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -512,6 +532,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyMusic/MyMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -532,6 +553,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyMusic/MyMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
