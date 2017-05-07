@@ -136,10 +136,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        authenticationController?.login(fromParentViewController: self)
 //    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func authorizationDidFinish(_ success: Bool) {
         
