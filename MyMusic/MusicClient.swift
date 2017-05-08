@@ -41,6 +41,13 @@ class MusicClient: NSObject{
         return service.checkUserSessionExist()
     }
     
+    
+    class func getSpotfiy(credential: @escaping (String?, SPTUser?) ->()) {
+        service.currentUser { (user) in
+            credential((self.service.session.accessToken) , user)
+        }
+    }
+    
     class func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
         
         //TODO: Use factory pattern based on musicServiceType as we add more services.

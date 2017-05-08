@@ -96,4 +96,10 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+    @IBAction func onTapSettings(_ sender: UIBarButtonItem) {
+        let nib = UIStoryboard.init(name: "Settings", bundle: nil)
+        let settingsNav = nib.instantiateViewController(withIdentifier: "SettingNavigationViewController")
+        self.show(settingsNav, sender: true)
+    }
+    
 }

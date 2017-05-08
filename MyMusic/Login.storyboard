@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -268,6 +268,127 @@
             </objects>
             <point key="canvasLocation" x="-226.40000000000001" y="186.65667166416793"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="SJI-dn-nE2">
+            <objects>
+                <viewController id="2e8-ia-rdb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="00X-Qg-3qk"/>
+                        <viewControllerLayoutGuide type="bottom" id="qF2-rc-zb2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yNC-mF-OGw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="My Music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gw-99-gor">
+                                <rect key="frame" x="71" y="105" width="232" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="AXl-aM-k04"/>
+                                    <constraint firstAttribute="height" constant="71" id="FOb-X2-AwO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="54"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="3" height="4"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1y-cu-had">
+                                <rect key="frame" x="155" y="433.5" width="64" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="7P2-7e-irV"/>
+                                    <constraint firstAttribute="width" constant="64" id="bIe-vi-YMY"/>
+                                </constraints>
+                                <state key="normal" image="fitbit"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="To have better experiene,  you can connect with your fitbit acoount" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu4-Ku-Hrp">
+                                <rect key="frame" x="10" y="588.5" width="355" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sey-4K-Jkw">
+                                <rect key="frame" x="165" y="518.5" width="46" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PZq-aN-M0W"/>
+                                    <constraint firstAttribute="width" constant="46" id="UKJ-al-UjJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
+                                <state key="normal" title="Skip"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k1y-cu-had" firstAttribute="centerX" secondItem="yNC-mF-OGw" secondAttribute="centerX" id="2z5-Oc-EAh"/>
+                            <constraint firstItem="Sey-4K-Jkw" firstAttribute="centerX" secondItem="yNC-mF-OGw" secondAttribute="centerX" id="5az-Pg-rkj"/>
+                            <constraint firstItem="7gw-99-gor" firstAttribute="centerX" secondItem="yNC-mF-OGw" secondAttribute="centerX" id="6eK-Ns-i3v"/>
+                            <constraint firstItem="Sey-4K-Jkw" firstAttribute="top" secondItem="k1y-cu-had" secondAttribute="bottom" constant="20" id="7GV-dd-I1o"/>
+                            <constraint firstItem="Nu4-Ku-Hrp" firstAttribute="leading" secondItem="yNC-mF-OGw" secondAttribute="leading" constant="10" id="K2T-Ie-xG9"/>
+                            <constraint firstItem="qF2-rc-zb2" firstAttribute="top" secondItem="Nu4-Ku-Hrp" secondAttribute="bottom" constant="40" id="Vbw-jk-Vr2"/>
+                            <constraint firstAttribute="trailing" secondItem="Nu4-Ku-Hrp" secondAttribute="trailing" constant="10" id="hoJ-pK-JYR"/>
+                            <constraint firstItem="7gw-99-gor" firstAttribute="top" secondItem="00X-Qg-3qk" secondAttribute="bottom" constant="85" id="mbk-XU-V0x"/>
+                            <constraint firstItem="Nu4-Ku-Hrp" firstAttribute="top" secondItem="Sey-4K-Jkw" secondAttribute="bottom" constant="30" id="tPA-u3-keu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDS-7a-Y5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1357.5999999999999" y="187.55622188905548"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tuK-dH-RQr">
+            <objects>
+                <viewController id="3ZN-Jy-BcF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x8T-tq-Nds"/>
+                        <viewControllerLayoutGuide type="bottom" id="n8H-kR-iXR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qsq-mX-xg2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="You must connect with spotify to using our service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWI-Cq-VEI">
+                                <rect key="frame" x="10" y="588.5" width="355" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aD6-Xs-YE4">
+                                <rect key="frame" x="155" y="493.5" width="64" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="TLm-TG-Zji"/>
+                                    <constraint firstAttribute="height" constant="65" id="rYi-Ol-xJC"/>
+                                </constraints>
+                                <state key="normal" image="spotify"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="My Music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKr-Ch-une">
+                                <rect key="frame" x="71" y="105" width="232" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="XKR-CD-Cf1"/>
+                                    <constraint firstAttribute="height" constant="71" id="hFl-3r-upG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="54"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="3" height="4"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aD6-Xs-YE4" firstAttribute="centerX" secondItem="Qsq-mX-xg2" secondAttribute="centerX" id="Cg1-Ey-Run"/>
+                            <constraint firstItem="XWI-Cq-VEI" firstAttribute="top" secondItem="aD6-Xs-YE4" secondAttribute="bottom" constant="30" id="EPD-46-nse"/>
+                            <constraint firstItem="HKr-Ch-une" firstAttribute="top" secondItem="x8T-tq-Nds" secondAttribute="bottom" constant="85" id="Gg1-Pv-6mk"/>
+                            <constraint firstAttribute="trailing" secondItem="XWI-Cq-VEI" secondAttribute="trailing" constant="10" id="UWv-0w-3g6"/>
+                            <constraint firstItem="n8H-kR-iXR" firstAttribute="top" secondItem="XWI-Cq-VEI" secondAttribute="bottom" constant="40" id="dsd-dO-Toy"/>
+                            <constraint firstItem="HKr-Ch-une" firstAttribute="centerX" secondItem="Qsq-mX-xg2" secondAttribute="centerX" id="ejc-jT-Par"/>
+                            <constraint firstItem="XWI-Cq-VEI" firstAttribute="leading" secondItem="Qsq-mX-xg2" secondAttribute="leading" constant="10" id="idE-TE-vJC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="42p-EB-7xA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="685.60000000000002" y="187.55622188905548"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="S3V-Id-XFe">
             <objects>
@@ -288,6 +409,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fitbit" width="300" height="300"/>
         <image name="loginBg" width="4600" height="3067"/>
         <image name="signupBg" width="1280" height="788"/>
         <image name="spotify" width="128" height="128"/>
