@@ -4,6 +4,8 @@ The app is a music playlist location based aggregator. A user downloads the app,
 of the popular music services and the user is then asked to categorize their location. Any category
 can be entered such as work, home or the gym then a playlist of music is displayed and played through the app.
 
+The app makes selecting an activity playlist in spotify very simple. A user downloads the app and signs in to spotif/fitbit. A User's fitbit most frequent activites will be displayed. When tapping on an activity, the user can access all of the top curated content from spotify in one playlist that is related to that selected activity.
+
 ## Team
 
 - Kathy Yin
@@ -16,9 +18,9 @@ The following **required** functionality is completed:
 
 - [X] API Services
    - [X] Setup Parse database with User class
-   - [X] User coming to our app for the first needs to be able to login using google/facebook. The user object should be saved to Parse.
-   - [X] A user should be able to connect to multiple (1 or more) subscription/free music services securely.
-   - [X] A user will need to be able to de-activate their a service from their account.
+   - [X] User coming to our app for the first needs to be able to login using Spotify. The user object should be saved to Parse.
+   - [X] A user should be able to connect to Fitbit service securely.
+   - [X] A user will need to be able to de-activate both services from their account.
 - [X] Playlists
    - [X] Pull in all the playlists and songs within the playlists from the services the user has subscribed to.
    - [X] Have a in app music player
@@ -26,9 +28,9 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] Playlists
-   - [ ] Create a custom playlist from the available sources within the app.
-   - [ ] Search on the playlists from all the services based on an artist, genre, and any other tags based on user location.
-   - [ ] Present the user with curated playlist based off a saved location.
+   - [ ] Update playlist tracks based on user selected tempo/energy.
+   - [ ] Display Location based view with playlists based on User's in a given area.
+   - [ ] Allow a User to login to Apple Music Service and display songs in spotify playlists. 
 
 ## Video Walkthrough
 
