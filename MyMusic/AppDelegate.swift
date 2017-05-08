@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Spartan
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        //TODO:Re-factor based on the url.
-        if(true) {
+        
+        if( Spartan.authorizationToken == nil) {
         return MusicClient.handleSpotifyURL(url: url)
         }
         else {
