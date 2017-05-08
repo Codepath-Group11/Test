@@ -29,6 +29,6 @@ class SpotifySettingCell: UITableViewCell {
     }
     
     @IBAction func onSwitchLoginStatus(_ sender: UISwitch) {
-        _ = sender.isOn
+        delegate?.didChangeSpotifLoginStatus(isOn: sender.isOn)
     }
 }

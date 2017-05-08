@@ -20,87 +20,94 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wx0-j6-SIi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="wx0-j6-SIi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpotifySettingCell" rowHeight="74" id="cWo-dK-8ud" customClass="SpotifySettingCell" customModule="MyMusic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="74"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpotifySettingCell" rowHeight="85" id="cWo-dK-8ud" customClass="SpotifySettingCell" customModule="MyMusic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cWo-dK-8ud" id="w0u-g0-CPP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spotify" translatesAutoresizingMaskIntoConstraints="NO" id="F6f-sf-2AN">
-                                                    <rect key="frame" x="31" y="1" width="68" height="63"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="spotify" translatesAutoresizingMaskIntoConstraints="NO" id="F6f-sf-2AN">
+                                                    <rect key="frame" x="15" y="17.5" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="68" id="0yd-BA-16b"/>
-                                                        <constraint firstAttribute="height" constant="63" id="AVH-hy-kpd"/>
+                                                        <constraint firstAttribute="width" constant="50" id="0yd-BA-16b"/>
+                                                        <constraint firstAttribute="height" constant="50" id="yQa-my-16v"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Spotify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-PD-coc">
-                                                    <rect key="frame" x="114" y="16" width="182" height="32"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="26"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZsC-k8-fP3">
-                                                    <rect key="frame" x="311" y="17" width="51" height="31"/>
+                                                    <rect key="frame" x="311" y="27.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onSwitchLoginStatus:" destination="cWo-dK-8ud" eventType="valueChanged" id="7eF-j2-tXG"/>
                                                     </connections>
                                                 </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Spotify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-PD-coc">
+                                                    <rect key="frame" x="85" y="26.5" width="79" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="26"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZsC-k8-fP3" firstAttribute="centerY" secondItem="F6f-sf-2AN" secondAttribute="centerY" id="3ho-Uu-BlW"/>
-                                                <constraint firstItem="fLs-PD-coc" firstAttribute="leading" secondItem="F6f-sf-2AN" secondAttribute="trailing" constant="15" id="4DN-Iw-tn7"/>
-                                                <constraint firstItem="F6f-sf-2AN" firstAttribute="leading" secondItem="w0u-g0-CPP" secondAttribute="leading" constant="31" id="4tY-j9-LEL"/>
+                                                <constraint firstItem="F6f-sf-2AN" firstAttribute="leading" secondItem="w0u-g0-CPP" secondAttribute="leading" constant="15" id="32T-Bq-mTg"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZsC-k8-fP3" secondAttribute="trailing" constant="15" id="8ka-KX-Cms"/>
-                                                <constraint firstItem="fLs-PD-coc" firstAttribute="centerY" secondItem="F6f-sf-2AN" secondAttribute="centerY" id="8yd-SK-el2"/>
-                                                <constraint firstItem="ZsC-k8-fP3" firstAttribute="leading" secondItem="fLs-PD-coc" secondAttribute="trailing" constant="15" id="EOv-jI-Ajd"/>
-                                                <constraint firstItem="F6f-sf-2AN" firstAttribute="top" secondItem="w0u-g0-CPP" secondAttribute="top" constant="1" id="iX5-Zd-4xP"/>
+                                                <constraint firstItem="ZsC-k8-fP3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fLs-PD-coc" secondAttribute="trailing" constant="5" id="Cgx-oj-Y9f"/>
+                                                <constraint firstItem="F6f-sf-2AN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="w0u-g0-CPP" secondAttribute="top" priority="250" constant="5" id="Fkh-wr-Htn"/>
+                                                <constraint firstItem="ZsC-k8-fP3" firstAttribute="centerY" secondItem="F6f-sf-2AN" secondAttribute="centerY" id="e9n-fn-A4W"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="F6f-sf-2AN" secondAttribute="bottom" priority="250" constant="5" id="eEv-2m-GbY"/>
+                                                <constraint firstItem="fLs-PD-coc" firstAttribute="centerY" secondItem="F6f-sf-2AN" secondAttribute="centerY" id="g60-rj-3DK"/>
+                                                <constraint firstItem="F6f-sf-2AN" firstAttribute="centerY" secondItem="w0u-g0-CPP" secondAttribute="centerY" id="rcu-G6-V9O"/>
+                                                <constraint firstItem="fLs-PD-coc" firstAttribute="leading" secondItem="F6f-sf-2AN" secondAttribute="trailing" constant="20" id="soO-Wc-cYQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="loginSwitch" destination="ZsC-k8-fP3" id="G1Q-oi-0Fw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FitBitSettingCell" rowHeight="74" id="WLx-Pb-wyt" customClass="FitBitSettingCell" customModule="MyMusic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="102" width="375" height="74"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FitbitSettingCell" rowHeight="85" id="I44-yf-obH" customClass="FitbitSettingCell" customModule="MyMusic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="86" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WLx-Pb-wyt" id="cYI-GU-faX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I44-yf-obH" id="jmx-Wi-ymE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fitbit" translatesAutoresizingMaskIntoConstraints="NO" id="edv-eG-ENV">
-                                                    <rect key="frame" x="31" y="1" width="68" height="63"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="fitbit" translatesAutoresizingMaskIntoConstraints="NO" id="tR7-dT-GEf">
+                                                    <rect key="frame" x="15" y="17.5" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="68" id="83M-Zg-eCe"/>
-                                                        <constraint firstAttribute="height" constant="63" id="m2q-Vh-chC"/>
+                                                        <constraint firstAttribute="width" constant="50" id="22s-yT-egz"/>
+                                                        <constraint firstAttribute="height" constant="50" id="eBN-uO-kmM"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Fitbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJX-D4-JzM">
-                                                    <rect key="frame" x="114" y="16" width="182" height="32"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6I-nC-6DC">
+                                                    <rect key="frame" x="311" y="27.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="onChangeFitbitLoginStatus:" destination="I44-yf-obH" eventType="valueChanged" id="2VS-Zx-S31"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Fitbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9m6-l4-EdC">
+                                                    <rect key="frame" x="85" y="26.5" width="56" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="26"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Er-bO-RF4">
-                                                    <rect key="frame" x="311" y="17" width="51" height="31"/>
-                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="9Er-bO-RF4" secondAttribute="trailing" constant="15" id="35v-4e-bg8"/>
-                                                <constraint firstItem="9Er-bO-RF4" firstAttribute="leading" secondItem="LJX-D4-JzM" secondAttribute="trailing" constant="15" id="7it-2b-urV"/>
-                                                <constraint firstItem="edv-eG-ENV" firstAttribute="top" secondItem="cYI-GU-faX" secondAttribute="top" constant="1" id="D5P-tN-2fp"/>
-                                                <constraint firstItem="edv-eG-ENV" firstAttribute="leading" secondItem="cYI-GU-faX" secondAttribute="leading" constant="31" id="KnM-8l-Ggg"/>
-                                                <constraint firstItem="LJX-D4-JzM" firstAttribute="leading" secondItem="edv-eG-ENV" secondAttribute="trailing" constant="15" id="LgQ-80-Dzc"/>
-                                                <constraint firstItem="LJX-D4-JzM" firstAttribute="centerY" secondItem="edv-eG-ENV" secondAttribute="centerY" id="MxR-XY-MgM"/>
-                                                <constraint firstItem="9Er-bO-RF4" firstAttribute="centerY" secondItem="edv-eG-ENV" secondAttribute="centerY" id="tLq-Rp-BW3"/>
+                                                <constraint firstItem="tR7-dT-GEf" firstAttribute="centerY" secondItem="jmx-Wi-ymE" secondAttribute="centerY" id="92p-pq-7mF"/>
+                                                <constraint firstItem="tR7-dT-GEf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jmx-Wi-ymE" secondAttribute="top" priority="250" constant="5" id="9a2-AM-Bi9"/>
+                                                <constraint firstItem="9m6-l4-EdC" firstAttribute="centerY" secondItem="tR7-dT-GEf" secondAttribute="centerY" id="WEc-J2-IzT"/>
+                                                <constraint firstItem="P6I-nC-6DC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9m6-l4-EdC" secondAttribute="trailing" constant="5" id="gtZ-nJ-Tew"/>
+                                                <constraint firstAttribute="trailing" secondItem="P6I-nC-6DC" secondAttribute="trailing" constant="15" id="hGU-zo-eqa"/>
+                                                <constraint firstItem="9m6-l4-EdC" firstAttribute="leading" secondItem="tR7-dT-GEf" secondAttribute="trailing" constant="20" id="itN-UT-1FN"/>
+                                                <constraint firstItem="P6I-nC-6DC" firstAttribute="centerY" secondItem="tR7-dT-GEf" secondAttribute="centerY" id="nca-ae-let"/>
+                                                <constraint firstItem="tR7-dT-GEf" firstAttribute="leading" secondItem="jmx-Wi-ymE" secondAttribute="leading" constant="15" id="tVj-iT-H7V"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tR7-dT-GEf" secondAttribute="bottom" priority="250" constant="5" id="wil-LQ-ZSP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="loginSwitch" destination="9Er-bO-RF4" id="jq7-Dy-Lc1"/>
+                                            <outlet property="loginSwitch" destination="P6I-nC-6DC" id="ilF-S6-2Bw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -109,14 +116,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wx0-j6-SIi" firstAttribute="leading" secondItem="Do3-Ch-9dg" secondAttribute="leading" id="200-Db-HDH"/>
-                            <constraint firstItem="wx0-j6-SIi" firstAttribute="top" secondItem="Do3-Ch-9dg" secondAttribute="top" id="HBA-l2-rzW"/>
+                            <constraint firstItem="wx0-j6-SIi" firstAttribute="top" secondItem="8Ix-BG-RXc" secondAttribute="bottom" constant="-64" id="aLC-pe-RIs"/>
                             <constraint firstItem="JFI-vL-cYI" firstAttribute="top" secondItem="wx0-j6-SIi" secondAttribute="bottom" id="fJV-sJ-ieM"/>
                             <constraint firstAttribute="trailing" secondItem="wx0-j6-SIi" secondAttribute="trailing" id="gca-HW-4db"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Sy9-rR-Brp"/>
+                    <navigationItem key="navigationItem" id="Sy9-rR-Brp">
+                        <barButtonItem key="leftBarButtonItem" image="cancel" id="CJT-Ol-4ej">
+                            <connections>
+                                <action selector="onTapCancel:" destination="cxc-sK-Vdt" id="xkI-C9-Ecd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="wx0-j6-SIi" id="C3I-Mc-S43"/>
+                        <outlet property="tableview" destination="wx0-j6-SIi" id="zRj-fk-SL1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVB-4t-VMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,7 +368,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SettingNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="NPU-Oa-8F0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ch-Ft-gUH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9ch-Ft-gUH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -370,6 +383,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cancel" width="32" height="32"/>
         <image name="fitbit" width="300" height="300"/>
         <image name="spotify" width="128" height="128"/>
     </resources>

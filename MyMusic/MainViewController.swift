@@ -12,15 +12,14 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if MusicClient.checkCurrentSession() {
             showPlaylistInterface()
         } else {
+            //presentSettingInterface()
             presentLoginInterface()
         }
     }
@@ -48,6 +47,9 @@ class MainViewController: UIViewController {
         })
     }
    */
+    
+   
+    
     func presentLoginInterface() {
         let loginNib = UIStoryboard(name: "Login", bundle: nil)
         let loginNVC = loginNib.instantiateViewController(withIdentifier: "loginNavigationViewController") as! UINavigationController

@@ -8,14 +8,13 @@
 
 import UIKit
 
-protocol fitbitCellDelegate : class {
+protocol FitbitSettingCellDelegate : class {
     func didChangefitbitAccountLoginStatus(isOn: Bool)
 }
 
-class FitBitSettingCell: UITableViewCell {
-
+class FitbitSettingCell: UITableViewCell {
     @IBOutlet weak var loginSwitch: UISwitch!
-    weak var delegate: fitbitCellDelegate?
+    weak var delegate: FitbitSettingCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +28,7 @@ class FitBitSettingCell: UITableViewCell {
     }
     
     @IBAction func onChangeFitbitLoginStatus(_ sender: UISwitch) {
+        delegate?.didChangefitbitAccountLoginStatus(isOn: sender.isOn)
     }
 
 }

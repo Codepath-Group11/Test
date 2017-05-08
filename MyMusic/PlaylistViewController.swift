@@ -25,9 +25,9 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
         MusicClient.getUserPlayLists(userId: "", musicServiceType: "", success: { (myPlaylists:[SimplifiedPlaylist]) in
             
-            self.playlists = myPlaylists
+            //self.playlists = myPlaylists
             
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
         }) { (error:Error) in
             print(error.localizedDescription)
         }
@@ -72,9 +72,14 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         
         let mvc = segue.destination as! MusicPlayerViewController
         //mvc.spotifyPlayer = player  //send player reference to musicPlayer
-        
         mvc.playlistID = playlists[indexPath.row].id
         mvc.userID = playlists[indexPath.row].owner.id
     }
 
+    @IBAction func onTapSettings(_ sender: UIBarButtonItem) {
+        let nib = UIStoryboard.init(name: "Settings", bundle: nil)
+        let settingsNav = nib.instantiateViewController(withIdentifier: "SettingNavigationViewController")
+        self.show(settingsNav, sender: true)
+    }
+    
 }
