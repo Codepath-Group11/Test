@@ -1,10 +1,6 @@
 # Group Project 4 - *MyMusic*
 
-The app is a music playlist location based aggregator. A user downloads the app, signs in to any one
-of the popular music services and the user is then asked to categorize their location. Any category
-can be entered such as work, home or the gym then a playlist of music is displayed and played through the app.
-
-The app makes selecting an activity playlist in spotify very simple. A user downloads the app and signs in to spotif/fitbit. A User's fitbit most frequent activites will be displayed. When tapping on an activity, the user can access all of the top curated content from spotify in one playlist that is related to that selected activity.
+The app makes selecting an activity playlist in spotify very simple, easy and more intuitive. A user downloads the app and signs in to spotif/fitbit. A User's fitbit most frequent activites will be displayed. When tapping on an activity, the user can access all of the top curated content from spotify in one playlist that is related to that selected activity.
 
 ## Team
 
