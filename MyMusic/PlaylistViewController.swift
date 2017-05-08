@@ -26,9 +26,9 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
         MusicClient.getUserPlayLists(userId: "", musicServiceType: "", success: { (myPlaylists:[SimplifiedPlaylist]) in
             
-            //self.playlists = myPlaylists
+            self.playlists = myPlaylists
             
-            //self.tableView.reloadData()
+            self.tableView.reloadData()
         }) { (error:Error) in
             print(error.localizedDescription)
         }
@@ -79,8 +79,21 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         
         let mvc = segue.destination as! MusicPlayerViewController
         //mvc.spotifyPlayer = player  //send player reference to musicPlayer
-        mvc.playlistID = playlists[indexPath.row].id
-        mvc.userID = playlists[indexPath.row].owner.id
+//
+//        mvc.playlistID = playlists[indexPath.row].id
+//        mvc.userID = playlists[indexPath.row].owner.id
+        switch activity {
+        case "Run":
+            mvc.playlistType = "Motivation Mix"
+        case "Treadmill":
+            mvc.playlistType = "Cardio"
+        case "Elliptical":
+            mvc.playlistType = "Spin Fit"
+        case "Weights":
+            mvc.playlistType = "Power Workout"
+        default:
+            mvc.playlistType = "Heroic Workout"
+        }
     }
 
     @IBAction func onTapSettings(_ sender: UIBarButtonItem) {
