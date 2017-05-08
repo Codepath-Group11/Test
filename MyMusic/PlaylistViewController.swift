@@ -15,6 +15,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     var playlists: [SimplifiedPlaylist] = []
     var player: SPTAudioStreamingController?
+    var activities:[String] = ["Run", "Elliptical", "Weights", "Treadmill"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +32,20 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         }) { (error:Error) in
             print(error.localizedDescription)
         }
+        
+//        _ = Spartan.getCategorysPlaylists(categoryId: "workout", success: { (PagingObject) in
+//            let playlists = PagingObject.items
+//            for (_, value) in (playlists?.enumerated())!{
+//                print("\(value.name)")
+//            }
+//        }, failure: { (error:SpartanError) in
+//            
+//        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        if playlists.count > 0{
-            return playlists.count
-        }else{
-            return 0
-        }
+        return activities.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,10 +55,10 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell") as! PlaylistCell
         
-        let playlist = playlists[indexPath.row]
+        let activity = activities[indexPath.row]
         
-        cell.titleLabel.text = playlist.name
-        cell.trackCountLabel.text = "\(playlist.tracksObject.total ?? 0)"
+        cell.titleLabel.text = activity
+        cell.trackCountLabel.text = ""
         
         return cell
     }
@@ -69,12 +75,25 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! PlaylistCell
         let indexPath = tableView.indexPath(for: cell)!
+        let activity = activities[indexPath.row]
         
         let mvc = segue.destination as! MusicPlayerViewController
         //mvc.spotifyPlayer = player  //send player reference to musicPlayer
-        
-        mvc.playlistID = playlists[indexPath.row].id
-        mvc.userID = playlists[indexPath.row].owner.id
+//
+//        mvc.playlistID = playlists[indexPath.row].id
+//        mvc.userID = playlists[indexPath.row].owner.id
+        switch activity {
+        case "Run":
+            mvc.playlistType = "Motivation Mix"
+        case "Treadmill":
+            mvc.playlistType = "Cardio"
+        case "Elliptical":
+            mvc.playlistType = "Spin Fit"
+        case "Weights":
+            mvc.playlistType = "Power Workout"
+        default:
+            mvc.playlistType = "Heroic Workout"
+        }
     }
 
 }
