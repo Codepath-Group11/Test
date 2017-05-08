@@ -66,8 +66,19 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func onTapLogin(_ sender: Any) {
         if (checkInputEntries()) {
-            
+            let query = PFUser.query()
+            query?.whereKey("email", equalTo: email!)
+            query?.findObjectsInBackground(block: { (results, error) in
+                if (results?.count ?? 0) > 0 {
+                    let object: PFObject = results![0]
+                    let userName = object.object(forKey: "username")
+                    PFUser.logInWithUsername(inBackground: userName as! String, password: self.password!, block: { (user, error) in
+                        print("can't login by email password")
+                    })
+                }
+            })
         }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
