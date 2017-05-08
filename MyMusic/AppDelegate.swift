@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -29,7 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        //TODO:Re-factor based on the url.
+        if(true) {
         return MusicClient.handleSpotifyURL(url: url)
+        }
+        else {
+            let notification = Notification(
+                name: Notification.Name(rawValue: "FitBitLaunchNotification"),
+                object:nil,
+                userInfo:[UIApplicationLaunchOptionsKey.url:url])
+            NotificationCenter.default.post(notification)
+            return true
+
+            
+        }
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -47,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
+    
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.

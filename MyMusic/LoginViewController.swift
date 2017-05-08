@@ -15,10 +15,14 @@ enum entryType: String {
     case password = "Password"
 }
 
-class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LogInEntryCellDelegate {
+class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LogInEntryCellDelegate,AuthenticationProtocol {
     var email: String?
     var password: String?
     
+    var authenticationController: FitbitAuthenticationController?
+
+  //  @IBOutlet weak var fitBitLogin: UIButton!
+
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     let inputEntry: [entryType] = [.email, .password]
@@ -32,6 +36,20 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         // Do any additional setup after loading the view.
+    
+        // move this to an appropriate controller used for fitbit
+        
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in
+//            
+//            let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
+//            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+//            
+//            self.show(playlistNVC, sender: nil)
+//        }
+//        
+//        authenticationController = FitbitAuthenticationController(delegate: self)
+       
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,14 +142,27 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return true
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+//    @IBAction func fitBitButtonPressed(_ sender: Any) {
+//        authenticationController?.login(fromParentViewController: self)
+//    }
+    
+    
+    func authorizationDidFinish(_ success: Bool) {
+        
+        guard let authToken = authenticationController?.authenticationToken else {
+            return
+        }
+        FitbitAPI.sharedInstance.authorize(with: authToken)
+        
+        
+        
+        let _ = FitbitAPI.fetchFavActivities() {[weak self] favActivities,error in
+            
+            print(favActivities)
+            
+        }
+    }
+    
     
 }
