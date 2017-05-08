@@ -22,8 +22,13 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     
     var userID: String?
     var playlistID: String?
+    var playlistType: String?
+    var isReplaying: Bool = false
     
     var playlistTracks:[PlaylistTrack]?
+    var copyPlaylistTracks:[PlaylistTrack]?
+    var shuffledPlaylistTracks:[PlaylistTrack]?
+    
     var currentSongIndex: Int = 0
   
     override func viewDidLoad() {
@@ -40,12 +45,23 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         
         // duration of music
         self.ipv.progress = 20.0
+//        _ = Spartan.getPlaylistTracks(userId: userID ?? "", playlistId: playlistID ?? "", success: { (PagingObject) in
+//            self.playlistTracks = PagingObject.items
+//            self.tableView.reloadData()
+//        }, failure: { (error:SpartanError) in
+//            print(error.errorMessage)
+//        })
         
-        _ = Spartan.getPlaylistTracks(userId: userID ?? "", playlistId: playlistID ?? "", success: { (PagingObject) in
-            self.playlistTracks = PagingObject.items
-            self.tableView.reloadData()
+        _ = Spartan.search(query: playlistType!, type: .playlist, success: { (PagingObject) in
+            let playlist = PagingObject.items[0]
+            _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: playlist.id, success: { (PagingObject) in
+                self.playlistTracks = PagingObject.items
+                self.tableView.reloadData()
+            }, failure: { (error:SpartanError) in
+                
+            })
         }, failure: { (error:SpartanError) in
-            print(error.errorMessage)
+            
         })
         
 
@@ -71,9 +87,13 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func loadSongFromURI(uri: String){
+        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+
         MusicClient.player().playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
         playButton.isHidden = true
         pauseButton.isHidden = false
+        
+        ipv.restartWithProgress(duration: Double(duration))
     }
     
     func changePlayPause(){
@@ -106,13 +126,10 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         if playlistTracks != nil,  (currentSongIndex+1) < (playlistTracks?.count)!{
             currentSongIndex += 1
             
-            let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-            
             trackURI = (playlistTracks?[currentSongIndex].track.uri)!
             
             loadSongFromURI(uri: trackURI)
             ipv.stop()
-            ipv.restartWithProgress(duration: Double(duration))
         }
     }
     
@@ -121,13 +138,10 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         if playlistTracks != nil, (currentSongIndex-1) > -1{
             currentSongIndex -= 1
             
-            let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-            
             trackURI = (playlistTracks?[currentSongIndex].track.uri)!
             
             loadSongFromURI(uri: trackURI)
             ipv.stop()
-            ipv.restartWithProgress(duration: Double(duration))
         }
     }
     
@@ -156,11 +170,8 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         let trackURI = playlistTracks?[indexPath.row].track.uri
         currentSongIndex = indexPath.row
         
-        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-        
         if trackURI != nil{
             loadSongFromURI(uri: trackURI!)
-            ipv.restartWithProgress(duration: Double(duration))
         }
     }
     
@@ -181,7 +192,20 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
     
     /* InteractivePlayerViewDelegate METHODS */
     func actionOneButtonTapped(sender: UIButton, isSelected: Bool) {
-        print("shuffle \(isSelected.description)")
+        if isSelected{
+            copyPlaylistTracks = playlistTracks
+            
+            shuffledPlaylistTracks = copyPlaylistTracks
+            shuffledPlaylistTracks?.shuffle()
+            
+            playlistTracks = shuffledPlaylistTracks
+            tableView.reloadData()
+        }else{
+            shuffledPlaylistTracks = []
+            playlistTracks = copyPlaylistTracks
+            tableView.reloadData()
+        }
+        
     }
     
     func actionTwoButtonTapped(sender: UIButton, isSelected: Bool) {
@@ -189,12 +213,22 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
     }
     
     func actionThreeButtonTapped(sender: UIButton, isSelected: Bool) {
-        print("replay \(isSelected.description)")
+        isReplaying = isSelected
         
     }
     
     func interactivePlayerViewDidChangedDuration(playerInteractive: InteractivePlayerView, currentDuration: Double) {
-        print("current Duration : \(currentDuration)")
+        let currentRoundedDuration = Int(currentDuration)
+        let songTotalDuration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+
+        if currentRoundedDuration == songTotalDuration{
+            if !isReplaying{
+                currentSongIndex += 1
+            }
+            
+            let trackURI = playlistTracks?[currentSongIndex].track.uri
+            loadSongFromURI(uri: trackURI!)
+        }
     }
     
     func interactivePlayerViewDidStartPlaying(playerInteractive: InteractivePlayerView) {
@@ -205,4 +239,19 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
         print("interactive player did stop")
     }
     
+}
+
+extension MutableCollection where Indices.Iterator.Element == Index {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+        
+        for (firstUnshuffled , unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            guard d != 0 else { continue }
+            let i = index(firstUnshuffled, offsetBy: d)
+            swap(&self[firstUnshuffled], &self[i])
+        }
+    }
 }
