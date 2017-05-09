@@ -60,6 +60,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="k1h-mD-t21">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="6gT-eT-lSh">
+                            <connections>
+                                <action selector="logout:" destination="3Np-nE-174" id="DXS-IX-cDd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings" id="fXn-dT-Fcn">
                             <connections>
                                 <action selector="onTapSettings:" destination="3Np-nE-174" id="eMN-78-Y7f"/>
