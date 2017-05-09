@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
             presentLoginInterface()
         }
     }
+    
     /*
     func checkUser() {
         let spotify = MusicClient.checkCurrentSession()
@@ -47,8 +48,6 @@ class MainViewController: UIViewController {
         })
     }
    */
-    
-   
     
     func presentLoginInterface() {
         let loginNib = UIStoryboard(name: "Login", bundle: nil)

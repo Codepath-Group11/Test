@@ -15,10 +15,13 @@ enum entryType: String {
     case password = "Password"
 }
 
+protocol LoginViewControllerDelegate: class {
+    func didConnectToSpotify(from: LoginViewController)
+}
+
 class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LogInEntryCellDelegate,AuthenticationProtocol {
     var email: String?
     var password: String?
-    
     var authenticationController: FitbitAuthenticationController?
 
   //  @IBOutlet weak var fitBitLogin: UIButton!
@@ -60,6 +63,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func connectSpotify() {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
