@@ -45,26 +45,6 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         
         // duration of music
         self.ipv.progress = 20.0
-//        _ = Spartan.getPlaylistTracks(userId: userID ?? "", playlistId: playlistID ?? "", success: { (PagingObject) in
-//            self.playlistTracks = PagingObject.items
-//            self.tableView.reloadData()
-//        }, failure: { (error:SpartanError) in
-//            print(error.errorMessage)
-//        })
-        
-        _ = Spartan.search(query: playlistType!, type: .playlist, success: { (PagingObject) in
-            let playlist = PagingObject.items[0]
-            _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: playlist.id, success: { (PagingObject) in
-                self.playlistTracks = PagingObject.items
-                self.tableView.reloadData()
-            }, failure: { (error:SpartanError) in
-                
-            })
-        }, failure: { (error:SpartanError) in
-            
-        })
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,10 +56,8 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func dismissPlaylistModal(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
-        
-        dismiss(animated: true, completion: nil)
+    @IBAction func dismissPlaylist(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "UnwindSegue", sender: self)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
