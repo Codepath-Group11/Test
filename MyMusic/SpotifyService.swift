@@ -54,11 +54,12 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
                     return true
                 } else {
                     print("Invalid session save in user default")
-                    deactivateAccount()
+                    SpotifyService.deactivateAccount()
                     return false
                 }
             } else {
-                deactivateAccount()
+                SpotifyService.deactivateAccount()
+                
                 return false
             }
         }
@@ -112,7 +113,7 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
         })
     }
 
-    func deactivateAccount(){
+    static func deactivateAccount(){
         let userDefaults = UserDefaults.standard
         if let _:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
             userDefaults.removeObject(forKey: "SpotifySession")

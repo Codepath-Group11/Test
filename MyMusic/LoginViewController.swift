@@ -42,15 +42,15 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
         // move this to an appropriate controller used for fitbit
         
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in
-//            
-//            let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
-//            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
-//            
-//            self.show(playlistNVC, sender: nil)
-//        }
-//        
-//        authenticationController = FitbitAuthenticationController(delegate: self)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in
+            
+            let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
+            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+            
+            self.show(playlistNVC, sender: nil)
+        }
+        
+        authenticationController = FitbitAuthenticationController(delegate: self)
        
 
     }
@@ -146,10 +146,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return true
         }
     }
+    @IBAction func fitBitButtonPressed(_ sender: Any) {
+        authenticationController?.login(fromParentViewController: self)
+
+    }
     
-//    @IBAction func fitBitButtonPressed(_ sender: Any) {
-//        authenticationController?.login(fromParentViewController: self)
-//    }
+  
     
     
     func authorizationDidFinish(_ success: Bool) {
@@ -160,12 +162,21 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         FitbitAPI.sharedInstance.authorize(with: authToken)
         
         
-        
+        // Get Fav Activities
         let _ = FitbitAPI.fetchFavActivities() {[weak self] favActivities,error in
             
             print(favActivities)
             
         }
+        
+ 
+        //Get Daily Activity
+        
+        let day = "/2017-05-07.json"
+        let _ = FitbitAPI.fetchDailyActivitySummary(for:day){[weak self] dailyActSummary,error in
+        print(dailyActSummary)
+        }
+        
     }
     
     

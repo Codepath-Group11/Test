@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Spartan
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,12 +27,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.clientKey = "5IgO4kEL53"
         }
         Parse.initialize(with: configuration)
+        
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController()
+            self.window?.rootViewController = vc
+        }
+        
         return true
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        //TODO:Re-factor based on the url.
-        if(true) {
+        
+        if( Spartan.authorizationToken == nil) {
         return MusicClient.handleSpotifyURL(url: url)
         }
         else {

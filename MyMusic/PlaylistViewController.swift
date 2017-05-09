@@ -102,4 +102,13 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         self.show(settingsNav, sender: true)
     }
     
+    
+    @IBAction func logout(_ sender: Any) {
+        SpotifyService.deactivateAccount()
+        FitbitAPI.deactivateAccount()
+        
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLogout"), object: nil)
+        
+       }
+    
 }
