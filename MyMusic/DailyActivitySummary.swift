@@ -23,10 +23,19 @@ class DailyActivitySummary:NSObject {
     init(dictionary : NSDictionary) {
         
         self.dictionary = dictionary
-//        activityId = dictionary["activityId"] as? Int
-//        description = dictionary["description"] as? String
-//        mets = dictionary["mets"] as? Int
-//        activityName = dictionary["name"] as? String
+
+        let goalsDict = dictionary["goals"] as? NSDictionary
+
+        if let goalsDict = goalsDict {
+            goals = Goals(dictionary: goalsDict)
+        }
+        
+        let activityDictionary:[NSDictionary]
+        
+        activityDictionary = (dictionary["activities"] as? [NSDictionary])!
+   
+        activities = Activity.getActivities(dictionaries: activityDictionary)
+        
     }
     
 

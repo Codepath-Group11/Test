@@ -21,10 +21,12 @@ class Goals {
     init(dictionary : NSDictionary) {
         
         self.dictionary = dictionary
-//        activityId = dictionary["activityId"] as? Int
-//        description = dictionary["description"] as? String
-//        mets = dictionary["mets"] as? Int
-//        activityName = dictionary["name"] as? String
+        steps = dictionary["steps"] as? Int
+        distance = dictionary["distance"] as? Int
+        floors = dictionary["floors"] as? Int
+        caloriesOut = dictionary["caloriesOut"] as? Int
+
+
     }
     
 }
