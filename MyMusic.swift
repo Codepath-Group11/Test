@@ -8,10 +8,9 @@
 
 import UIKit
 
-@IBDesignable
+
 class MyMusic: UIView {
  
-    
     @IBOutlet var contentView: UIView!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

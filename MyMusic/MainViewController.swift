@@ -20,9 +20,11 @@ class MainViewController: UIViewController {
             showPlaylistInterface()
         } else {
             //presentSettingInterface()
-            presentLoginInterface()
+            //presentLoginInterface()
+            presentWelcomInterface()
         }
     }
+    
     /*
     func checkUser() {
         let spotify = MusicClient.checkCurrentSession()
@@ -47,8 +49,11 @@ class MainViewController: UIViewController {
         })
     }
    */
-    
-   
+    func presentWelcomInterface() {
+        let nib = UIStoryboard(name: "Login", bundle: nil)
+        let intro = nib.instantiateViewController(withIdentifier: "IntroViewController")
+        self.present(intro, animated: true, completion: nil)
+    }
     
     func presentLoginInterface() {
         let loginNib = UIStoryboard(name: "Login", bundle: nil)

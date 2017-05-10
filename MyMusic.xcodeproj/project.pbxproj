@@ -12,12 +12,15 @@
 		1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */; };
 		1E345ED91EBFD363005FA0A2 /* SpotifySettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345ED81EBFD363005FA0A2 /* SpotifySettingCell.swift */; };
 		1E345EDB1EBFD378005FA0A2 /* FitbitSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345EDA1EBFD378005FA0A2 /* FitbitSettingCell.swift */; };
-		1E345EDD1EBFEC01005FA0A2 /* SpotifyOauthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345EDC1EBFEC01005FA0A2 /* SpotifyOauthViewController.swift */; };
-		1E345EDF1EBFEC20005FA0A2 /* FitBitOauthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345EDE1EBFEC20005FA0A2 /* FitBitOauthViewController.swift */; };
+		1E345EDD1EBFEC01005FA0A2 /* SpotifyOauthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345EDC1EBFEC01005FA0A2 /* SpotifyOauthController.swift */; };
 		1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E398A131EBE4D2F0019DE51 /* MainViewController.swift */; };
 		1E398A161EBE4E960019DE51 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E398A151EBE4E960019DE51 /* LoginViewController.swift */; };
 		1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */; };
 		1E3F68991EBEC83700ED5CDA /* SpinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F68981EBEC83700ED5CDA /* SpinView.swift */; };
+		1E70C4D51EC259EA00ACA36E /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4D41EC259EA00ACA36E /* WelcomeController.swift */; };
+		1E70C4D71EC25B2B00ACA36E /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4D61EC25B2B00ACA36E /* IntroPageViewController.swift */; };
+		1E70C4D91EC25C8200ACA36E /* FitBitOauthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4D81EC25C8200ACA36E /* FitBitOauthController.swift */; };
+		1E70C4DB1EC26E9100ACA36E /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4DA1EC26E9000ACA36E /* IntroViewController.swift */; };
 		1E8B6DDD1EC01CCE0060668F /* MyMusic.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8B6DDC1EC01CCE0060668F /* MyMusic.xib */; };
 		1E8B6DE11EC01E790060668F /* MyMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8B6DE01EC01E790060668F /* MyMusic.swift */; };
 		1E8B6DE71EC044F10060668F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8B6DE61EC044F10060668F /* Assets.xcassets */; };
@@ -60,11 +63,14 @@
 		1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1E345ED81EBFD363005FA0A2 /* SpotifySettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifySettingCell.swift; sourceTree = "<group>"; };
 		1E345EDA1EBFD378005FA0A2 /* FitbitSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitSettingCell.swift; sourceTree = "<group>"; };
-		1E345EDC1EBFEC01005FA0A2 /* SpotifyOauthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyOauthViewController.swift; sourceTree = "<group>"; };
-		1E345EDE1EBFEC20005FA0A2 /* FitBitOauthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitOauthViewController.swift; sourceTree = "<group>"; };
+		1E345EDC1EBFEC01005FA0A2 /* SpotifyOauthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyOauthController.swift; sourceTree = "<group>"; };
 		1E398A131EBE4D2F0019DE51 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1E398A151EBE4E960019DE51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E3F68981EBEC83700ED5CDA /* SpinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinView.swift; sourceTree = "<group>"; };
+		1E70C4D41EC259EA00ACA36E /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		1E70C4D61EC25B2B00ACA36E /* IntroPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
+		1E70C4D81EC25C8200ACA36E /* FitBitOauthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitBitOauthController.swift; sourceTree = "<group>"; };
+		1E70C4DA1EC26E9000ACA36E /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		1E8B6DDC1EC01CCE0060668F /* MyMusic.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMusic.xib; sourceTree = "<group>"; };
 		1E8B6DE01EC01E790060668F /* MyMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMusic.swift; sourceTree = "<group>"; };
 		1E8B6DE61EC044F10060668F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MyMusic/Assets.xcassets; sourceTree = "<group>"; };
@@ -239,12 +245,15 @@
 				1E398A151EBE4E960019DE51 /* LoginViewController.swift */,
 				C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */,
 				C6A8BE1F1EB5960600A1C0CA /* MusicPlayerViewController.swift */,
-				4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */,
 				1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */,
 				1E398A131EBE4D2F0019DE51 /* MainViewController.swift */,
 				1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */,
-				1E345EDC1EBFEC01005FA0A2 /* SpotifyOauthViewController.swift */,
-				1E345EDE1EBFEC20005FA0A2 /* FitBitOauthViewController.swift */,
+				4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */,
+				1E345EDC1EBFEC01005FA0A2 /* SpotifyOauthController.swift */,
+				1E70C4D81EC25C8200ACA36E /* FitBitOauthController.swift */,
+				1E70C4D41EC259EA00ACA36E /* WelcomeController.swift */,
+				1E70C4D61EC25B2B00ACA36E /* IntroPageViewController.swift */,
+				1E70C4DA1EC26E9000ACA36E /* IntroViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -410,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB4AE8E1EC11FCA002C4DB3 /* Goals.swift in Sources */,
+				1E70C4DB1EC26E9100ACA36E /* IntroViewController.swift in Sources */,
 				4DB4AE8A1EBF9BFE002C4DB3 /* FavActivities.swift in Sources */,
 				4DB4AE901EC11FEF002C4DB3 /* DailyActivitySummary.swift in Sources */,
 				4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */,
@@ -421,16 +431,18 @@
 				1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				4DB4AE8C1EC11F03002C4DB3 /* Activity.swift in Sources */,
+				1E70C4D91EC25C8200ACA36E /* FitBitOauthController.swift in Sources */,
 				4DB4AE861EBE87D3002C4DB3 /* FitbitAuthenticationController.swift in Sources */,
 				C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */,
 				4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */,
-				1E345EDD1EBFEC01005FA0A2 /* SpotifyOauthViewController.swift in Sources */,
+				1E345EDD1EBFEC01005FA0A2 /* SpotifyOauthController.swift in Sources */,
 				1E345ED91EBFD363005FA0A2 /* SpotifySettingCell.swift in Sources */,
 				1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */,
 				C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */,
-				1E345EDF1EBFEC20005FA0A2 /* FitBitOauthViewController.swift in Sources */,
 				1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */,
+				1E70C4D51EC259EA00ACA36E /* WelcomeController.swift in Sources */,
 				1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */,
+				1E70C4D71EC25B2B00ACA36E /* IntroPageViewController.swift in Sources */,
 				1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */,
 				4DC398E71EB45EC700FCBA4C /* PagingObject.swift in Sources */,
 				4D863C741EBE76E800AE1FE6 /* FitbitAPI.swift in Sources */,

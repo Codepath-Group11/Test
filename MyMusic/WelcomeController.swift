@@ -1,18 +1,18 @@
 //
-//  SpotifyOauthViewController.swift
+//  WelcomeViewController.swift
 //  MyMusic
 //
-//  Created by kathy yin on 5/8/17.
 //  Copyright © 2017 Yerneni, Naresh. All rights reserved.
 //
 
 import UIKit
 
-class SpotifyOauthViewController: UIViewController {
+class WelcomeController: UIViewController {
 
+    @IBOutlet weak var backgroundview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
