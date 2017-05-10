@@ -165,16 +165,16 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Get Fav Activities
         let _ = FitbitAPI.fetchFavActivities() {[weak self] favActivities,error in
             
-            print(favActivities)
+            print(favActivities?.count)
             
         }
         
  
         //Get Daily Activity
         
-        let day = "/2017-05-07.json"
+        let day = "/2017-05-04.json"
         let _ = FitbitAPI.fetchDailyActivitySummary(for:day){[weak self] dailyActSummary,error in
-        print(dailyActSummary)
+        print("The activity summary is:\(dailyActSummary?.activities)")
         }
         
     }

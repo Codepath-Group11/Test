@@ -12,14 +12,13 @@ class Activity {
     
     var activityId : Int?
     var description : String?
-    var mets : Int?
     var activityName : String?
     var steps: String?
     var startTime:Date?
     var name:String?
     var isFavourite:Bool?
     var calories:Int?
-    
+    var activityParentId:Int?
     
     var dictionary : NSDictionary!
     
@@ -27,12 +26,18 @@ class Activity {
         
         self.dictionary = dictionary
         activityId = dictionary["activityId"] as? Int
+        activityParentId = dictionary["activityParentId"] as? Int
+        calories = dictionary["calories"] as? Int
+        isFavourite = dictionary["isFavorite"] as? Bool
+
         description = dictionary["description"] as? String
-        mets = dictionary["mets"] as? Int
         activityName = dictionary["name"] as? String
+        
     }
     
-    static func FacActivitiesArray(dictionaries: [NSDictionary]) -> [FavActivities] {
-        return dictionaries.map { FavActivities(dictionary: $0) }
+    static func getActivities(dictionaries: [NSDictionary]) -> [Activity] {
+        return dictionaries.map { Activity(dictionary: $0) }
     }
+    
+
 }
