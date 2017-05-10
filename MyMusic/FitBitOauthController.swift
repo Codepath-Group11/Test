@@ -1,5 +1,5 @@
 //
-//  SpotifyOauthViewController.swift
+//  fitBitOauthViewController.swift
 //  MyMusic
 //
 //  Created by kathy yin on 5/8/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpotifyOauthViewController: UIViewController {
+class FitBitOauthController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
