@@ -25,6 +25,7 @@ class SpotifyOauthController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        //self.removeObserver(self, forKeyPath: <#T##String#>)
         
     }
     
@@ -35,9 +36,15 @@ class SpotifyOauthController: UIViewController {
     }
     
     func didConectWithSpotify() {
-        
+        self.presentFitbitInterface()
     }
-
+    
+    func presentFitbitInterface() {
+        let nib = UIStoryboard(name: "Login", bundle: nil)
+        let intro = nib.instantiateViewController(withIdentifier: "FitBitOauthController")
+        self.present(intro, animated: true, completion: nil)
+    }
+    
     //User tap auth button
     @IBAction func connectWithSpoitfy(_ sender: Any) {
         //Call the Spotify Oauth function

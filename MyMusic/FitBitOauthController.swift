@@ -27,6 +27,23 @@ class FitBitOauthController: UIViewController , AuthenticationProtocol {
          authenticationController?.login(fromParentViewController: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didConnectWithFitbit), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
+        //addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in  
+        //let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
+        //let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+        //    self.show(playlistNVC, sender: nil)
+        
+    }
+
+    func didConnectWithFitbit() {
+        let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
+        let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+        self.show(playlistNVC, sender: nil)
+    }
+
     func authorizationDidFinish(_ success: Bool) {
         
         guard let authToken = authenticationController?.authenticationToken else {
