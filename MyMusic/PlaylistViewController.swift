@@ -13,7 +13,7 @@ import AFNetworking
 class PlaylistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     
-    var playlistTracks: [PlaylistTrack] = []
+    var playlistTracks: [Track] = []
     var player: SPTAudioStreamingController?
     var activities:[String] = ["Run", "Elliptical", "Weights", "Treadmill"]
     
@@ -23,11 +23,10 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        MusicClient.getWorkoutPlayList(success: { (playlist:[PlaylistTrack]) in
-            self.playlistTracks = playlist
-            print(playlist.count)
-        }) { (Error) in
-            
+        MusicClient.getWorkoutPlayList(success: { (tracks:[Track]) in
+            self.playlistTracks = tracks
+        }) { (error:Error) in
+            print(error.localizedDescription)
         }
     }
     

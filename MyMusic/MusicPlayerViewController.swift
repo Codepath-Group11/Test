@@ -8,6 +8,7 @@
 
 import UIKit
 import Spartan
+import Alamofire
 
 class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -25,9 +26,9 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     var playlistType: String?
     var isReplaying: Bool = false
     
-    var playlistTracks:[PlaylistTrack]?
-    var copyPlaylistTracks:[PlaylistTrack]?
-    var shuffledPlaylistTracks:[PlaylistTrack]?
+    var playlistTracks:[Track]?
+    var copyPlaylistTracks:[Track]?
+    var shuffledPlaylistTracks:[Track]?
     
     var currentSongIndex: Int = 0
   
@@ -64,9 +65,10 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         return .lightContent
     }
     
-    func loadSongFromURI(uri: String){
-        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-
+    func loadSongFromURI(uri: String?){
+        let track = playlistTracks?[currentSongIndex]
+        let duration = track?.duration ?? 0/1000
+        
         MusicClient.player().playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
         playButton.isHidden = true
         pauseButton.isHidden = false
@@ -100,25 +102,23 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     @IBAction func nextTapped(sender: AnyObject) {
-        var trackURI = ""
+        let track = playlistTracks?[currentSongIndex]
+        
         if playlistTracks != nil,  (currentSongIndex+1) < (playlistTracks?.count)!{
             currentSongIndex += 1
             
-            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            
-            loadSongFromURI(uri: trackURI)
+            loadSongFromURI(uri: track?.uri)
             ipv.stop()
         }
     }
     
     @IBAction func previousTapped(sender: AnyObject) {
-        var trackURI = ""
+        let track = playlistTracks?[currentSongIndex]
+        
         if playlistTracks != nil, (currentSongIndex-1) > -1{
             currentSongIndex -= 1
             
-            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            
-            loadSongFromURI(uri: trackURI)
+            loadSongFromURI(uri: track?.uri ?? "")
             ipv.stop()
         }
     }
@@ -144,22 +144,20 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let trackURI = playlistTracks?[indexPath.row].track.uri
+
         currentSongIndex = indexPath.row
+        let track = playlistTracks?[currentSongIndex]
         
-        if trackURI != nil{
-            loadSongFromURI(uri: trackURI!)
-        }
+        loadSongFromURI(uri: track?.uri ?? "")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell") as! TrackCell
         
-        let track = playlistTracks?[indexPath.row].track
+        let track = playlistTracks?[indexPath.row]
         
         cell.textLabel?.text = track?.name
-        cell.detailTextLabel?.text = track?.artists[0].name
+        cell.detailTextLabel?.text = track?.artist
         
         return cell
     }
@@ -196,16 +194,17 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
     }
     
     func interactivePlayerViewDidChangedDuration(playerInteractive: InteractivePlayerView, currentDuration: Double) {
+        let track = playlistTracks?[currentSongIndex]
+        
         let currentRoundedDuration = Int(currentDuration)
-        let songTotalDuration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
+        let songTotalDuration = track?.duration ?? 0/1000
 
         if currentRoundedDuration == songTotalDuration{
             if !isReplaying{
                 currentSongIndex += 1
             }
             
-            let trackURI = playlistTracks?[currentSongIndex].track.uri
-            loadSongFromURI(uri: trackURI!)
+            loadSongFromURI(uri: track?.uri ?? "")
         }
     }
     

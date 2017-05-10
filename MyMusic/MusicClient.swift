@@ -84,7 +84,7 @@ class MusicClient: NSObject{
                 }
             }
             
-            MusicClient.getMixedWorkoutPlaylistTracks(workoutPlaylists: randomPlaylists, success: { (array:[Track]) in
+            MusicClient.getMixedWorkoutPlaylistTracks(workoutPlaylists: randomPlaylists, success: { (tracks:[Track]) in
                 success(tracks)
             })
 
