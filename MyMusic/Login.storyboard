@@ -318,6 +318,9 @@
                                     <constraint firstAttribute="width" constant="64" id="bIe-vi-YMY"/>
                                 </constraints>
                                 <state key="normal" image="fitbit"/>
+                                <connections>
+                                    <action selector="connectWithFitbit:" destination="2e8-ia-rdb" eventType="touchUpInside" id="Pzd-M7-RZP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="You must connect with fitbit to use our service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu4-Ku-Hrp">
                                 <rect key="frame" x="10" y="587" width="355" height="20"/>
@@ -380,6 +383,9 @@
                                     <constraint firstAttribute="height" constant="65" id="rYi-Ol-xJC"/>
                                 </constraints>
                                 <state key="normal" image="spotify"/>
+                                <connections>
+                                    <action selector="connectWithSpoitfy:" destination="3ZN-Jy-BcF" eventType="touchUpInside" id="hF5-3A-UYw"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="You must connect with spotify to using our service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWI-Cq-VEI">
                                 <rect key="frame" x="10" y="568.5" width="355" height="38.5"/>

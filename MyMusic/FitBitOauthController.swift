@@ -22,6 +22,10 @@ class FitBitOauthController: UIViewController {
     }
     
 
+    @IBAction func connectWithFitbit(_ sender: UIButton) {
+        //Fitbit oauth
+    }
+
     /*
     // MARK: - Navigation
 

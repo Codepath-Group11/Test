@@ -22,6 +22,11 @@ class SpotifyOauthController: UIViewController {
     }
 
 
+    @IBAction func connectWithSpoitfy(_ sender: Any) {
+        //Call the Spotify Oauth function
+        
+    }
+
     /*
     // MARK: - Navigation
 
