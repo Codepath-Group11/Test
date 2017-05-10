@@ -56,6 +56,15 @@ class MusicClient: NSObject{
                     let randomNum: UInt32 = arc4random_uniform(20)
                     
                     savedTracks.append(playlistTracks[Int(randomNum)])
+                    
+                    let lengthOfSavedTracks = savedTracks.count
+                    
+                    for i in 0...lengthOfSavedTracks-1{
+                        if savedTracks[i].name == track.name{
+                            let randomNum: UInt32 = arc4random_uniform(20)
+                            savedTracks[i] = playlistTracks[Int(randomNum)]
+                        }
+                    }
                 }
             }, failure: { (error:SpartanError) in
                 if savedTracks.count >= 5{

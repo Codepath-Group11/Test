@@ -300,12 +300,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="artistAndAlbumNameLabel" destination="4LA-cB-wU3" id="OZF-8Q-Hjw"/>
                         <outlet property="blurBgImage" destination="GGv-AS-KeU" id="vXt-gf-Zk1"/>
                         <outlet property="containerView" destination="Fcy-a0-UdS" id="qvF-F5-J0b"/>
                         <outlet property="ipv" destination="ren-01-Zaa" id="TO0-wq-cbj"/>
                         <outlet property="pauseButton" destination="auB-ne-i7c" id="iOd-WA-XYS"/>
                         <outlet property="playButton" destination="O5I-Ln-1Us" id="vCq-40-rrz"/>
                         <outlet property="playPauseButtonView" destination="vmE-7Y-UUh" id="jtQ-7e-G2X"/>
+                        <outlet property="songTitleLabel" destination="dyO-Y2-4oD" id="oAg-gf-yW3"/>
                         <outlet property="tableView" destination="C9S-dy-jXn" id="j9Q-S9-N3o"/>
                         <segue destination="r8O-0T-Z2d" kind="unwind" identifier="UnwindSegue" unwindAction="unwindToVC1WithSegue:" id="9No-vh-DsH"/>
                     </connections>

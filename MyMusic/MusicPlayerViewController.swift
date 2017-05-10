@@ -15,7 +15,9 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var ipv: InteractivePlayerView!
-     @IBOutlet weak var blurBgImage: UIImageView!
+    @IBOutlet weak var blurBgImage: UIImageView!
+    @IBOutlet var songTitleLabel: UILabel!
+    @IBOutlet var artistAndAlbumNameLabel: UILabel!
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
@@ -31,6 +33,7 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     var shuffledPlaylistTracks:[Track]?
     
     var currentSongIndex: Int = 0
+    var currentDuration: Double = 0.0
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +47,10 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
 
         self.ipv!.delegate = self
         
-        // duration of music
-        self.ipv.progress = 20.0
+        if (playlistTracks?.count)! > 0{
+            let track = playlistTracks?[0]
+            loadSongFromURI(uri: track?.uri ?? "")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,11 +72,20 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     
     func loadSongFromURI(uri: String?){
         let track = playlistTracks?[currentSongIndex]
-        let duration = track?.duration ?? 0/1000
+        let duration = (track?.duration)!/1000
+        
+        songTitleLabel.text = track?.name
+        artistAndAlbumNameLabel.text = "\(track?.artist ?? "") - \(track?.album ?? "")"
+        
+        blurBgImage.setImageWith(track?.albumCoverArtURL ?? URL(string:"")!)
+        ipv.albumCoverImageView?.setImageWith(track?.albumCoverArtURL ?? URL(string:"")!)
         
         MusicClient.player().playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
+        
         playButton.isHidden = true
         pauseButton.isHidden = false
+        
+        ipv.durationLabel?.textColor = .red
         
         ipv.restartWithProgress(duration: Double(duration))
     }
@@ -194,10 +208,11 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
     }
     
     func interactivePlayerViewDidChangedDuration(playerInteractive: InteractivePlayerView, currentDuration: Double) {
+        self.currentDuration = currentDuration
         let track = playlistTracks?[currentSongIndex]
         
         let currentRoundedDuration = Int(currentDuration)
-        let songTotalDuration = track?.duration ?? 0/1000
+        let songTotalDuration = (track?.duration)!/1000
 
         if currentRoundedDuration == songTotalDuration{
             if !isReplaying{
@@ -209,11 +224,15 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
     }
     
     func interactivePlayerViewDidStartPlaying(playerInteractive: InteractivePlayerView) {
-        print("interactive player did started")
+        playButton.isHidden = true
+        pauseButton.isHidden = false
+        MusicClient.player().setIsPlaying(true, callback: nil)
+        MusicClient.player().playSpotifyURI(playlistTracks?[currentSongIndex].uri, startingWith: 0, startingWithPosition: currentDuration, callback: nil)
     }
     
     func interactivePlayerViewDidStopPlaying(playerInteractive: InteractivePlayerView) {
-        print("interactive player did stop")
+        changePlayPause()
+        MusicClient.player().setIsPlaying(false, callback: nil)
     }
     
 }

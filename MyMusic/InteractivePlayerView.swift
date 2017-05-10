@@ -151,6 +151,18 @@ class InteractivePlayerView : UIView {
         }
     }
     
+    @IBInspectable var albumCoverImageView: UIImageView? {
+        get {
+            return coverImageView
+        }
+    }
+    
+    @IBInspectable var durationLabel: UILabel? {
+        get {
+            return timeLabel
+        }
+    }
+    
     @IBInspectable var actionOne_icon_selected: UIImage? {
         
         get {
