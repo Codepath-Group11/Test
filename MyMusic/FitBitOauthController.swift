@@ -8,24 +8,42 @@
 
 import UIKit
 
-class FitBitOauthController: UIViewController {
+class FitBitOauthController: UIViewController , AuthenticationProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        authenticationController = FitbitAuthenticationController(delegate: self)
         // Do any additional setup after loading the view.
     }
-
+    var authenticationController: FitbitAuthenticationController?
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    //User tap fitbitauth button
     @IBAction func connectWithFitbit(_ sender: UIButton) {
         //Fitbit oauth
+         authenticationController?.login(fromParentViewController: self)
     }
-
+    
+    func authorizationDidFinish(_ success: Bool) {
+        
+        guard let authToken = authenticationController?.authenticationToken else {
+            return
+        }
+        FitbitAPI.sharedInstance.authorize(with: authToken)
+        // Get Fav Activities
+        let _ = FitbitAPI.fetchFavActivities() { favActivities,error in
+            print(favActivities)
+        }
+        //Get Daily Activity
+        let day = "/2017-05-07.json"
+        let _ = FitbitAPI.fetchDailyActivitySummary(for:day){[weak self] dailyActSummary,error in
+            print(dailyActSummary)
+        }
+        
+    }
     /*
     // MARK: - Navigation
 

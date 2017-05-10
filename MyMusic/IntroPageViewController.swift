@@ -17,7 +17,7 @@ protocol IntroPageViewControllerDelegate: class {
 class IntroPageViewController: UIPageViewController , UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     weak var introPageViewControllerDelegate: IntroPageViewControllerDelegate?
     private(set) lazy var orderViewControllers: [UIViewController] = {
-        return [self.loadViewControllerBy("WelcomeController"), self.loadViewControllerBy("SpotifyOauthController"),self.loadViewControllerBy("FitBitOauthController")]
+        return [self.loadViewControllerBy("WelcomeController"), self.loadViewControllerBy("SpotifyOauthController")]//,self.loadViewControllerBy("FitBitOauthController")]
     }()
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class IntroPageViewController: UIPageViewController , UIPageViewControllerDataSo
         delegate = self
         
         if let firstVc = orderViewControllers.first {
-           setViewControllers([firstVc], direction: .forward, animated: true, completion: nil)
+           scrollToViewController(vc: firstVc)
         }
         
         introPageViewControllerDelegate?.introPageViewController(self, didUpdatePageCount: orderViewControllers.count)
@@ -55,6 +55,10 @@ class IntroPageViewController: UIPageViewController , UIPageViewControllerDataSo
             return orderViewControllers.first
         }
         
+        guard orderViewControllers.count > nextIndex else {
+            return nil
+        }
+        
         return orderViewControllers[nextIndex]
     }
     
@@ -81,9 +85,25 @@ class IntroPageViewController: UIPageViewController , UIPageViewControllerDataSo
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
-        if let firstvc = viewControllers?.first,
-            let index = orderViewControllers.index(of: firstvc) {
+        if let firstvc = viewControllers?.first, let index = orderViewControllers.index(of: firstvc) {
             introPageViewControllerDelegate?.introPageViewController(self, didUpdatePageIndex: index)
+            print(index)
+        }
+    }
+    
+    func scrollToViewController(with newIndex: Int) {
+      if  let firstViewController = viewControllers?.first, let index = orderViewControllers.index(of: firstViewController) {
+            let direction: UIPageViewControllerNavigationDirection = newIndex >= index ? .forward : .reverse
+            let nextVc = orderViewControllers[newIndex]
+            scrollToViewController(vc: nextVc, dir: direction)
+        }
+    
+    }
+    func scrollToViewController(vc: UIViewController ,dir: UIPageViewControllerNavigationDirection = .forward) {
+            setViewControllers([vc], direction: dir, animated: true) { [weak self] (_) in
+                if let firstvc = self?.viewControllers?.first, let index = self?.orderViewControllers.index(of: firstvc) {
+                 self?.introPageViewControllerDelegate?.introPageViewController(self!, didUpdatePageIndex: index)
+                }
         }
     }
     /*func presentationCount(for pageViewController: UIPageViewController) -> Int {

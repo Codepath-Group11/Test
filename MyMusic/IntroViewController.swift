@@ -12,9 +12,10 @@ class IntroViewController: UIViewController, IntroPageViewControllerDelegate {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var containerView: UIView!
+    var pageViewController: IntroPageViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        pageControl.addTarget(self, action: #selector(didChangePageControlValue), for: .valueChanged)
         // Do any additional setup after loading the view.
     }
     
@@ -26,8 +27,13 @@ class IntroViewController: UIViewController, IntroPageViewControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? IntroPageViewController {
+           pageViewController = vc
            vc.introPageViewControllerDelegate = self
         }
+    }
+    
+    func didChangePageControlValue() {
+        pageViewController?.scrollToViewController(with: pageControl.currentPage)
     }
     
     func introPageViewController(_ vc: IntroPageViewController, didUpdatePageCount count: Int) {
