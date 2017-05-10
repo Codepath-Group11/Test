@@ -295,7 +295,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="jFa-3k-wgG">
                             <connections>
-                                <segue destination="DGR-7j-BcB" kind="show" id="SdH-r2-z3S"/>
+                                <segue destination="DGR-7j-BcB" kind="presentation" id="SdH-r2-z3S"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -317,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="1425" y="-100"/>
         </scene>
-        <!--View Controller-->
+        <!--Playlist Settings View Controller-->
         <scene sceneID="9J7-W7-PAf">
             <objects>
-                <viewController id="DGR-7j-BcB" sceneMemberID="viewController">
+                <viewController id="DGR-7j-BcB" customClass="PlaylistSettingsViewController" customModule="MyMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qWQ-5N-q6A"/>
                         <viewControllerLayoutGuide type="bottom" id="Ijb-yd-fdb"/>
@@ -329,12 +329,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKv-98-1XS">
-                                <rect key="frame" x="160" y="483" width="55" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Save"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUg-no-mWD">
                                 <rect key="frame" x="16" y="171" width="79" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -413,11 +407,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKv-98-1XS">
+                                <rect key="frame" x="77" y="491" width="78" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="dismissSettingsTapped:" destination="DGR-7j-BcB" eventType="touchUpInside" id="Y99-e2-283"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tut-b1-r8f">
+                                <rect key="frame" x="216" y="491" width="55" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveSettingsTapped:" destination="DGR-7j-BcB" eventType="touchUpInside" id="yvg-da-M0P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="danceSegmentedControl" destination="NWD-QF-S9D" id="tmu-px-z5F"/>
+                        <outlet property="energySegmentedControl" destination="SQH-v3-QO7" id="g3Y-ML-EOA"/>
+                        <outlet property="moodSegmentedControl" destination="3nG-Mt-HNE" id="41I-Jf-HTa"/>
+                        <outlet property="tempoSegmentedControl" destination="hab-lI-U2p" id="gC8-8c-plE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCh-Wn-skl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HBr-HW-FMI">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </objects>
             <point key="canvasLocation" x="2455" y="-100"/>
         </scene>

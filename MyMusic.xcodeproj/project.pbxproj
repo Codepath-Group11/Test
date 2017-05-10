@@ -41,6 +41,7 @@
 		C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */; };
 		C6A8BE311EB61BC000A1C0CA /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */; };
 		C6D14D801EC297FE00776F30 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D14D7F1EC297FE00776F30 /* Track.swift */; };
+		C6D14D841EC338E300776F30 /* PlaylistSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D14D831EC338E300776F30 /* PlaylistSettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		C6D14D7F1EC297FE00776F30 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		C6D14D831EC338E300776F30 /* PlaylistSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistSettingsViewController.swift; sourceTree = "<group>"; };
 		E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +224,7 @@
 				4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */,
 				1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */,
 				1E398A131EBE4D2F0019DE51 /* MainViewController.swift */,
+				C6D14D831EC338E300776F30 /* PlaylistSettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */,
 				4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */,
 				1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */,
+				C6D14D841EC338E300776F30 /* PlaylistSettingsViewController.swift in Sources */,
 				C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */,
 				1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */,
 				1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */,
