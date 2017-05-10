@@ -27,6 +27,11 @@ class FitBitOauthController: UIViewController , AuthenticationProtocol {
          authenticationController?.login(fromParentViewController: self)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 

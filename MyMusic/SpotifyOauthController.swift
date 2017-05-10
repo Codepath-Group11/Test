@@ -20,13 +20,11 @@ class SpotifyOauthController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             NotificationCenter.default.addObserver(self, selector: #selector(didConectWithSpotify), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //self.removeObserver(self, forKeyPath: <#T##String#>)
-        
+        NotificationCenter.default.removeObserver(self)
     }
     
     
