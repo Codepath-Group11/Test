@@ -23,13 +23,12 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Do any additional setup after loading the view.
-        MusicClient.searchForPlaylist(queryTitle: "Motivation Mix", success: { (playlist:[PlaylistTrack]) in
+        MusicClient.getWorkoutPlayList(success: { (playlist:[PlaylistTrack]) in
             self.playlistTracks = playlist
-        }) { (error:Error) in
-            print(error.localizedDescription)
+            print(playlist.count)
+        }) { (Error) in
+            
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

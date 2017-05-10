@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Spartan
 
 enum entryType: String {
     case userName = "User Name"

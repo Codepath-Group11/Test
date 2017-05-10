@@ -40,19 +40,20 @@
 		C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */; };
 		C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */; };
 		C6A8BE311EB61BC000A1C0CA /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */; };
+		C6D14D801EC297FE00776F30 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D14D7F1EC297FE00776F30 /* Track.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.debug.xcconfig"; sourceTree = "<group>"; };
-		4D863C731EBE76E800AE1FE6 /* FitbitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAPI.swift; sourceTree = "<group>"; };
-		4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAuthenticationController.swift; sourceTree = "<group>"; };
-		4DB4AE891EBF9BFE002C4DB3 /* FavActivities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavActivities.swift; sourceTree = "<group>"; };
 		1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryCell.swift; sourceTree = "<group>"; };
 		1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpEntryCell.swift; sourceTree = "<group>"; };
 		1E398A131EBE4D2F0019DE51 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1E398A151EBE4E960019DE51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E3F68981EBEC83700ED5CDA /* SpinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinView.swift; sourceTree = "<group>"; };
+		4D863C731EBE76E800AE1FE6 /* FitbitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAPI.swift; sourceTree = "<group>"; };
+		4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAuthenticationController.swift; sourceTree = "<group>"; };
+		4DB4AE891EBF9BFE002C4DB3 /* FavActivities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavActivities.swift; sourceTree = "<group>"; };
 		4DC397461EB0254100FCBA4C /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC397491EB0254100FCBA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DC3974E1EB0254100FCBA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrackCell.swift; path = MyMusic/TrackCell.swift; sourceTree = "<group>"; };
 		C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		C6D14D7F1EC297FE00776F30 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 				4DC398E91EB4E72F00FCBA4C /* MusicAccount.swift */,
 				4DC398E61EB45EC700FCBA4C /* PagingObject.swift */,
 				4DB4AE891EBF9BFE002C4DB3 /* FavActivities.swift */,
+				C6D14D7F1EC297FE00776F30 /* Track.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				C6A8BE251EB5960600A1C0CA /* MusicPlayerViewController.swift in Sources */,
 				4DC397631EB2776700FCBA4C /* MusicClient.swift in Sources */,
 				C6A8BE311EB61BC000A1C0CA /* PlaylistCell.swift in Sources */,
+				C6D14D801EC297FE00776F30 /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

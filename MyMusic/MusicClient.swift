@@ -41,47 +41,59 @@ class MusicClient: NSObject{
         return service.checkUserSessionExist()
     }
     
-    private class func getPlaylistID(query: String, success: @escaping (String)->(), failure: (Error)->()){
-        _ = Spartan.search(query: query, type: .playlist, success: { (PagingObject) in
-            let playlistID = PagingObject.items[0].id
-            success(playlistID!)
-        }, failure: { (error:SpartanError) in
-            print(error.errorMessage)
-        })
-    }
-    
-    class func searchForPlaylist(queryTitle: String, success: @escaping ([PlaylistTrack])->(), failure: (Error)->()){
+    private class func getMixedWorkoutPlaylistTracks(workoutPlaylists: [SimplifiedPlaylist], success: @escaping ([Track])->()){
+        var savedTracks = [Track]()
         
-        MusicClient.getPlaylistID(query: queryTitle, success: { (ID:String) in
-            _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: ID, success: { (PagingObject) in
+        for (playlistIndex, playlist) in workoutPlaylists.enumerated(){
+            _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: playlist.id, success: { (PagingObject) in
+                var playlistTracks = Track.tracksInArray(array: PagingObject.items)
                 
-                success(PagingObject.items)
-                
+                for (trackIndex, track) in playlistTracks.enumerated(){
+                    if playlistIndex == workoutPlaylists.count-1, trackIndex == 9{
+                        success(savedTracks)
+                    }
+                    
+                    let randomNum: UInt32 = arc4random_uniform(20)
+                    
+                    savedTracks.append(playlistTracks[Int(randomNum)])
+                }
             }, failure: { (error:SpartanError) in
-                print(error.errorMessage)
+                if savedTracks.count >= 5{
+                    success(savedTracks)
+                }
             })
-            
-        }) { (error: Error) in
-            print(error.localizedDescription)
         }
     }
     
-    class func getUserPlayLists(userId:String,musicServiceType:String,success:@escaping([SimplifiedPlaylist]) -> (),failure:@escaping (Error) ->()) {
+    class func getWorkoutPlayList(success:@escaping([Track]) -> (),failure:@escaping (Error) ->()) {
+        var randomPlaylists:[SimplifiedPlaylist] = []
         
-        //TODO: Use factory pattern based on musicServiceType as we add more services.
-        
-        _ = Spartan.getMyPlaylists(success: { (PagingObject) in
+        _ = Spartan.getCategorysPlaylists(categoryId: "workout", success: { (PagingObject) in
+            for _ in 0...5{
+                
+                let randomNum: UInt32 = arc4random_uniform(20)
+                randomPlaylists.append(PagingObject.items[Int(randomNum)])
+                
+                let lengthOfPlaylist = randomPlaylists.count
+                
+                for i in 0...lengthOfPlaylist-1{
+                    if randomPlaylists[i].name == PagingObject.items[Int(randomNum)].name{
+                        let randomNum: UInt32 = arc4random_uniform(20)
+                        randomPlaylists[i] = PagingObject.items[Int(randomNum)]
+                    }
+                }
+            }
             
-            success(PagingObject.items)
-            
+            MusicClient.getMixedWorkoutPlaylistTracks(workoutPlaylists: randomPlaylists, success: { (array:[Track]) in
+                success(tracks)
+            })
+
         }, failure: { (error:SpartanError) in
-            print((error.errorMessage))
+            print(error.errorMessage)
         })
         
     }
-    
-    
-    
+
     
 }
 
