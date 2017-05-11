@@ -10,4 +10,5 @@ target 'MyMusic' do
    pod 'BDBOAuth1Manager'
    pod 'Spartan'
    pod ‘Parse’
+   pod 'RealmSwift'
 end
