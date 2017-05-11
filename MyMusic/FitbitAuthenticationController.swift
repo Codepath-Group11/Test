@@ -47,6 +47,8 @@ class FitbitAuthenticationController: NSObject, SFSafariViewControllerDelegate
                 self?.delegate?.authorizationDidFinish(success)
             })
         })
+        
+        
     }
     
     deinit {
