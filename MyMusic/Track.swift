@@ -30,8 +30,35 @@ class Track: NSObject{
         albumCoverArtURL = URL(string: track?.album.images[0].url ?? "")
     }
     
-    init(_ dictionairy: NSDictionary){
-        print(dictionairy["name"])
+    init(_ dictionary: NSDictionary){
+        name = dictionary["name"] as? String
+        duration = dictionary["duration_ms"] as? Int
+        id = dictionary["id"] as? String
+        uri = dictionary["uri"] as? String
+        
+        let albumDict = dictionary["album"] as? NSDictionary
+        album = albumDict?["name"] as? String
+        
+        let artistsArr = albumDict?["artists"] as? NSArray
+        let artistObj = artistsArr?[0] as? NSDictionary
+        artist = artistObj?["name"] as? String
+        
+        let albumImagesArr = albumDict?["images"] as? NSArray
+        let albumImageObj = albumImagesArr?[0] as? NSDictionary
+        let albumURLString = albumImageObj?["url"] as? String
+        albumCoverArtURL = URL(string: albumURLString ?? "")
+    }
+    
+    class func tracksFromJSON(_ dictionary: NSDictionary)->[Track]{
+        var tracks = [Track]()
+        
+        let dictTracks = dictionary["tracks"] as? NSArray
+        
+        for track in dictTracks!{
+            let track = Track(track as! NSDictionary)
+            tracks.append(track)
+        }
+        return tracks
     }
     
     class func tracksInArray(array:[PlaylistTrack])->[Track]{

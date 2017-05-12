@@ -51,6 +51,15 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
             let track = playlistTracks?[0]
             loadSongFromURI(uri: track?.uri ?? "")
         }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "playlistUpdated"), object: nil, queue: OperationQueue.main) { (Notification) in
+            self.playlistTracks = MusicClient.masterList
+            self.tableView.reloadData()
+            let track = self.playlistTracks?[0]
+            self.loadSongFromURI(uri: track?.uri ?? "")
+            
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

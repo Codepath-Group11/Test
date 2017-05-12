@@ -8,6 +8,10 @@
 
 import UIKit
 
+//protocol PlaylistSettingsViewControllerDelegate {
+//    func playlistSettingsViewController(PlaylistSettingsViewController: PlaylistSettingsViewController, )
+//}
+
 class PlaylistSettingsViewController: UIViewController {
     @IBOutlet var moodSegmentedControl: UISegmentedControl!
     @IBOutlet var energySegmentedControl: UISegmentedControl!
