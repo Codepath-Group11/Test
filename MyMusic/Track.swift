@@ -9,7 +9,7 @@
 import Foundation
 import Spartan
 
-class Track{
+class Track: NSObject{
     var name: String?
     var album: String?
     var artist: String?
@@ -28,6 +28,10 @@ class Track{
         id = track?.id
         uri = track?.uri
         albumCoverArtURL = URL(string: track?.album.images[0].url ?? "")
+    }
+    
+    init(_ dictionairy: NSDictionary){
+        print(dictionairy["name"])
     }
     
     class func tracksInArray(array:[PlaylistTrack])->[Track]{

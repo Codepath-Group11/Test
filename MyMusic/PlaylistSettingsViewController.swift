@@ -14,6 +14,8 @@ class PlaylistSettingsViewController: UIViewController {
     @IBOutlet var danceSegmentedControl: UISegmentedControl!
     @IBOutlet var tempoSegmentedControl: UISegmentedControl!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +28,10 @@ class PlaylistSettingsViewController: UIViewController {
             print("\(k): \(v)")
         }
         //save into parse database
-        dismiss(animated: true, completion: nil)
+        MusicClient.getCustomizedPlaylist(tempo: 0.0, mood: 0.0, dance: 0.0, energy: 0.0)
+        dismiss(animated: true, completion: {
+            MusicClient.getTracksFromId()
+        })
     }
     
     @IBAction func dismissSettingsTapped(_ sender: Any) {

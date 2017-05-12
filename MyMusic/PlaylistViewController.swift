@@ -15,7 +15,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     var playlistTracks: [Track] = []
     var player: SPTAudioStreamingController?
-    var activities:[String] = ["Run", "Elliptical", "Weights", "Treadmill"]
+    var activities:[String] = ["Run"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,12 +10,15 @@ import UIKit
 
 import BDBOAuth1Manager
 import Spartan
+import Alamofire
 
 class MusicClient: NSObject{
     
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     private static var service = SpotifyService()
+    static var masterList:[Track] = []
+    static var customFinalTrackIds:[String] = []
     
     class func player() -> SPTAudioStreamingController{
         return service.player!
@@ -41,33 +44,99 @@ class MusicClient: NSObject{
         return service.checkUserSessionExist()
     }
     
-    private class func getMixedWorkoutPlaylistTracks(workoutPlaylists: [SimplifiedPlaylist], success: @escaping ([Track])->()){
-        var savedTracks = [Track]()
+    class func getTracksFromId(){
+        var stringIds = ""
+        for id in customFinalTrackIds{
+            stringIds += "\(id) "
+        }
+        let idsForEndpoint = stringIds.replacingOccurrences(of: " ", with: ",")
+        let IDStringWithoutLastComma = idsForEndpoint.substring(to: idsForEndpoint.index(before: idsForEndpoint.endIndex))
         
-        for (playlistIndex, playlist) in workoutPlaylists.enumerated(){
-            _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: playlist.id, success: { (PagingObject) in
-                var playlistTracks = Track.tracksInArray(array: PagingObject.items)
+        let endpoint: String = "https://api.spotify.com/v1/tracks/?ids=\(IDStringWithoutLastComma)"
+        
+        guard let url = URL(string: endpoint) else {
+            print("Can't make request")
+            return
+        }
+        var urlRequest = URLRequest(url:url)
+        urlRequest.addValue("Authorization: Bearer", forHTTPHeaderField: authorization().session.accessToken)
+        
+        //setup session
+        let session = URLSession.shared
+    
+        //make the request
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
+            print(response)
+            print(json)
+        }
+        task.resume()
+    }
+    
+    class func getFeatures(trackIds:[String], trackInfo:[String:String], _ choiceTempo: Double, _ choiceMood: Double, _ choiceDance: Double, _ choiceEnergy: Double){
+        _ = Spartan.getAudioFeatures(trackIds: trackIds, success: { (Objs:[AudioFeaturesObject]) in
+            for Obj in Objs{
                 
-                for (trackIndex, track) in playlistTracks.enumerated(){
-                    if playlistIndex == workoutPlaylists.count-1, trackIndex == 9{
-                        success(savedTracks)
-                    }
-                    
-                    let randomNum: UInt32 = arc4random_uniform(20)
-                    
-                    savedTracks.append(playlistTracks[Int(randomNum)])
-                    
-                    let lengthOfSavedTracks = savedTracks.count
-                    
-                    for i in 0...lengthOfSavedTracks-1{
-                        if savedTracks[i].name == track.name{
-                            let randomNum: UInt32 = arc4random_uniform(20)
-                            savedTracks[i] = playlistTracks[Int(randomNum)]
+                let songTempo:Double = Obj.tempo!
+                let songMood:Double = Obj.valence!
+                let songDance:Double = Obj.danceability!
+                let songEnergy:Double = Obj.energy!
+                
+                if (120.0000 ..< 141).contains(songTempo) || (120.0000 ..< 141).contains(songMood) || (120.0000 ..< 141).contains(songDance) || (120.0000 ..< 141).contains(songEnergy){
+                    for (_ , value) in trackInfo{
+                        if Obj.id == value{
+                            if customFinalTrackIds.count <= 49{
+                                customFinalTrackIds.append(value)
+                            }
                         }
                     }
                 }
+                
+            }
+        }, failure: { (error:SpartanError) in
+            print(error.errorMessage)
+        })
+    }
+    
+    class func getCustomizedPlaylist(tempo: Double, mood: Double, dance: Double, energy: Double){
+        var trackInfo = [String:String]()
+        var trackIds:[String] = []
+        var count = 0
+        for (i, track) in masterList.enumerated(){
+            trackInfo[track.name!] = track.id
+            if count < 100{
+                trackIds.append(track.id!)
+                count += 1
+                if i == masterList.count-1{
+                    MusicClient.getFeatures(trackIds: trackIds, trackInfo: trackInfo, tempo, mood, dance, energy)
+                }
+            }else{
+                MusicClient.getFeatures(trackIds: trackIds, trackInfo: trackInfo, tempo, mood, dance, energy)
+                count = 0
+                trackIds = []
+            }
+
+        }
+        
+    }
+    
+    private class func getMixedWorkoutPlaylistTracks(workoutPlaylists: [SimplifiedPlaylist], success: @escaping ([Track])->()){
+        var savedTracks = [Track]()
+        masterList = []
+        for (playlistIndex, playlist) in workoutPlaylists.enumerated(){
+            _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: playlist.id, success: { (PagingObject) in
+                masterList += Track.tracksInArray(array: PagingObject.items)
+                var playlistTracks = Track.tracksInArray(array: PagingObject.items)
+                
+                for trackIndex in 0...5{
+                    if playlistIndex == workoutPlaylists.count-1, trackIndex == 9{
+                        success(savedTracks)
+                    }
+                    //masterList.append(playlistTracks[trackIndex])
+                    savedTracks.append(playlistTracks[trackIndex])
+                }
             }, failure: { (error:SpartanError) in
-                if savedTracks.count >= 5{
+                if savedTracks.count >= 20{
                     success(savedTracks)
                 }
             })
@@ -75,10 +144,11 @@ class MusicClient: NSObject{
     }
     
     class func getWorkoutPlayList(success:@escaping([Track]) -> (),failure:@escaping (Error) ->()) {
+        //var randomPlaylists:[String] = []
         var randomPlaylists:[SimplifiedPlaylist] = []
         
         _ = Spartan.getCategorysPlaylists(categoryId: "workout", success: { (PagingObject) in
-            for _ in 0...5{
+            for _ in 0 ..< 15{
                 
                 let randomNum: UInt32 = arc4random_uniform(20)
                 randomPlaylists.append(PagingObject.items[Int(randomNum)])
@@ -95,11 +165,68 @@ class MusicClient: NSObject{
             
             MusicClient.getMixedWorkoutPlaylistTracks(workoutPlaylists: randomPlaylists, success: { (tracks:[Track]) in
                 success(tracks)
+                
             })
 
         }, failure: { (error:SpartanError) in
             print(error.errorMessage)
         })
+        
+        //        let endpoint: String = "https://api.spotify.com/v1/browse/categories/workout/playlists"
+        //        print("Auth: \(authorization().session.accessToken)")
+        //        guard let url = URL(string: endpoint) else {
+        //            print("Can't make request")
+        //            return
+        //        }
+        //        var urlRequest = URLRequest(url:url)
+        //        urlRequest.addValue("Bearer " + authorization().session.accessToken, forHTTPHeaderField: "Authorization")
+        //
+        //        //setup session
+        //        let session = URLSession.shared
+        //
+        //        //make the request
+        //        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+        //            let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
+        //            let dictionary = json??["playlists"] as! NSDictionary
+        //            let arr = dictionary["items"] as! [NSDictionary]
+        //            for _ in 0 ..< 15{
+        //
+        //                let randomNum: UInt32 = arc4random_uniform(20)
+        //                randomPlaylists.append(arr[Int(randomNum)]["id"] as! String)
+        //
+        //                let lengthOfPlaylist = randomPlaylists.count
+        //
+        //                for i in 0...lengthOfPlaylist-1{
+        //                    if randomPlaylists[i] == arr[Int(randomNum)]["id"] as! String{
+        //                        let randomNum: UInt32 = arc4random_uniform(20)
+        //                        randomPlaylists[i] = arr[Int(randomNum)]["id"] as! String
+        //                    }
+        //                }
+        //            }
+        //
+        //            var savedTracks = [Track]()
+        //            masterList = []
+        //            for (playlistIndex, _) in randomPlaylists.enumerated(){
+        //                _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: randomPlaylists[playlistIndex], success: { (PagingObject) in
+        //                    masterList += Track.tracksInArray(array: PagingObject.items)
+        //                    var playlistTracks = Track.tracksInArray(array: PagingObject.items)
+        //
+        //                    for trackIndex in 0...5{
+        //                        if playlistIndex == randomPlaylists.count-1, trackIndex == 9{
+        //                            success(savedTracks)
+        //                        }
+        //                        //masterList.append(playlistTracks[trackIndex])
+        //                        savedTracks.append(playlistTracks[trackIndex])
+        //                    }
+        //                }, failure: { (error:SpartanError) in
+        //                    if savedTracks.count >= 20{
+        //                        success(savedTracks)
+        //                    }
+        //                })
+        //            }
+        //
+        //        }
+        //        task.resume()
         
     }
 

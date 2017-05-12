@@ -214,7 +214,7 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
         let currentRoundedDuration = Int(currentDuration)
         let songTotalDuration = (track?.duration)!/1000
 
-        if currentRoundedDuration == songTotalDuration{
+        if currentRoundedDuration == songTotalDuration, currentSongIndex != (playlistTracks?.count)!-1{
             if !isReplaying{
                 currentSongIndex += 1
             }
@@ -231,7 +231,8 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
     }
     
     func interactivePlayerViewDidStopPlaying(playerInteractive: InteractivePlayerView) {
-        changePlayPause()
+        playButton.isHidden = true
+        pauseButton.isHidden = false
         MusicClient.player().setIsPlaying(false, callback: nil)
     }
     
