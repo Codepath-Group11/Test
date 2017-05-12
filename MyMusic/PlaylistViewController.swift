@@ -9,13 +9,18 @@
 import UIKit
 import Spartan
 import AFNetworking
+import BubbleTransition
 
-class PlaylistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PlaylistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UIViewControllerTransitioningDelegate {
     @IBOutlet var tableView: UITableView!
     
+    @IBOutlet weak var bubbleSwtich: UIButton!
     var playlists: [SimplifiedPlaylist] = []
     var player: SPTAudioStreamingController?
     var activities:[String] = ["Run", "Elliptical", "Weights", "Treadmill"]
+    
+    let transition = BubbleTransition()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,5 +115,34 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLogout"), object: nil)
         
        }
+    
+
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = bubbleSwtich.center
+        transition.bubbleColor = bubbleSwtich.backgroundColor!
+        return transition
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = bubbleSwtich.center
+        transition.bubbleColor = bubbleSwtich.backgroundColor!
+        return transition
+    }
+    
+    @IBAction func switch2Activity(_ sender: Any) {
+        let playlistStoryBoard = UIStoryboard(name: "Activity", bundle: nil)
+        let activityNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "ActivityNVC") as! UINavigationController
+        
+        activityNVC.transitioningDelegate = self
+        activityNVC.modalPresentationStyle = .custom
+       self.show(activityNVC, sender: nil)
+        
+    }
+    
     
 }

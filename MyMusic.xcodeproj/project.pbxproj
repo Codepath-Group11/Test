@@ -31,6 +31,8 @@
 		4DB4AE8C1EC11F03002C4DB3 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4AE8B1EC11F03002C4DB3 /* Activity.swift */; };
 		4DB4AE8E1EC11FCA002C4DB3 /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4AE8D1EC11FCA002C4DB3 /* Goals.swift */; };
 		4DB4AE901EC11FEF002C4DB3 /* DailyActivitySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4AE8F1EC11FEF002C4DB3 /* DailyActivitySummary.swift */; };
+		4DB4AE921EC539C1002C4DB3 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4AE911EC539C1002C4DB3 /* Activity.storyboard */; };
+		4DB4AE941EC53D34002C4DB3 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4AE931EC53D34002C4DB3 /* ActivityViewController.swift */; };
 		4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC397491EB0254100FCBA4C /* AppDelegate.swift */; };
 		4DC3974F1EB0254100FCBA4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3974D1EB0254100FCBA4C /* Main.storyboard */; };
 		4DC397541EB0254100FCBA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC397521EB0254100FCBA4C /* LaunchScreen.storyboard */; };
@@ -80,6 +82,8 @@
 		4DB4AE8B1EC11F03002C4DB3 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		4DB4AE8D1EC11FCA002C4DB3 /* Goals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goals.swift; sourceTree = "<group>"; };
 		4DB4AE8F1EC11FEF002C4DB3 /* DailyActivitySummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyActivitySummary.swift; sourceTree = "<group>"; };
+		4DB4AE911EC539C1002C4DB3 /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
+		4DB4AE931EC53D34002C4DB3 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		4DC397461EB0254100FCBA4C /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC397491EB0254100FCBA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DC3974E1EB0254100FCBA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				4DC3975F1EB030C700FCBA4C /* Settings.storyboard */,
 				4DC397521EB0254100FCBA4C /* LaunchScreen.storyboard */,
 				C6A8BE1E1EB5960600A1C0CA /* Player.storyboard */,
+				4DB4AE911EC539C1002C4DB3 /* Activity.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				1E70C4D41EC259EA00ACA36E /* WelcomeController.swift */,
 				1E70C4D61EC25B2B00ACA36E /* IntroPageViewController.swift */,
 				1E70C4DA1EC26E9000ACA36E /* IntroViewController.swift */,
+				4DB4AE931EC53D34002C4DB3 /* ActivityViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				4DC397541EB0254100FCBA4C /* LaunchScreen.storyboard in Resources */,
 				C6A8BE211EB5960600A1C0CA /* Images.xcassets in Resources */,
 				C6A8BE231EB5960600A1C0CA /* InteractivePlayerView.xib in Resources */,
+				4DB4AE921EC539C1002C4DB3 /* Activity.storyboard in Resources */,
 				1E8B6DDD1EC01CCE0060668F /* MyMusic.xib in Resources */,
 				1E8B6DE71EC044F10060668F /* Assets.xcassets in Resources */,
 				4DC3974F1EB0254100FCBA4C /* Main.storyboard in Resources */,
@@ -428,6 +435,7 @@
 				1E3F68991EBEC83700ED5CDA /* SpinView.swift in Sources */,
 				4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */,
 				1E398A161EBE4E960019DE51 /* LoginViewController.swift in Sources */,
+				4DB4AE941EC53D34002C4DB3 /* ActivityViewController.swift in Sources */,
 				1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				4DB4AE8C1EC11F03002C4DB3 /* Activity.swift in Sources */,

@@ -10,4 +10,6 @@ target 'MyMusic' do
    pod 'BDBOAuth1Manager'
    pod 'Spartan'
    pod ‘Parse’
+   pod 'BubbleTransition', '~> 2.0.0'
+   
 end
