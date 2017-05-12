@@ -20,6 +20,9 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 
     @IBAction func activityClick(_ sender: Any) {
@@ -28,7 +31,8 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         
         playlistNVC.transitioningDelegate = self
         playlistNVC.modalPresentationStyle = .custom
-        self.show(playlistNVC, sender: nil)
+        //self.show(playlistNVC, sender: nil)
+        dismiss(animated: true, completion: nil)
 
         
     }
