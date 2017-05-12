@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="-407.19999999999999" y="-100.29985007496252"/>
         </scene>
-        <!--PlaylistTitle-->
+        <!--Music Player View Controller-->
         <scene sceneID="QVY-N7-3H8">
             <objects>
                 <viewController storyboardIdentifier="MusicPlayerVC" id="uCe-gI-aQC" customClass="MusicPlayerViewController" customModule="MyMusic" customModuleProvider="target" sceneMemberID="viewController">
@@ -157,7 +157,7 @@
                                             <constraint firstAttribute="height" constant="21" id="htA-bQ-CsX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.90997409330000001" green="0.1169603718" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="James Blake - Overgrawn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LA-cB-wU3">
@@ -166,7 +166,7 @@
                                             <constraint firstAttribute="height" constant="21" id="iP2-eR-W0r"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.90997409330000001" green="0.1169603718" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -287,13 +287,15 @@
                             <constraint firstItem="Fcy-a0-UdS" firstAttribute="top" secondItem="YbM-cb-tQG" secondAttribute="bottom" id="zuy-0U-vhM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PlaylistTitle" id="8a4-6F-0VX">
+                    <navigationItem key="navigationItem" id="8a4-6F-0VX">
                         <barButtonItem key="leftBarButtonItem" title="Hide" id="UU8-Vw-NBy">
+                            <color key="tintColor" red="0.90997409330000001" green="0.1169603718" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="dismissPlaylist:" destination="uCe-gI-aQC" id="WHx-9j-HHH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="jFa-3k-wgG">
+                            <color key="tintColor" red="0.90997409330000001" green="0.1169603718" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="DGR-7j-BcB" kind="presentation" id="SdH-r2-z3S"/>
                             </connections>

@@ -41,6 +41,10 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
         self.view.layoutIfNeeded()
         self.view.backgroundColor = UIColor.clear
         self.makeItRounded(view: self.playPauseButtonView, newSize: self.playPauseButtonView.frame.width)

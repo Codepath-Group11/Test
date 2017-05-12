@@ -47,11 +47,14 @@ class MusicClient: NSObject{
     
     class func getTracksFromId(){
         var stringIds = ""
+        var IDStringWithoutLastComma = ""
         for id in customFinalTrackIds{
             stringIds += "\(id) "
         }
         let idsForEndpoint = stringIds.replacingOccurrences(of: " ", with: ",")
-        let IDStringWithoutLastComma = idsForEndpoint.substring(to: idsForEndpoint.index(before: idsForEndpoint.endIndex))
+        if idsForEndpoint != ""{
+            IDStringWithoutLastComma = idsForEndpoint.substring(to: idsForEndpoint.index(before: idsForEndpoint.endIndex))
+        }
         
         let endpoint: String = "https://api.spotify.com/v1/tracks/?ids=\(IDStringWithoutLastComma)"
         
@@ -70,6 +73,7 @@ class MusicClient: NSObject{
             let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
             masterList = []
             masterList = Track.tracksFromJSON(json!!)
+            masterList.dropFirst()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "playlistUpdated"), object: nil)
         }
         task.resume()
@@ -84,7 +88,7 @@ class MusicClient: NSObject{
                 let songDance:Double = Obj.danceability!
                 let songEnergy:Double = Obj.energy!
                 
-                if (140.0000 ..< 180).contains(songTempo) || (140.0000 ..< 161).contains(songMood) || (120.0000 ..< 141).contains(songDance) || (120.0000 ..< 141).contains(songEnergy){
+                if (140.0000 ..< 180).contains(songTempo) || (0.040 ..< 0.080).contains(songMood) || (0.040 ..< 0.080).contains(songDance) && (0.040 ..< 0.080).contains(songEnergy){
                     for (_ , value) in trackInfo{
                         if Obj.id == value{
                             if customFinalTrackIds.count <= 49{
