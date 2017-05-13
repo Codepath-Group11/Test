@@ -55,6 +55,8 @@
 		C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */; };
 		C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */; };
 		C6A8BE311EB61BC000A1C0CA /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */; };
+		C6B6588E1EC76952000410F2 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6588D1EC76951000410F2 /* ActivityCell.swift */; };
+		C6B658901EC76AC4000410F2 /* GoalSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6588F1EC76AC4000410F2 /* GoalSummaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +111,8 @@
 		C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrackCell.swift; path = MyMusic/TrackCell.swift; sourceTree = "<group>"; };
 		C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		C6B6588D1EC76951000410F2 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		C6B6588F1EC76AC4000410F2 /* GoalSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalSummaryViewController.swift; sourceTree = "<group>"; };
 		E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +264,7 @@
 				1E70C4D61EC25B2B00ACA36E /* IntroPageViewController.swift */,
 				1E70C4DA1EC26E9000ACA36E /* IntroViewController.swift */,
 				4DB4AE931EC53D34002C4DB3 /* ActivityViewController.swift */,
+				C6B6588F1EC76AC4000410F2 /* GoalSummaryViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				1E345ED81EBFD363005FA0A2 /* SpotifySettingCell.swift */,
 				1E345EDA1EBFD378005FA0A2 /* FitbitSettingCell.swift */,
 				1E8B6DDC1EC01CCE0060668F /* MyMusic.xib */,
+				C6B6588D1EC76951000410F2 /* ActivityCell.swift */,
 			);
 			name = View;
 			path = ..;
@@ -426,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB4AE8E1EC11FCA002C4DB3 /* Goals.swift in Sources */,
+				C6B658901EC76AC4000410F2 /* GoalSummaryViewController.swift in Sources */,
 				1E70C4DB1EC26E9100ACA36E /* IntroViewController.swift in Sources */,
 				4DB4AE8A1EBF9BFE002C4DB3 /* FavActivities.swift in Sources */,
 				4DB4AE901EC11FEF002C4DB3 /* DailyActivitySummary.swift in Sources */,
@@ -449,6 +456,7 @@
 				C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */,
 				1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */,
 				1E70C4D51EC259EA00ACA36E /* WelcomeController.swift in Sources */,
+				C6B6588E1EC76952000410F2 /* ActivityCell.swift in Sources */,
 				1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */,
 				1E70C4D71EC25B2B00ACA36E /* IntroPageViewController.swift in Sources */,
 				1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */,

@@ -12,13 +12,17 @@ import BubbleTransition
 
 class ActivityViewController: UIViewController,UIViewControllerTransitioningDelegate {
 
+    @IBOutlet var tableView: UITableView!
     @IBOutlet weak var activityButton: UIButton!
     let transition = BubbleTransition()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -66,4 +70,25 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
     }
     */
 
+}
+
+extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell") as! ActivityCell
+        let goals = ["Calories", "Steps", "Active Minutes"]
+        
+        cell.activityTitleLabel.text = goals[indexPath.row]
+        cell.activityResultsLabel.text = "1000 of 2000"
+        
+        return cell
+    }
 }
