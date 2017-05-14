@@ -50,12 +50,12 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         animateRedBar()
         animateBlueBar()
         animateGreenBar()
-      //  getActivitySummaryDetails()
+       getActivitySummaryDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getActivitySummaryDetails()
+        //getActivitySummaryDetails()
         
     }
 
