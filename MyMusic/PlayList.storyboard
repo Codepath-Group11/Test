@@ -11,7 +11,6 @@
         <!--Playlist View Controller-->
         <scene sceneID="rp9-DW-PW1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fET-4i-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PlaylistStoryboard" id="NBn-6i-iS0" customClass="PlaylistViewController" customModule="MyMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="71i-Sr-Zhr"/>
@@ -25,6 +24,9 @@
                                 <rect key="frame" x="173" y="609" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="fitbit"/>
+                                <connections>
+                                    <action selector="switch2Activity:" destination="NBn-6i-iS0" eventType="touchUpInside" id="gKX-f6-M1s"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activity Playlists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJl-Kq-dcP">
                                 <rect key="frame" x="137" y="65" width="172" height="28"/>
@@ -140,11 +142,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="E70-DB-38k"/>
                     <connections>
+                        <outlet property="bubbleSwtich" destination="l6P-Jt-5cC" id="fwJ-cz-g79"/>
                         <outlet property="noteImageView1" destination="o99-HT-FeD" id="MPq-md-F5d"/>
                         <outlet property="noteImageView2" destination="1fP-t4-bHn" id="Ivc-1V-OJN"/>
                         <outlet property="noteImageView3" destination="Yg7-Bs-Jdn" id="fdN-Un-FVW"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fET-4i-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="682" y="-100"/>
         </scene>

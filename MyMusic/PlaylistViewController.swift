@@ -12,7 +12,6 @@ import AFNetworking
 import BubbleTransition
 
 class PlaylistViewController: UIViewController {
-    @IBOutlet var tableView: UITableView!
     
     @IBOutlet weak var bubbleSwtich: UIButton!
     var playlists: [SimplifiedPlaylist] = []
