@@ -35,13 +35,25 @@ class GoalSummaryViewController: UIViewController {
         var dataEntries: [BarChartDataEntry] = []
         
         
-        
+        var i = 0
         for calorie in caloriePerDay! {
-            let dataEntry = BarChartDataEntry(x: Double(05), y: Double(calorie.calorieOut))
+            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(calorie.calorieOut))
             dataEntries.append(dataEntry)
+            i += 1
         }
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "Calories")
         let chartData = BarChartData(dataSet: chartDataSet)
+        barChartView.descriptionText = ""
+        barChartView.rightAxis.enabled = false
+        barChartView.xAxis.drawGridLinesEnabled = false
+        
+        chartDataSet.colors = [.red, .yellow, .green]
+        
+        // Or this way. There are also available .liberty,
+        // .pastel, .colorful and .vordiplom color sets.
+        chartDataSet.colors = ChartColorTemplates.joyful()
+        
+        barChartView.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
         barChartView.data = chartData
         
         let xaxis = barChartView.xAxis
@@ -75,6 +87,6 @@ extension GoalSummaryViewController: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         
-        return "05"
+        return "05-08-17"
     }
 }

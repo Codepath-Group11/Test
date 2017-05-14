@@ -130,17 +130,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activity Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAE-iC-QFZ">
-                                <rect key="frame" x="140" y="72" width="95" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tkF-gf-M30" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="101" width="375" height="455"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkF-gf-M30" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="59" width="375" height="588"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="588" id="3HE-WK-gj0"/>
+                                    <constraint firstAttribute="width" constant="375" id="pAe-J2-DgY"/>
+                                </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nq7-ah-RnS">
                                 <rect key="frame" x="0.0" y="15" width="375" height="44"/>
@@ -155,28 +151,16 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Motivation/Suggestion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcb-FG-gFF">
-                                <rect key="frame" x="67" y="564" width="241" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From Within" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpH-M0-5Sf">
-                                <rect key="frame" x="16" y="566" width="343" height="103"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tkF-gf-M30" secondAttribute="trailing" id="C4o-fT-PZh"/>
+                            <constraint firstItem="tkF-gf-M30" firstAttribute="leading" secondItem="bU3-6I-qYR" secondAttribute="leading" id="UHb-7g-vtV"/>
+                            <constraint firstItem="mjF-rO-yIa" firstAttribute="top" secondItem="tkF-gf-M30" secondAttribute="bottom" constant="20" id="vox-Ba-gFc"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityTitleLabel" destination="QAE-iC-QFZ" id="f6j-5e-9Lg"/>
                         <outlet property="barChartView" destination="tkF-gf-M30" id="l2R-XK-qrG"/>
-                        <outlet property="motivationSuggestionSummaryLabel" destination="VpH-M0-5Sf" id="3Ui-8E-WjA"/>
-                        <outlet property="motivationSuggestionTitleLabel" destination="wcb-FG-gFF" id="dEc-9Z-7BA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5sQ-Gw-PMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
