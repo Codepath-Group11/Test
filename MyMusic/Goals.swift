@@ -15,6 +15,7 @@ class Goals {
     var distance : Int?
     var caloriesOut : Int?
     var floors : Int?
+        var activeMinutes : Int?
     
     var dictionary : NSDictionary!
     
@@ -25,7 +26,7 @@ class Goals {
         distance = dictionary["distance"] as? Int
         floors = dictionary["floors"] as? Int
         caloriesOut = dictionary["caloriesOut"] as? Int
-
+        activeMinutes=dictionary["activeMinutes"] as? Int
 
     }
     

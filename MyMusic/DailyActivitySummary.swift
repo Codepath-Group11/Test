@@ -14,6 +14,10 @@ class DailyActivitySummary:NSObject {
     var activityDescription : String?
     var mets : Int?
     var activityName : String?
+    var veryActiveMinutes: Int?
+    var steps: Int?
+    var caloriesOut: Int?
+
     
     var activities:[Activity]?
     var goals:Goals?
@@ -35,6 +39,17 @@ class DailyActivitySummary:NSObject {
         activityDictionary = (dictionary["activities"] as? [NSDictionary])!
    
         activities = Activity.getActivities(dictionaries: activityDictionary)
+        
+        let summaryDict: NSDictionary!
+        
+        summaryDict = dictionary["summary"] as? NSDictionary
+        
+        veryActiveMinutes = summaryDict["veryActiveMinutes"] as? Int
+        
+        caloriesOut = summaryDict["caloriesOut"] as? Int
+        
+        steps = summaryDict["steps"] as? Int
+
         
     }
     

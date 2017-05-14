@@ -18,6 +18,16 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
     @IBOutlet var blueProgressBarView: UIView!
     @IBOutlet var greenProgressBarView: UIView!
     
+    var totalSteps: Int! = 0
+    var totalCalories: Int! = 0
+    var totalActiveMinutes: Int! = 0
+    
+    var totalGoalSteps:Int! = 0
+    var totalGoalCalories:Int! = 0
+    var totalGoalActiveMinutes:Int! = 0
+    
+
+    
     let transition = BubbleTransition()
 
     
@@ -35,6 +45,12 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         animateRedBar()
         animateBlueBar()
         animateGreenBar()
+        getActivitySummaryDetails()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
     @IBAction func activityClick(_ sender: Any) {
@@ -104,6 +120,47 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func getActivitySummaryDetails()
+    {
+        let userDefaults = UserDefaults.standard
+        
+        let activitySummaryGroup = DispatchGroup()
+        
+        
+        let authToken = UserDefaults.standard.object(forKey: "FitbitToken") as! String
+        
+        FitbitAPI.sharedInstance.authorize(with: authToken)
+        
+        var dates: Array<String> = ["/2017-05-01.json","/2017-05-02.json","/2017-05-03.json","/2017-05-04.json","/2017-05-05.json"]
+        
+        for day in dates {
+            activitySummaryGroup.enter()
+            let _ = FitbitAPI.fetchDailyActivitySummary(for:day){[weak self] dailyActSummary,error in
+                self!.totalCalories = (self?.totalCalories!)! + (dailyActSummary?.caloriesOut)!
+                
+                self!.totalSteps = (self?.totalSteps!)! + (dailyActSummary?.steps)!
+                
+                self!.totalActiveMinutes = (self?.totalActiveMinutes!)! + (dailyActSummary?.veryActiveMinutes)!
+                
+                print("The totalSteps are:"+"\(self?.totalSteps!)")
+                
+                self!.totalGoalSteps = (dailyActSummary?.goals?.steps)! * (dates.count)
+                self!.totalGoalCalories = (dailyActSummary?.goals?.caloriesOut)! * (dates.count)
+                self!.totalGoalActiveMinutes = (dailyActSummary?.goals?.activeMinutes)! * (dates.count)
+                
+                activitySummaryGroup.leave()
+            }
+            
+            
+        }
+        
+        activitySummaryGroup.notify(queue: DispatchQueue.main) {
+            self.tableView.reloadData()
+            
+        }
+    }
+
 
 }
 
@@ -123,7 +180,20 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     
         cell.activityTitleLabel.text = goals[indexPath.row]
         cell.activityTitleLabel.textColor = .black
-        cell.activityResultsLabel.text = "1000 of 2000"
+        
+        if(goals[indexPath.row] == "Calories")
+        {
+            
+            cell.activityResultsLabel.text = "\(self.totalCalories) of "+" \(self.totalGoalCalories)"
+        }else if(goals[indexPath.row] == "Steps") {
+            cell.activityResultsLabel.text = "\(totalSteps) of "+" \(totalGoalSteps)"
+            
+        }else{
+            cell.activityResultsLabel.text = "\(totalActiveMinutes) of "+"\(totalGoalActiveMinutes)"
+            
+        }
+
+       // cell.activityResultsLabel.text = "1000 of 2000"
 
         cell.layer.cornerRadius = 10
         cell.backgroundColor = .clear
