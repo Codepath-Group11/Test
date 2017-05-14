@@ -156,26 +156,26 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func authorizationDidFinish(_ success: Bool) {
         
-        guard let authToken = authenticationController?.authenticationToken else {
-            return
-        }
-        FitbitAPI.sharedInstance.authorize(with: authToken)
-        
-        
-        // Get Fav Activities
-        let _ = FitbitAPI.fetchFavActivities() {[weak self] favActivities,error in
-            
-            print(favActivities?.count)
-            
-        }
-        
- 
-        //Get Daily Activity
-        
-        let day = "/2017-05-04.json"
-        let _ = FitbitAPI.fetchDailyActivitySummary(for:day){[weak self] dailyActSummary,error in
-        print("The activity summary is:\(dailyActSummary?.activities)")
-        }
+//        guard let authToken = authenticationController?.authenticationToken else {
+//            return
+//        }
+//        FitbitAPI.sharedInstance.authorize(with: authToken)
+//        
+//        
+//        // Get Fav Activities
+//        let _ = FitbitAPI.fetchFavActivities() {[weak self] favActivities,error in
+//            
+//            print(favActivities?.count)
+//            
+//        }
+//        
+// 
+//        //Get Daily Activity
+//        
+//        let day = "/2017-05-04.json"
+//        let _ = FitbitAPI.fetchDailyActivitySummary(for:day){[weak self] dailyActSummary,error in
+//        print("The activity summary is:\(dailyActSummary?.activities)")
+//        }
         
     }
     

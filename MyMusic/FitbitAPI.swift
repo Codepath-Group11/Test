@@ -73,7 +73,7 @@ class FitbitAPI {
     
     static func fetchDailyActivitySummary(for day: String, callback: @escaping (DailyActivitySummary?, Error?)->Void) -> URLSessionDataTask? {
         guard let session = FitbitAPI.sharedInstance.session,
-            let stepURL = URL(string: "https://api.fitbit.com/1/user/-/activities/date\(day)") else {
+            let stepURL = URL(string: "https://api.fitbit.com/1/user/-/activities/date/\(day).json") else {
                 return nil
         }
         let dataTask = session.dataTask(with: stepURL) { (data, response, error) in
@@ -91,7 +91,7 @@ class FitbitAPI {
                     }
                     return
             }
-            print(dictionarySummary)
+          //  print(dictionarySummary)
             
             let dailyActivitySummary = DailyActivitySummary.getDailyActivity(dictionary: dictionarySummary)
            

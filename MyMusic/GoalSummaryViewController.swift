@@ -19,7 +19,10 @@ class GoalSummaryViewController: UIViewController {
     
     weak var axisFormatDelegate: IAxisValueFormatter?
 
-    var caloriePerDay:[calorieChart]?
+    var caloriePerDay:[CalorieChart]?
+    var stepsPerDay:[StepChart]?
+    var activeMinPerDay:[ActiveMinutesChart]?
+    var goalType:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +36,32 @@ class GoalSummaryViewController: UIViewController {
     func updateChartWithData() {
         
         var dataEntries: [BarChartDataEntry] = []
-        
+        var dataEntry:BarChartDataEntry?
         
         var i = 0
+        if(goalType == "Calories") {
         for calorie in caloriePerDay! {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(calorie.calorieOut))
-            dataEntries.append(dataEntry)
+             dataEntry = BarChartDataEntry(x: Double(i), y: Double(calorie.calorieOut))
+            dataEntries.append(dataEntry!)
             i += 1
+         }
+        }else if(goalType == "Steps")
+        {
+            for step in stepsPerDay! {
+                dataEntry = BarChartDataEntry(x: Double(i), y: Double(step.steps))
+                dataEntries.append(dataEntry!)
+                i += 1
+            }
+        }else {
+            for activeMinutes in activeMinPerDay! {
+                dataEntry = BarChartDataEntry(x: Double(i), y: Double(activeMinutes.activemin))
+                dataEntries.append(dataEntry!)
+                i += 1
+            }
         }
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Calories")
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: goalType)
         let chartData = BarChartData(dataSet: chartDataSet)
-        barChartView.descriptionText = ""
+        barChartView.chartDescription?.text = ""
         barChartView.rightAxis.enabled = false
         barChartView.xAxis.drawGridLinesEnabled = false
         
@@ -87,6 +105,6 @@ extension GoalSummaryViewController: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         
-        return "05-08-17"
+        return String(value)
     }
 }

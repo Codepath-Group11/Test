@@ -9,10 +9,21 @@
 import UIKit
 import BubbleTransition
 
-struct calorieChart {
+struct CalorieChart {
     
     var day:String
     var calorieOut:Int
+}
+
+struct StepChart {
+    var day:String
+    var steps:Int
+}
+
+struct ActiveMinutesChart {
+    var day:String
+    var activemin:Int
+    
 }
 
 class ActivityViewController: UIViewController,UIViewControllerTransitioningDelegate {
@@ -30,7 +41,9 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
     var totalGoalSteps:Int! = 0
     var totalGoalCalories:Int! = 0
     var totalGoalActiveMinutes:Int! = 0
-    var calorieChartData = [calorieChart]()
+    var calorieChartData = [CalorieChart]()
+    var stepChartData=[StepChart]()
+    var activeMinChartData=[ActiveMinutesChart]()
 
     
     let transition = BubbleTransition()
@@ -138,7 +151,7 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         
         FitbitAPI.sharedInstance.authorize(with: authToken)
         
-        var dates: Array<String> = ["/2017-05-01.json","/2017-05-02.json","/2017-05-03.json","/2017-05-04.json","/2017-05-05.json"]
+        var dates: Array<String> = ["2017-05-01","2017-05-02","2017-05-03","2017-05-04","2017-05-05"]
         
         for day in dates {
             activitySummaryGroup.enter()
@@ -149,13 +162,19 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
                 
                 self!.totalActiveMinutes = (self?.totalActiveMinutes!)! + (dailyActSummary?.veryActiveMinutes)!
                 
-                print("The totalSteps are:"+"\(self?.totalSteps!)")
+            //    print("The totalSteps are:"+"\(self?.totalSteps!)")
                 
                 self!.totalGoalSteps = (dailyActSummary?.goals?.steps)! * (dates.count)
                 self!.totalGoalCalories = (dailyActSummary?.goals?.caloriesOut)! * (dates.count)
                 self!.totalGoalActiveMinutes = (dailyActSummary?.goals?.activeMinutes)! * (dates.count)
-                let calorieData = calorieChart(day:day,calorieOut:(dailyActSummary?.caloriesOut)!)
+                let calorieData = CalorieChart(day:day,calorieOut:(dailyActSummary?.caloriesOut)!)
+                let stepData = StepChart(day:day,steps:(dailyActSummary?.steps)!)
+                let activeMinData = ActiveMinutesChart(day:day,activemin:(dailyActSummary?.veryActiveMinutes)!)
+
                 self?.calorieChartData.append(calorieData)
+                self?.stepChartData.append(stepData)
+                self?.activeMinChartData.append(activeMinData)
+
                 activitySummaryGroup.leave()
             }
             
@@ -177,8 +196,11 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
             let goal = goals[(indexPath?.row)!]
             
             let viewController = segue.destination as? GoalSummaryViewController
-            viewController?.caloriePerDay = calorieChartData
         
+            viewController?.caloriePerDay = calorieChartData
+            viewController?.stepsPerDay = stepChartData
+            viewController?.activeMinPerDay = activeMinChartData
+            viewController?.goalType = goal
 //
 //        else if segue.identifier == "ShowUserProfileSegue",
 //            
