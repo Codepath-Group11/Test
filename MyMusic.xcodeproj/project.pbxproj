@@ -23,7 +23,6 @@
 		1E70C4DB1EC26E9100ACA36E /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4DA1EC26E9000ACA36E /* IntroViewController.swift */; };
 		1E8B6DDD1EC01CCE0060668F /* MyMusic.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8B6DDC1EC01CCE0060668F /* MyMusic.xib */; };
 		1E8B6DE11EC01E790060668F /* MyMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8B6DE01EC01E790060668F /* MyMusic.swift */; };
-		1E8B6DE71EC044F10060668F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8B6DE61EC044F10060668F /* Assets.xcassets */; };
 		42456EFB73996FDD638C0E2E /* Pods_MyMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */; };
 		4D863C741EBE76E800AE1FE6 /* FitbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D863C731EBE76E800AE1FE6 /* FitbitAPI.swift */; };
 		4DB4AE861EBE87D3002C4DB3 /* FitbitAuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */; };
@@ -55,8 +54,9 @@
 		C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */; };
 		C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */; };
 		C6A8BE311EB61BC000A1C0CA /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */; };
-		C6B6588E1EC76952000410F2 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6588D1EC76951000410F2 /* ActivityCell.swift */; };
+		C6B6588E1EC76952000410F2 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6588D1EC76951000410F2 /* GoalCell.swift */; };
 		C6B658901EC76AC4000410F2 /* GoalSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6588F1EC76AC4000410F2 /* GoalSummaryViewController.swift */; };
+		C6B658921EC82A43000410F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6B658911EC82A43000410F2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +77,6 @@
 		1E70C4DA1EC26E9000ACA36E /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		1E8B6DDC1EC01CCE0060668F /* MyMusic.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMusic.xib; sourceTree = "<group>"; };
 		1E8B6DE01EC01E790060668F /* MyMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMusic.swift; sourceTree = "<group>"; };
-		1E8B6DE61EC044F10060668F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MyMusic/Assets.xcassets; sourceTree = "<group>"; };
 		4D863C731EBE76E800AE1FE6 /* FitbitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAPI.swift; sourceTree = "<group>"; };
 		4DB4AE851EBE87D3002C4DB3 /* FitbitAuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitbitAuthenticationController.swift; sourceTree = "<group>"; };
 		4DB4AE891EBF9BFE002C4DB3 /* FavActivities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavActivities.swift; sourceTree = "<group>"; };
@@ -111,8 +110,9 @@
 		C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrackCell.swift; path = MyMusic/TrackCell.swift; sourceTree = "<group>"; };
 		C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		C6A8BE301EB61BC000A1C0CA /* PlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
-		C6B6588D1EC76951000410F2 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		C6B6588D1EC76951000410F2 /* GoalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		C6B6588F1EC76AC4000410F2 /* GoalSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalSummaryViewController.swift; sourceTree = "<group>"; };
+		C6B658911EC82A43000410F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MyMusic/Assets.xcassets; sourceTree = "<group>"; };
 		E93FB7B23B529F31AE98AFCC /* Pods-MyMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,7 +272,7 @@
 		C6A8BE2D1EB61AD000A1C0CA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1E8B6DE61EC044F10060668F /* Assets.xcassets */,
+				C6B658911EC82A43000410F2 /* Assets.xcassets */,
 				C6A8BE261EB5980C00A1C0CA /* InteractivePlayer_source */,
 				4DC398DD1EB411C200FCBA4C /* MyMusic-Bridging-Header.h */,
 				4DC397551EB0254100FCBA4C /* Info.plist */,
@@ -293,7 +293,7 @@
 				1E345ED81EBFD363005FA0A2 /* SpotifySettingCell.swift */,
 				1E345EDA1EBFD378005FA0A2 /* FitbitSettingCell.swift */,
 				1E8B6DDC1EC01CCE0060668F /* MyMusic.xib */,
-				C6B6588D1EC76951000410F2 /* ActivityCell.swift */,
+				C6B6588D1EC76951000410F2 /* GoalCell.swift */,
 			);
 			name = View;
 			path = ..;
@@ -364,10 +364,10 @@
 			files = (
 				4DC397541EB0254100FCBA4C /* LaunchScreen.storyboard in Resources */,
 				C6A8BE211EB5960600A1C0CA /* Images.xcassets in Resources */,
+				C6B658921EC82A43000410F2 /* Assets.xcassets in Resources */,
 				C6A8BE231EB5960600A1C0CA /* InteractivePlayerView.xib in Resources */,
 				4DB4AE921EC539C1002C4DB3 /* Activity.storyboard in Resources */,
 				1E8B6DDD1EC01CCE0060668F /* MyMusic.xib in Resources */,
-				1E8B6DE71EC044F10060668F /* Assets.xcassets in Resources */,
 				4DC3974F1EB0254100FCBA4C /* Main.storyboard in Resources */,
 				4DC397601EB030C700FCBA4C /* Settings.storyboard in Resources */,
 				4DC3975E1EB0262000FCBA4C /* Login.storyboard in Resources */,
@@ -456,7 +456,7 @@
 				C6A8BE2F1EB61B7B00A1C0CA /* PlaylistViewController.swift in Sources */,
 				1E398A141EBE4D300019DE51 /* MainViewController.swift in Sources */,
 				1E70C4D51EC259EA00ACA36E /* WelcomeController.swift in Sources */,
-				C6B6588E1EC76952000410F2 /* ActivityCell.swift in Sources */,
+				C6B6588E1EC76952000410F2 /* GoalCell.swift in Sources */,
 				1E398A171EBE4F3A0019DE51 /* LoginEntryCell.swift in Sources */,
 				1E70C4D71EC25B2B00ACA36E /* IntroPageViewController.swift in Sources */,
 				1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */,

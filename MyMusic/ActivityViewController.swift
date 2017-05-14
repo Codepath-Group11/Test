@@ -14,6 +14,10 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var activityButton: UIButton!
+    @IBOutlet var redProgressBarView: UIView!
+    @IBOutlet var blueProgressBarView: UIView!
+    @IBOutlet var greenProgressBarView: UIView!
+    
     let transition = BubbleTransition()
 
     
@@ -27,6 +31,10 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        
+        animateRedBar()
+        animateBlueBar()
+        animateGreenBar()
     }
 
     @IBAction func activityClick(_ sender: Any) {
@@ -39,6 +47,33 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         dismiss(animated: true, completion: nil)
 
         
+    }
+    
+    func animateRedBar(){
+        redProgressBarView.backgroundColor = .red
+        redProgressBarView.frame.size.width = 0
+        
+        UIView.animate(withDuration: 2) {
+            self.redProgressBarView.frame.size.width = 40
+        }
+    }
+    
+    func animateBlueBar(){
+        blueProgressBarView.backgroundColor = UIColor(red: 48/255, green: 188/255, blue: 255/255, alpha: 1)
+        blueProgressBarView.frame.size.width = 0
+        
+        UIView.animate(withDuration: 2) {
+            self.blueProgressBarView.frame.size.width = 90
+        }
+    }
+    
+    func animateGreenBar(){
+        greenProgressBarView.backgroundColor = UIColor(red: 40/255, green: 214/255, blue: 23/255, alpha: 1)
+        greenProgressBarView.frame.size.width = 0
+        
+        UIView.animate(withDuration: 2) {
+            self.greenProgressBarView.frame.size.width = 60
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,13 +117,29 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell") as! ActivityCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GoalCell") as! GoalCell
         let goals = ["Calories", "Steps", "Active Minutes"]
-        
+    
         cell.activityTitleLabel.text = goals[indexPath.row]
+        cell.activityTitleLabel.textColor = .black
         cell.activityResultsLabel.text = "1000 of 2000"
+
+        cell.layer.cornerRadius = 10
+        cell.backgroundColor = .clear
         
+        switch indexPath.row {
+            case 0:
+                cell.animateRedBar()
+            case 1:
+                cell.animateBlueBar()
+            case 2:
+                cell.animateGreenBar()
+            default:
+                print("none")
+        }
+    
         return cell
     }
 }
+
