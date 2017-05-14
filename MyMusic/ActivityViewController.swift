@@ -184,12 +184,12 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         if(goals[indexPath.row] == "Calories")
         {
             
-            cell.activityResultsLabel.text = "\(self.totalCalories) of "+" \(self.totalGoalCalories)"
+            cell.activityResultsLabel.text = "\((self.totalCalories)!) of "+" \((self.totalGoalCalories)!)"
         }else if(goals[indexPath.row] == "Steps") {
-            cell.activityResultsLabel.text = "\(totalSteps) of "+" \(totalGoalSteps)"
+            cell.activityResultsLabel.text = "\(self.totalSteps!) of "+" \(self.totalGoalSteps!)"
             
         }else{
-            cell.activityResultsLabel.text = "\(totalActiveMinutes) of "+"\(totalGoalActiveMinutes)"
+            cell.activityResultsLabel.text = "\(self.totalActiveMinutes!) of "+"\(self.totalGoalActiveMinutes!)"
             
         }
 
