@@ -8,23 +8,55 @@
 
 import UIKit
 import Parse
-class MainViewController: UIViewController {
+import BubbleTransition
+class MainViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
+    
+    @IBOutlet weak var bubblePositionButton: UIButton!
+    let transition = BubbleTransition()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.bubblePositionButton.layer.cornerRadius = bubblePositionButton.frame.width/2
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if MusicClient.checkCurrentSession() {
-            showPlaylistInterface()
-        } else {
+        //if MusicClient.checkCurrentSession() {
+        //    showPlaylistInterface()
+        //} else {
             //presentSettingInterface()
             //presentLoginInterface()
-            presentWelcomInterface()
+        //    presentWelcomInterface()
+        //}
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showActivity" {
+            let toViewController = segue.destination
+            toViewController.transitioningDelegate = self
+            toViewController.modalPresentationStyle = .custom
         }
     }
     
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.duration = 0.3
+        transition.transitionMode = .present
+        transition.startingPoint = bubblePositionButton.center
+        transition.bubbleColor =  bubblePositionButton.backgroundColor!
+        return transition
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.duration = 0.3
+        transition.transitionMode = .dismiss
+        transition.startingPoint = bubblePositionButton.center
+        transition.bubbleColor =  bubblePositionButton.backgroundColor!
+        return transition
+    }
+    
+    
+    
+   
     /*
     func checkUser() {
         let spotify = MusicClient.checkCurrentSession()
@@ -49,6 +81,7 @@ class MainViewController: UIViewController {
         })
     }
    */
+    
     func presentWelcomInterface() {
         let nib = UIStoryboard(name: "Login", bundle: nil)
         let intro = nib.instantiateViewController(withIdentifier: "IntroViewController")

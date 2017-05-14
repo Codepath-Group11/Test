@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityView" customModule="MyMusic" customModuleProvider="target">
+            <connections>
+                <outlet property="activityLabel" destination="VdC-g3-qWl" id="OUb-bV-T5h"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="O8W-T4-L9g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mow-VW-f9K">
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                    <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Activity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdC-g3-qWl">
+                    <rect key="frame" x="5" y="5" width="110" height="110"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="mow-VW-f9K" secondAttribute="bottom" id="DJP-KB-1f0"/>
+                <constraint firstItem="mow-VW-f9K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hse-My-usX"/>
+                <constraint firstItem="VdC-g3-qWl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="QGJ-yj-nhV"/>
+                <constraint firstItem="mow-VW-f9K" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aUt-jL-WAM"/>
+                <constraint firstAttribute="bottom" secondItem="VdC-g3-qWl" secondAttribute="bottom" constant="5" id="cdi-lB-AsY"/>
+                <constraint firstItem="VdC-g3-qWl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="gIk-bn-YtB"/>
+                <constraint firstAttribute="trailing" secondItem="mow-VW-f9K" secondAttribute="trailing" id="nDU-cZ-qWR"/>
+                <constraint firstAttribute="trailing" secondItem="VdC-g3-qWl" secondAttribute="trailing" constant="5" id="wVb-pq-ths"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-26" y="-92"/>
+        </view>
+    </objects>
+</document>

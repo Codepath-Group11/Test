@@ -21,6 +21,10 @@ PODS:
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - Bolts/Tasks (1.8.4)
+  - BubbleTransition (2.0.1)
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
   - ObjectMapper (2.2.5)
   - Parse (1.14.4):
     - Bolts/Tasks (~> 1.8)
@@ -35,6 +39,8 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - BubbleTransition (~> 2.0.0)
+  - Charts
   - Parse
   - RealmSwift
   - Spartan
@@ -45,12 +51,14 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 94923a4320bbe52c1d0d462093277a9d6a755a78
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  BubbleTransition: bb24ed389ab672eecf3c87170d0a73f959a8e696
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   Parse: b0aa91d2c435e53d4a9af26e741e014c9b35c42e
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
   Spartan: 1da9f65bf2e1e59e122487b9b82280057e560f6c
 
-PODFILE CHECKSUM: e7f80fd7fa71faa15c8ede6fe67756a900976786
+PODFILE CHECKSUM: 21b05b1babb3c07d14d08ee5136b376e4fda6741
 
 COCOAPODS: 1.2.1

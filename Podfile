@@ -11,4 +11,6 @@ target 'MyMusic' do
    pod 'Spartan'
    pod ‘Parse’
    pod 'RealmSwift'
+   pod 'BubbleTransition', '~> 2.0.0'
+   pod 'Charts'
 end
