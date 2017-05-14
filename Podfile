@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, ’10.0’
 
 target 'MyMusic' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -11,5 +11,6 @@ target 'MyMusic' do
    pod 'Spartan'
    pod ‘Parse’
    pod 'BubbleTransition', '~> 2.0.0'
-   
+   pod 'Charts'
+
 end

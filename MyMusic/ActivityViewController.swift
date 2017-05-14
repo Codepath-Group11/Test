@@ -9,6 +9,11 @@
 import UIKit
 import BubbleTransition
 
+struct calorieChart {
+    
+    var day:String
+    var calorieOut:Int
+}
 
 class ActivityViewController: UIViewController,UIViewControllerTransitioningDelegate {
 
@@ -25,7 +30,7 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
     var totalGoalSteps:Int! = 0
     var totalGoalCalories:Int! = 0
     var totalGoalActiveMinutes:Int! = 0
-    
+    var calorieChartData = [calorieChart]()
 
     
     let transition = BubbleTransition()
@@ -45,11 +50,12 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         animateRedBar()
         animateBlueBar()
         animateGreenBar()
-        getActivitySummaryDetails()
+      //  getActivitySummaryDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getActivitySummaryDetails()
         
     }
 
@@ -148,7 +154,8 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
                 self!.totalGoalSteps = (dailyActSummary?.goals?.steps)! * (dates.count)
                 self!.totalGoalCalories = (dailyActSummary?.goals?.caloriesOut)! * (dates.count)
                 self!.totalGoalActiveMinutes = (dailyActSummary?.goals?.activeMinutes)! * (dates.count)
-                
+                let calorieData = calorieChart(day:day,calorieOut:(dailyActSummary?.caloriesOut)!)
+                self?.calorieChartData.append(calorieData)
                 activitySummaryGroup.leave()
             }
             
@@ -161,8 +168,33 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          let goals = ["Calories", "Steps", "Active Minutes"]
+        
+        
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let goal = goals[(indexPath?.row)!]
+            
+            let viewController = segue.destination as? GoalSummaryViewController
+            viewController?.caloriePerDay = calorieChartData
+        
+//
+//        else if segue.identifier == "ShowUserProfileSegue",
+//            
+//            let userProfileVC = segue.destination as? ProfileViewController {
+//            
+//            userProfileVC.user = profile
+//        }
+//        
+        
+ 
+        
+        
+    }
 
 }
+
 
 extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
