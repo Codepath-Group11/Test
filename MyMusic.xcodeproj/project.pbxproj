@@ -53,6 +53,7 @@
 		4DC398E71EB45EC700FCBA4C /* PagingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC398E61EB45EC700FCBA4C /* PagingObject.swift */; };
 		4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC398E91EB4E72F00FCBA4C /* MusicAccount.swift */; };
 		4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC398EC1EB4EB6F00FCBA4C /* SpotifyService.swift */; };
+		C630D7F61EC954FA0065FFD8 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630D7F51EC954FA0065FFD8 /* Track.swift */; };
 		C6A8BE211EB5960600A1C0CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6A8BE1B1EB5960600A1C0CA /* Images.xcassets */; };
 		C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A8BE1C1EB5960600A1C0CA /* InteractivePlayerView.swift */; };
 		C6A8BE231EB5960600A1C0CA /* InteractivePlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6A8BE1D1EB5960600A1C0CA /* InteractivePlayerView.xib */; };
@@ -116,6 +117,7 @@
 		4DC398E91EB4E72F00FCBA4C /* MusicAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicAccount.swift; sourceTree = "<group>"; };
 		4DC398EC1EB4EB6F00FCBA4C /* SpotifyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		BF5A0A281DF8BDD6AC725740 /* Pods_MyMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C630D7F51EC954FA0065FFD8 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		C6A8BE1B1EB5960600A1C0CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C6A8BE1C1EB5960600A1C0CA /* InteractivePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractivePlayerView.swift; sourceTree = "<group>"; };
 		C6A8BE1D1EB5960600A1C0CA /* InteractivePlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InteractivePlayerView.xib; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		4DC398E51EB45E7800FCBA4C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C630D7F51EC954FA0065FFD8 /* Track.swift */,
 				4DC398E91EB4E72F00FCBA4C /* MusicAccount.swift */,
 				4DC398E61EB45EC700FCBA4C /* PagingObject.swift */,
 				4DB4AE891EBF9BFE002C4DB3 /* FavActivities.swift */,
@@ -472,6 +475,7 @@
 				1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				4DB4AE8C1EC11F03002C4DB3 /* Activity.swift in Sources */,
+				C630D7F61EC954FA0065FFD8 /* Track.swift in Sources */,
 				1E70C4D91EC25C8200ACA36E /* FitBitOauthController.swift in Sources */,
 				4DB4AE861EBE87D3002C4DB3 /* FitbitAuthenticationController.swift in Sources */,
 				C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */,

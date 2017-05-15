@@ -14,21 +14,13 @@ import BubbleTransition
 class PlaylistViewController: UIViewController {
     
     @IBOutlet weak var bubbleSwtich: UIButton!
-    var playlists: [SimplifiedPlaylist] = []
+    var playlist: [Track] = []
     var player: SPTAudioStreamingController?
     let transition = BubbleTransition()
     
     
     override func viewDidLoad() {
-        
-        // Do any additional setup after loading the view.
-        MusicClient.getUserPlayLists(userId: "", musicServiceType: "", success: { (myPlaylists:[SimplifiedPlaylist]) in
-            
-            self.playlists = myPlaylists
-            
-        }) { (error:Error) in
-            print(error.localizedDescription)
-        }
+
 
     }
     override func didReceiveMemoryWarning() {
@@ -36,11 +28,6 @@ class PlaylistViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onTapSettings(_ sender: UIBarButtonItem) {
-        let nib = UIStoryboard.init(name: "Settings", bundle: nil)
-        let settingsNav = nib.instantiateViewController(withIdentifier: "SettingNavigationViewController")
-        self.show(settingsNav, sender: true)
-    }
     
     @IBAction func didTapActivityPlaylist(_ sender: UIButton) {
         let storyBoard = UIStoryboard(name: "PlayList", bundle: nil)
@@ -63,9 +50,12 @@ class PlaylistViewController: UIViewController {
 
     // MARK: - Navigation
 
-    /*// In a storyboard-based application, you will often want to do a little preparation before navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }*/
+        let musicPlayerVC = segue.destination as! MusicPlayerViewController
+     
+        musicPlayerVC.playlistTracks = playlist
+    }
     
     
 }

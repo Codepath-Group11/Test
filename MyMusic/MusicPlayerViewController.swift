@@ -8,13 +8,16 @@
 
 import UIKit
 import Spartan
+import Alamofire
 
 class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var ipv: InteractivePlayerView!
-     @IBOutlet weak var blurBgImage: UIImageView!
+    @IBOutlet weak var blurBgImage: UIImageView!
+    @IBOutlet var songTitleLabel: UILabel!
+    @IBOutlet var artistAndAlbumNameLabel: UILabel!
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
@@ -24,53 +27,61 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     var playlistID: String?
     var playlistType: String?
     var isReplaying: Bool = false
+    var activity:String?
     
-    var playlistTracks:[PlaylistTrack]?
-    var copyPlaylistTracks:[PlaylistTrack]?
-    var shuffledPlaylistTracks:[PlaylistTrack]?
+    var playlistTracks:[Track]?
+    var copyPlaylistTracks:[Track]?
+    var shuffledPlaylistTracks:[Track]?
     
     var currentSongIndex: Int = 0
-  
+    var currentDuration: Double = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
         self.view.layoutIfNeeded()
         self.view.backgroundColor = UIColor.clear
         self.makeItRounded(view: self.playPauseButtonView, newSize: self.playPauseButtonView.frame.width)
-
+        
+        MusicClient.getactivityPlaylist(activity: activity!, success: { (tracks:[Track]) in
+            self.playlistTracks = tracks
+            self.tableView.reloadData()
+            let track = self.playlistTracks?[0]
+            self.loadSongFromURI(uri: track?.uri ?? "")
+        }) { (error:Error) in
+            print(error.localizedDescription)
+        }
+        
         self.ipv!.delegate = self
-        
-        // duration of music
-        self.ipv.progress = 20.0
-        
-        _ = Spartan.search(query: "Beast Mode", type: .playlist, success: { (PagingObject) in
-            let playlist = PagingObject.items[0]
-            _ = Spartan.getPlaylistTracks(userId: "spotify", playlistId: playlist.id, success: { (PagingObject) in
-                self.playlistTracks = PagingObject.items
-                self.tableView.reloadData()
-            }, failure: { (error:SpartanError) in
-                
-            })
-        }, failure: { (error:SpartanError) in
-            
-        })
-        
 
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "playlistUpdated"), object: nil, queue: OperationQueue.main) { (Notification) in
+            self.playlistTracks = MusicClient.masterList
+            self.tableView.reloadData()
+            let track = self.playlistTracks?[0]
+            self.loadSongFromURI(uri: track?.uri ?? "")
+            
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func dismissPlaylistModal(_ sender: UIBarButtonItem) {
+    @IBAction func dismissPlaylist(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
         
         dismiss(animated: true, completion: nil)
@@ -80,12 +91,22 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
         return .lightContent
     }
     
-    func loadSongFromURI(uri: String){
-        let duration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-
+    func loadSongFromURI(uri: String?){
+        let track = playlistTracks?[currentSongIndex]
+        let duration = (track?.duration)!/1000
+        
+        songTitleLabel.text = track?.name
+        artistAndAlbumNameLabel.text = "\(track?.artist ?? "") - \(track?.album ?? "")"
+        
+        blurBgImage.setImageWith(track?.albumCoverArtURL ?? URL(string:"")!)
+        ipv.albumCoverImageView?.setImageWith(track?.albumCoverArtURL ?? URL(string:"")!)
+        
         MusicClient.player().playSpotifyURI(uri, startingWith: 0, startingWithPosition: 0, callback: nil)
+        
         playButton.isHidden = true
         pauseButton.isHidden = false
+        
+        ipv.durationLabel?.textColor = .red
         
         ipv.restartWithProgress(duration: Double(duration))
     }
@@ -101,40 +122,38 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-            ipv.start()
-            MusicClient.player().setIsPlaying(true, callback: nil)
-            changePlayPause()
+        ipv.start()
+        MusicClient.player().setIsPlaying(true, callback: nil)
+        changePlayPause()
         
     }
-
+    
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
-            ipv.stop()
-            MusicClient.player().setIsPlaying(false, callback: nil)
-            changePlayPause()
+        ipv.stop()
+        MusicClient.player().setIsPlaying(false, callback: nil)
+        changePlayPause()
         
     }
     
     
     @IBAction func nextTapped(sender: AnyObject) {
-        var trackURI = ""
+        let track = playlistTracks?[currentSongIndex]
+        
         if playlistTracks != nil,  (currentSongIndex+1) < (playlistTracks?.count)!{
             currentSongIndex += 1
             
-            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            
-            loadSongFromURI(uri: trackURI)
+            loadSongFromURI(uri: track?.uri)
             ipv.stop()
         }
     }
     
     @IBAction func previousTapped(sender: AnyObject) {
-        var trackURI = ""
+        let track = playlistTracks?[currentSongIndex]
+        
         if playlistTracks != nil, (currentSongIndex-1) > -1{
             currentSongIndex -= 1
             
-            trackURI = (playlistTracks?[currentSongIndex].track.uri)!
-            
-            loadSongFromURI(uri: trackURI)
+            loadSongFromURI(uri: track?.uri ?? "")
             ipv.stop()
         }
     }
@@ -161,21 +180,19 @@ class MusicPlayerViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let trackURI = playlistTracks?[indexPath.row].track.uri
         currentSongIndex = indexPath.row
+        let track = playlistTracks?[currentSongIndex]
         
-        if trackURI != nil{
-            loadSongFromURI(uri: trackURI!)
-        }
+        loadSongFromURI(uri: track?.uri ?? "")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell") as! TrackCell
         
-        let track = playlistTracks?[indexPath.row].track
+        let track = playlistTracks?[indexPath.row]
         
         cell.textLabel?.text = track?.name
-        cell.detailTextLabel?.text = track?.artists[0].name
+        cell.detailTextLabel?.text = track?.artist
         
         return cell
     }
@@ -212,25 +229,32 @@ extension MusicPlayerViewController: InteractivePlayerViewDelegate{
     }
     
     func interactivePlayerViewDidChangedDuration(playerInteractive: InteractivePlayerView, currentDuration: Double) {
+        self.currentDuration = currentDuration
+        let track = playlistTracks?[currentSongIndex]
+        
         let currentRoundedDuration = Int(currentDuration)
-        let songTotalDuration = (playlistTracks?[currentSongIndex].track.durationMs)!/1000
-
-        if currentRoundedDuration == songTotalDuration{
+        let songTotalDuration = (track?.duration)!/1000
+        
+        if currentRoundedDuration == songTotalDuration, currentSongIndex != (playlistTracks?.count)!-1{
             if !isReplaying{
                 currentSongIndex += 1
             }
             
-            let trackURI = playlistTracks?[currentSongIndex].track.uri
-            loadSongFromURI(uri: trackURI!)
+            loadSongFromURI(uri: track?.uri ?? "")
         }
     }
     
     func interactivePlayerViewDidStartPlaying(playerInteractive: InteractivePlayerView) {
-        print("interactive player did started")
+        playButton.isHidden = true
+        pauseButton.isHidden = false
+        MusicClient.player().setIsPlaying(true, callback: nil)
+        MusicClient.player().playSpotifyURI(playlistTracks?[currentSongIndex].uri, startingWith: 0, startingWithPosition: currentDuration, callback: nil)
     }
     
     func interactivePlayerViewDidStopPlaying(playerInteractive: InteractivePlayerView) {
-        print("interactive player did stop")
+        playButton.isHidden = true
+        pauseButton.isHidden = false
+        MusicClient.player().setIsPlaying(false, callback: nil)
     }
     
 }

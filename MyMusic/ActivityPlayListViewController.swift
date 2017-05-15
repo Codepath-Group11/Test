@@ -19,8 +19,8 @@ class ActivityPlayListViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var activitylogButton: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var activities: [(title: String,name: String?)]! = [("Treadmill","treadmill"),("Run","run"),("Weights","weights"),("Elliptical","elliptical")]
-    var playlists: [SimplifiedPlaylist] = []
+    var activities: [(title: String,name: String?)]! = [("Treadmill","treadmill"),("Run","run"),("Weights","weights"),("Elliptical","elliptical"), ("",""), ("Custom","yoga")]
+    var playlist: [Track] = []
     var player: SPTAudioStreamingController?
     let transition = BubbleTransition()
     override func viewDidLoad() {
@@ -43,11 +43,14 @@ class ActivityPlayListViewController: UIViewController, UICollectionViewDelegate
         
         //player set up 
         // Do any additional setup after loading the view.
-        MusicClient.getUserPlayLists(userId: "", musicServiceType: "", success: { (myPlaylists:[SimplifiedPlaylist]) in
-            self.playlists = myPlaylists
-        }) { (error:Error) in
-            print(error.localizedDescription)
-        }
+//        MusicClient.getWorkoutPlayList(success: { (tracks:[Track]) in
+//            self.playlist = tracks
+//        }) { (error:Error) in
+//            print(error.localizedDescription)
+//        }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,17 +73,33 @@ class ActivityPlayListViewController: UIViewController, UICollectionViewDelegate
         let item =  activities[indexPath.row]
         cell.title = item.title
         cell.imageName = item.name
+        if indexPath.row == 4{
+            cell.isHidden = true
+        }
         return cell
         //Configure the cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
 
         //show the player
+
         let storyBoard = UIStoryboard(name: "PlayList", bundle: nil)
         let musicPlayerVC = storyBoard.instantiateViewController(withIdentifier: "MusicPlayer") as! MusicPlayerViewController
-        present(musicPlayerVC, animated: true)
+        
+        if indexPath.row == 0{
+            musicPlayerVC.activity = "Treadmill"
+        }else if indexPath.row == 1{
+            musicPlayerVC.activity = "Run"
+        }else if indexPath.row == 2{
+            musicPlayerVC.activity = "Weights"
+        }else if indexPath.row == 3{
+            musicPlayerVC.activity = "Elliptical"
+        }else{
+            musicPlayerVC.activity = "Custom"
+        }
+        
+        self.present(musicPlayerVC, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -96,10 +115,8 @@ class ActivityPlayListViewController: UIViewController, UICollectionViewDelegate
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    }*/
+ 
     @IBAction func switch2Activity(_ sender: UIButton) {
         let activityStoryBoard = UIStoryboard(name: "Activity", bundle: nil)
         let activityNVC = activityStoryBoard.instantiateViewController(withIdentifier: "ActivityNVC") as! UINavigationController
