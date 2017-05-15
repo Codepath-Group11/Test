@@ -22,19 +22,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gC4-dF-nzO">
-                    <rect key="frame" x="16" y="28" width="144" height="24"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <rect key="frame" x="0.0" y="38.5" width="150.5" height="25.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="gC4-dF-nzO" firstAttribute="centerY" secondItem="Ub3-QB-Kvi" secondAttribute="centerY" id="AwG-v6-5et"/>
+                <constraint firstItem="gC4-dF-nzO" firstAttribute="centerY" secondItem="Ub3-QB-Kvi" secondAttribute="centerY" constant="11.25" id="AwG-v6-5et"/>
                 <constraint firstAttribute="bottom" secondItem="Ub3-QB-Kvi" secondAttribute="bottom" id="O2u-hy-Iw9"/>
                 <constraint firstItem="Ub3-QB-Kvi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qi6-Ib-OnF"/>
                 <constraint firstAttribute="trailing" secondItem="Ub3-QB-Kvi" secondAttribute="trailing" id="SUh-7R-iHz"/>
-                <constraint firstItem="gC4-dF-nzO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aaG-Ck-7Op"/>
+                <constraint firstItem="gC4-dF-nzO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aaG-Ck-7Op"/>
                 <constraint firstItem="Ub3-QB-Kvi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="y3s-1u-voU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
