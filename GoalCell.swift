@@ -23,7 +23,7 @@ class GoalCell: UITableViewCell {
         progressView.frame.size.width = 0
         
         UIView.animate(withDuration: 2) {
-            self.progressView.frame.size.width = 50
+            self.progressView.frame.size.width = 343
             
         }
     }
@@ -33,7 +33,7 @@ class GoalCell: UITableViewCell {
         progressView.frame.size.width = 0
         
         UIView.animate(withDuration: 2) {
-            self.progressView.frame.size.width = 150
+            self.progressView.frame.size.width = 192
         }
     }
     
@@ -42,7 +42,7 @@ class GoalCell: UITableViewCell {
         progressView.frame.size.width = 0
         
         UIView.animate(withDuration: 2) {
-            self.progressView.frame.size.width = 80
+            self.progressView.frame.size.width = 171
         }
     }
 
