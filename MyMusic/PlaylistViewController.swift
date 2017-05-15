@@ -16,10 +16,6 @@ class PlaylistViewController: UIViewController {
     @IBOutlet weak var bubbleSwtich: UIButton!
     var playlists: [SimplifiedPlaylist] = []
     var player: SPTAudioStreamingController?
-    
-    @IBOutlet var noteImageView1: UIImageView!
-    @IBOutlet var noteImageView2: UIImageView!
-    @IBOutlet var noteImageView3: UIImageView!
     let transition = BubbleTransition()
     
     
@@ -32,22 +28,6 @@ class PlaylistViewController: UIViewController {
             
         }) { (error:Error) in
             print(error.localizedDescription)
-        }
-        
-        noteImageView1.alpha = 0
-        noteImageView2.alpha = 0
-        noteImageView3.alpha = 0
-        
-        UIView.animate(withDuration: 1) {
-            self.noteImageView1.alpha = 1
-            self.noteImageView1.transform.rotated(by: 20)
-            
-        }
-        UIView.animate(withDuration: 1.5) {
-            self.noteImageView2.alpha = 1
-        }
-        UIView.animate(withDuration: 2) {
-            self.noteImageView3.alpha = 1
         }
 
     }
