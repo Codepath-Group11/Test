@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E16A05F1EC9363F00B51F6E /* ActivityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A05A1EC9363F00B51F6E /* ActivityCollectionView.swift */; };
+		1E16A0601EC9363F00B51F6E /* ActivityCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E16A05B1EC9363F00B51F6E /* ActivityCollectionView.xib */; };
+		1E16A0611EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A05C1EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.swift */; };
+		1E16A0621EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E16A05D1EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.xib */; };
+		1E16A0631EC9363F00B51F6E /* ActivityPlaylistReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A05E1EC9363F00B51F6E /* ActivityPlaylistReusableView.swift */; };
+		1E16A0651EC9369300B51F6E /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A0641EC9369300B51F6E /* PlaylistCollectionCell.swift */; };
+		1E16A0671EC9386500B51F6E /* ActivityPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A0661EC9386500B51F6E /* ActivityPlayListViewController.swift */; };
 		1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */; };
 		1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */; };
 		1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */; };
@@ -61,6 +68,13 @@
 
 /* Begin PBXFileReference section */
 		193B5351C325255DB08C956E /* Pods-MyMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		1E16A05A1EC9363F00B51F6E /* ActivityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCollectionView.swift; sourceTree = "<group>"; };
+		1E16A05B1EC9363F00B51F6E /* ActivityCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCollectionView.xib; sourceTree = "<group>"; };
+		1E16A05C1EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPlaylistCollectionHeaderView.swift; sourceTree = "<group>"; };
+		1E16A05D1EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityPlaylistCollectionHeaderView.xib; sourceTree = "<group>"; };
+		1E16A05E1EC9363F00B51F6E /* ActivityPlaylistReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPlaylistReusableView.swift; sourceTree = "<group>"; };
+		1E16A0641EC9369300B51F6E /* PlaylistCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionCell.swift; sourceTree = "<group>"; };
+		1E16A0661EC9386500B51F6E /* ActivityPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPlayListViewController.swift; sourceTree = "<group>"; };
 		1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryCell.swift; sourceTree = "<group>"; };
 		1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpEntryCell.swift; sourceTree = "<group>"; };
@@ -251,6 +265,7 @@
 		C6A8BE2C1EB61A9800A1C0CA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1E16A0661EC9386500B51F6E /* ActivityPlayListViewController.swift */,
 				1E398A151EBE4E960019DE51 /* LoginViewController.swift */,
 				C6A8BE2E1EB61B7B00A1C0CA /* PlaylistViewController.swift */,
 				C6A8BE1F1EB5960600A1C0CA /* MusicPlayerViewController.swift */,
@@ -284,6 +299,12 @@
 		C6A8BE321EB61BCB00A1C0CA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1E16A0641EC9369300B51F6E /* PlaylistCollectionCell.swift */,
+				1E16A05A1EC9363F00B51F6E /* ActivityCollectionView.swift */,
+				1E16A05B1EC9363F00B51F6E /* ActivityCollectionView.xib */,
+				1E16A05C1EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.swift */,
+				1E16A05D1EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.xib */,
+				1E16A05E1EC9363F00B51F6E /* ActivityPlaylistReusableView.swift */,
 				1E8B6DE01EC01E790060668F /* MyMusic.swift */,
 				1E3F68981EBEC83700ED5CDA /* SpinView.swift */,
 				C6A8BE291EB5B25200A1C0CA /* TrackCell.swift */,
@@ -365,6 +386,7 @@
 				4DC397541EB0254100FCBA4C /* LaunchScreen.storyboard in Resources */,
 				C6A8BE211EB5960600A1C0CA /* Images.xcassets in Resources */,
 				C6B658921EC82A43000410F2 /* Assets.xcassets in Resources */,
+				1E16A0601EC9363F00B51F6E /* ActivityCollectionView.xib in Resources */,
 				C6A8BE231EB5960600A1C0CA /* InteractivePlayerView.xib in Resources */,
 				4DB4AE921EC539C1002C4DB3 /* Activity.storyboard in Resources */,
 				1E8B6DDD1EC01CCE0060668F /* MyMusic.xib in Resources */,
@@ -373,6 +395,7 @@
 				4DC3975E1EB0262000FCBA4C /* Login.storyboard in Resources */,
 				C6A8BE241EB5960600A1C0CA /* Player.storyboard in Resources */,
 				4DC3975C1EB0260B00FCBA4C /* PlayList.storyboard in Resources */,
+				1E16A0621EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,16 +462,20 @@
 				4DC398DE1EB411FC00FCBA4C /* MyMusic-Bridging-Header.h in Sources */,
 				4DC3974A1EB0254100FCBA4C /* AppDelegate.swift in Sources */,
 				1E345EDB1EBFD378005FA0A2 /* FitbitSettingCell.swift in Sources */,
+				1E16A0631EC9363F00B51F6E /* ActivityPlaylistReusableView.swift in Sources */,
 				1E3F68991EBEC83700ED5CDA /* SpinView.swift in Sources */,
 				4DC398EA1EB4E72F00FCBA4C /* MusicAccount.swift in Sources */,
 				1E398A161EBE4E960019DE51 /* LoginViewController.swift in Sources */,
+				1E16A05F1EC9363F00B51F6E /* ActivityCollectionView.swift in Sources */,
 				4DB4AE941EC53D34002C4DB3 /* ActivityViewController.swift in Sources */,
+				1E16A0651EC9369300B51F6E /* PlaylistCollectionCell.swift in Sources */,
 				1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				4DB4AE8C1EC11F03002C4DB3 /* Activity.swift in Sources */,
 				1E70C4D91EC25C8200ACA36E /* FitBitOauthController.swift in Sources */,
 				4DB4AE861EBE87D3002C4DB3 /* FitbitAuthenticationController.swift in Sources */,
 				C6A8BE2A1EB5B25200A1C0CA /* TrackCell.swift in Sources */,
+				1E16A0671EC9386500B51F6E /* ActivityPlayListViewController.swift in Sources */,
 				4DC398ED1EB4EB6F00FCBA4C /* SpotifyService.swift in Sources */,
 				1E345EDD1EBFEC01005FA0A2 /* SpotifyOauthController.swift in Sources */,
 				1E345ED91EBFD363005FA0A2 /* SpotifySettingCell.swift in Sources */,
@@ -463,6 +490,7 @@
 				4DC398E71EB45EC700FCBA4C /* PagingObject.swift in Sources */,
 				4D863C741EBE76E800AE1FE6 /* FitbitAPI.swift in Sources */,
 				C6A8BE251EB5960600A1C0CA /* MusicPlayerViewController.swift in Sources */,
+				1E16A0611EC9363F00B51F6E /* ActivityPlaylistCollectionHeaderView.swift in Sources */,
 				4DC397631EB2776700FCBA4C /* MusicClient.swift in Sources */,
 				C6A8BE311EB61BC000A1C0CA /* PlaylistCell.swift in Sources */,
 				1E8B6DE11EC01E790060668F /* MyMusic.swift in Sources */,
