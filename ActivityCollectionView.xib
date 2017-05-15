@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityCollectionView" customModule="MyMusic" customModuleProvider="target">
+            <connections>
+                <outlet property="activityImageView" destination="LzB-Na-SZQ" id="jEX-i7-ozh"/>
+                <outlet property="activityLabel" destination="cyP-SM-hwe" id="lcO-nL-aue"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="y87-DH-WaJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yep-o8-eNk">
+                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treadmill" translatesAutoresizingMaskIntoConstraints="NO" id="LzB-Na-SZQ">
+                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Treadmill" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyP-SM-hwe">
+                    <rect key="frame" x="15" y="144" width="150" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cyP-SM-hwe" secondAttribute="bottom" constant="15" id="5vh-Qk-HTx"/>
+                <constraint firstAttribute="bottom" secondItem="yep-o8-eNk" secondAttribute="bottom" id="6AN-dZ-ZaK"/>
+                <constraint firstItem="LzB-Na-SZQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B0z-In-AMm"/>
+                <constraint firstAttribute="trailing" secondItem="LzB-Na-SZQ" secondAttribute="trailing" id="Mm2-yQ-Xa5"/>
+                <constraint firstItem="LzB-Na-SZQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Snv-rI-Cu4"/>
+                <constraint firstAttribute="bottom" secondItem="LzB-Na-SZQ" secondAttribute="bottom" id="b5O-dU-8ry"/>
+                <constraint firstItem="yep-o8-eNk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fO6-gu-lS4"/>
+                <constraint firstAttribute="trailing" secondItem="cyP-SM-hwe" secondAttribute="trailing" constant="15" id="fjH-Wd-QdW"/>
+                <constraint firstItem="cyP-SM-hwe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="hr6-bt-fKW"/>
+                <constraint firstItem="yep-o8-eNk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tX8-g9-e26"/>
+                <constraint firstAttribute="trailing" secondItem="yep-o8-eNk" secondAttribute="trailing" id="uE5-q4-0T8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-67" y="-193"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="treadmill" width="694" height="417"/>
+    </resources>
+</document>

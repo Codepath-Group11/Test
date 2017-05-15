@@ -45,7 +45,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil, queue: OperationQueue.main) { (Notification) in
             
             let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
-            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+            let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "ActivityPlaylistNVC") as! UINavigationController
             
             self.show(playlistNVC, sender: nil)
         }

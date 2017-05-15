@@ -74,7 +74,7 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
 
     @IBAction func activityClick(_ sender: Any) {
         let playlistStoryBoard = UIStoryboard(name: "PlayList", bundle: nil)
-        let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "PlaylistNVC") as! UINavigationController
+        let playlistNVC = playlistStoryBoard.instantiateViewController(withIdentifier: "ActivityPlaylistNVC") as! UINavigationController
         
         playlistNVC.transitioningDelegate = self
         playlistNVC.modalPresentationStyle = .custom
