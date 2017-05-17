@@ -133,14 +133,14 @@ extension ActivityPlayListViewController: UIViewControllerTransitioningDelegate{
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = activitylogButton.center
-        //transition.bubbleColor = bubbleSwtich.backgroundColor!
+        transition.bubbleColor = UIColor.black
         return transition
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
         transition.startingPoint = activitylogButton.center
-        //transition.bubbleColor = bubbleSwtich.backgroundColor!
+        transition.bubbleColor = UIColor.black
         return transition
     }
 }

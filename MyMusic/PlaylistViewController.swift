@@ -53,11 +53,8 @@ class PlaylistViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let musicPlayerVC = segue.destination as! MusicPlayerViewController
-     
         musicPlayerVC.playlistTracks = playlist
     }
-    
-    
 }
 
 extension PlaylistViewController: UIViewControllerTransitioningDelegate{
@@ -66,13 +63,15 @@ extension PlaylistViewController: UIViewControllerTransitioningDelegate{
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = bubbleSwtich.center
-        //transition.bubbleColor = bubbleSwtich.backgroundColor!
+        //transition.bubbleColor = UIColor.black
+        transition.bubbleColor = bubbleSwtich.backgroundColor!
         return transition
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
         transition.startingPoint = bubbleSwtich.center
+        transition.bubbleColor = bubbleSwtich.backgroundColor!
         //transition.bubbleColor = bubbleSwtich.backgroundColor!
         return transition
     }

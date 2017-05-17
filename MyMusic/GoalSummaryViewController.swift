@@ -39,20 +39,24 @@ class GoalSummaryViewController: UIViewController {
         var dataEntry:BarChartDataEntry?
         
         var i = 0
+        var title: String = ""
         if(goalType == "Calories") {
         for calorie in caloriePerDay! {
+             title = "Calories"
              dataEntry = BarChartDataEntry(x: Double(i), y: Double(calorie.calorieOut))
             dataEntries.append(dataEntry!)
             i += 1
          }
         }else if(goalType == "Steps")
         {
+            title = "Steps"
             for step in stepsPerDay! {
                 dataEntry = BarChartDataEntry(x: Double(i), y: Double(step.steps))
                 dataEntries.append(dataEntry!)
                 i += 1
             }
         }else {
+            title = "ActiveMinutes"
             for activeMinutes in activeMinPerDay! {
                 dataEntry = BarChartDataEntry(x: Double(i), y: Double(activeMinutes.activemin))
                 dataEntries.append(dataEntry!)
@@ -61,21 +65,26 @@ class GoalSummaryViewController: UIViewController {
         }
         let chartDataSet = BarChartDataSet(values: dataEntries, label: goalType)
         let chartData = BarChartData(dataSet: chartDataSet)
-        barChartView.chartDescription?.text = ""
+        barChartView.chartDescription?.text = title
+        barChartView.chartDescription?.textColor = UIColor.white
+        barChartView.chartDescription?.font = UIFont.systemFont(ofSize: 30)
         barChartView.rightAxis.enabled = false
         barChartView.xAxis.drawGridLinesEnabled = false
-        
-        chartDataSet.colors = [.red, .yellow, .green]
+    
+        //chartDataSet.colors = [.red, .yellow, .green]
         
         // Or this way. There are also available .liberty,
         // .pastel, .colorful and .vordiplom color sets.
-        chartDataSet.colors = ChartColorTemplates.joyful()
-        
+        //chartDataSet.colors = ChartColorTemplates.vordiplom()
+        chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
+        chartDataSet.valueTextColor = UIColor.white
         barChartView.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
         barChartView.data = chartData
         
         let xaxis = barChartView.xAxis
         xaxis.valueFormatter = axisFormatDelegate
+        barChartView.xAxis.labelTextColor = UIColor.white
+        barChartView.xAxis.labelPosition = .bottom
     }
     
     @IBAction func didTapDone(_ sender: Any) {
@@ -104,7 +113,6 @@ class GoalSummaryViewController: UIViewController {
 extension GoalSummaryViewController: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        
-        return String(value)
+        return "\(String(value))"
     }
 }

@@ -23,7 +23,6 @@ struct StepChart {
 struct ActiveMinutesChart {
     var day:String
     var activemin:Int
-    
 }
 
 class ActivityViewController: UIViewController,UIViewControllerTransitioningDelegate {
@@ -51,9 +50,10 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.black
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = UIColor.black
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -63,7 +63,7 @@ class ActivityViewController: UIViewController,UIViewControllerTransitioningDele
         animateRedBar()
         animateBlueBar()
         animateGreenBar()
-       getActivitySummaryDetails()
+        getActivitySummaryDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {

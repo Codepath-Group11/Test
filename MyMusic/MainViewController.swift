@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let domainName = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domainName)
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -7,14 +7,17 @@
 //
 
 import UIKit
-
+import Charts
 class GoalCell: UITableViewCell {
     @IBOutlet var progressView: UIView!
     @IBOutlet var activityResultsLabel: UILabel!
     @IBOutlet var activityTitleLabel: UILabel!
     
+    @IBOutlet weak var piechartview: PieChartView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.progressView.layer.cornerRadius = 12
+        self.progressView.clipsToBounds = true
         // Initialization code
     }
     
