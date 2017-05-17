@@ -71,12 +71,12 @@ class GoalSummaryViewController: UIViewController {
         barChartView.rightAxis.enabled = false
         barChartView.xAxis.drawGridLinesEnabled = false
     
-        //chartDataSet.colors = [.red, .yellow, .green]
+        chartDataSet.colors = [.red, .yellow, .green]
         
         // Or this way. There are also available .liberty,
         // .pastel, .colorful and .vordiplom color sets.
-        //chartDataSet.colors = ChartColorTemplates.vordiplom()
-        chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
+        chartDataSet.colors = ChartColorTemplates.colorful()
+      //  chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
         chartDataSet.valueTextColor = UIColor.white
         barChartView.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
         barChartView.data = chartData
@@ -84,6 +84,8 @@ class GoalSummaryViewController: UIViewController {
         let xaxis = barChartView.xAxis
         xaxis.valueFormatter = axisFormatDelegate
         barChartView.xAxis.labelTextColor = UIColor.white
+        barChartView.leftAxis.labelTextColor = UIColor.white
+        barChartView.rightAxis.labelTextColor = UIColor.white
         barChartView.xAxis.labelPosition = .bottom
     }
     
