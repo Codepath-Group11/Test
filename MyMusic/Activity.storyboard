@@ -86,7 +86,7 @@
                                 <color key="backgroundColor" red="1" green="0.2532935436" blue="0.29609991289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CdV-qz-jfb">
-                                <rect key="frame" x="16" y="65" width="50" height="10"/>
+                                <rect key="frame" x="16" y="65" width="66" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.15590349037082413" green="0.83857471446700504" blue="0.091371790877066081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -105,15 +105,22 @@
                                     <action selector="activityClick:" destination="hLG-Hu-xc7" eventType="touchUpInside" id="GMZ-8w-J4i"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekly Goals Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yz-CM-AFj">
-                                <rect key="frame" x="97" y="39" width="220" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Weekly Goals Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yz-CM-AFj">
+                                <rect key="frame" x="134" y="39" width="220" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="WW5-cH-MZn"/>
+                                    <constraint firstAttribute="width" constant="220" id="zGb-gl-LpY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4yz-CM-AFj" firstAttribute="top" secondItem="UwC-GP-JaI" secondAttribute="bottom" constant="19" id="4rE-CU-6Yq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4yz-CM-AFj" secondAttribute="trailing" constant="5" id="6Xn-nj-YOp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6JK-CU-6At"/>
                     <connections>
@@ -126,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVC-v3-0Ve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1981.5999999999999" y="141.67916041979012"/>
+            <point key="canvasLocation" x="1754" y="48"/>
         </scene>
         <!--Goal Summary View Controller-->
         <scene sceneID="G4K-G9-D33">
