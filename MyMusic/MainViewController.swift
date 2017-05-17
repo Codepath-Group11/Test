@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
     func presentWelcomInterface() {
         let nib = UIStoryboard(name: "Login", bundle: nil)
         let intro = nib.instantiateViewController(withIdentifier: "IntroViewController")
-        self.present(intro, animated: true, completion: nil)
+        self.present(intro, animated: false, completion: nil)
     }
     
     func presentLoginInterface() {

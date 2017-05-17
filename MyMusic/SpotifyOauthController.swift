@@ -7,12 +7,31 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class SpotifyOauthController: UIViewController {
-
-    @IBOutlet weak var backgroundView: UIImageView!
+    
+    var player: AVPlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.black
+        let videoURL: URL = Bundle.main.url(forResource: "intro2", withExtension: "mp4")!
+        
+        player = AVPlayer(url: videoURL)
+        player?.actionAtItemEnd = .none
+        player?.isMuted = true
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerLayer.zPosition = -1
+        playerLayer.frame = view.frame
+        view.layer.addSublayer(playerLayer)
+        player?.play()
+        //loop video
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(SpotifyOauthController.loopVideo),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: nil)
         
         // Do any additional setup after loading the view.
     }
@@ -25,7 +44,7 @@ class SpotifyOauthController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //self.removeObserver(self, forKeyPath: <#T##String#>)
+      
         
     }
     
@@ -61,5 +80,9 @@ class SpotifyOauthController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func loopVideo() {
+        player?.seek(to: kCMTimeZero)
+        player?.play()
+    }
 
 }

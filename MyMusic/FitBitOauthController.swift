@@ -7,14 +7,35 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class FitBitOauthController: UIViewController , AuthenticationProtocol {
 
+    var player: AVPlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.black
+        let videoURL: URL = Bundle.main.url(forResource: "intro4", withExtension: "mp4")!
+        
+        player = AVPlayer(url: videoURL)
+        player?.actionAtItemEnd = .none
+        player?.isMuted = true
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerLayer.zPosition = -1
+        playerLayer.frame = view.frame
+        view.layer.addSublayer(playerLayer)
+        player?.play()
+        //loop video
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(FitBitOauthController.loopVideo),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: nil)
         authenticationController = FitbitAuthenticationController(delegate: self)
         // Do any additional setup after loading the view.
     }
+    
     var authenticationController: FitbitAuthenticationController?
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,7 +81,7 @@ class FitBitOauthController: UIViewController , AuthenticationProtocol {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FitbitLoginSuccessful"), object: nil)
         }
         
-    }
+    
     /*
     // MARK: - Navigation
 
@@ -71,4 +92,8 @@ class FitBitOauthController: UIViewController , AuthenticationProtocol {
     }
     */
 
-
+    func loopVideo() {
+        player?.seek(to: kCMTimeZero)
+        player?.play()
+    }
+}

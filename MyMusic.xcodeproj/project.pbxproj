@@ -14,6 +14,11 @@
 		1E16A0631EC9363F00B51F6E /* ActivityPlaylistReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A05E1EC9363F00B51F6E /* ActivityPlaylistReusableView.swift */; };
 		1E16A0651EC9369300B51F6E /* PlaylistCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A0641EC9369300B51F6E /* PlaylistCollectionCell.swift */; };
 		1E16A0671EC9386500B51F6E /* ActivityPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A0661EC9386500B51F6E /* ActivityPlayListViewController.swift */; };
+		1E16A0691ECC7D0D00B51F6E /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1E16A0681ECC779D00B51F6E /* intro.mp4 */; };
+		1E16A06D1ECC850C00B51F6E /* intro2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1E16A06A1ECC820300B51F6E /* intro2.mp4 */; };
+		1E16A06E1ECC850C00B51F6E /* intro3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1E16A06B1ECC829500B51F6E /* intro3.mp4 */; };
+		1E16A06F1ECC850C00B51F6E /* intro4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1E16A06C1ECC82B400B51F6E /* intro4.mp4 */; };
+		1E16A0711ECC893900B51F6E /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E16A0701ECC893900B51F6E /* ImageUtil.swift */; };
 		1E1AB2A01EBD040300ED89FA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */; };
 		1E1AB2A61EBD71AC00ED89FA /* SingUpEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */; };
 		1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E345ED61EBF9A3B005FA0A2 /* SettingViewController.swift */; };
@@ -76,6 +81,11 @@
 		1E16A05E1EC9363F00B51F6E /* ActivityPlaylistReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPlaylistReusableView.swift; sourceTree = "<group>"; };
 		1E16A0641EC9369300B51F6E /* PlaylistCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionCell.swift; sourceTree = "<group>"; };
 		1E16A0661EC9386500B51F6E /* ActivityPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPlayListViewController.swift; sourceTree = "<group>"; };
+		1E16A0681ECC779D00B51F6E /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
+		1E16A06A1ECC820300B51F6E /* intro2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro2.mp4; sourceTree = "<group>"; };
+		1E16A06B1ECC829500B51F6E /* intro3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro3.mp4; sourceTree = "<group>"; };
+		1E16A06C1ECC82B400B51F6E /* intro4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro4.mp4; sourceTree = "<group>"; };
+		1E16A0701ECC893900B51F6E /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
 		1E1AB29F1EBD040300ED89FA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1E1AB2A11EBD552600ED89FA /* LoginEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryCell.swift; sourceTree = "<group>"; };
 		1E1AB2A51EBD71AC00ED89FA /* SingUpEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpEntryCell.swift; sourceTree = "<group>"; };
@@ -290,6 +300,10 @@
 		C6A8BE2D1EB61AD000A1C0CA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1E16A06A1ECC820300B51F6E /* intro2.mp4 */,
+				1E16A0681ECC779D00B51F6E /* intro.mp4 */,
+				1E16A06B1ECC829500B51F6E /* intro3.mp4 */,
+				1E16A06C1ECC82B400B51F6E /* intro4.mp4 */,
 				C6B658911EC82A43000410F2 /* Assets.xcassets */,
 				C6A8BE261EB5980C00A1C0CA /* InteractivePlayer_source */,
 				4DC398DD1EB411C200FCBA4C /* MyMusic-Bridging-Header.h */,
@@ -318,6 +332,7 @@
 				1E345EDA1EBFD378005FA0A2 /* FitbitSettingCell.swift */,
 				1E8B6DDC1EC01CCE0060668F /* MyMusic.xib */,
 				C6B6588D1EC76951000410F2 /* GoalCell.swift */,
+				1E16A0701ECC893900B51F6E /* ImageUtil.swift */,
 			);
 			name = View;
 			path = ..;
@@ -386,6 +401,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E16A06D1ECC850C00B51F6E /* intro2.mp4 in Resources */,
+				1E16A06E1ECC850C00B51F6E /* intro3.mp4 in Resources */,
+				1E16A06F1ECC850C00B51F6E /* intro4.mp4 in Resources */,
+				1E16A0691ECC7D0D00B51F6E /* intro.mp4 in Resources */,
 				4DC397541EB0254100FCBA4C /* LaunchScreen.storyboard in Resources */,
 				C6A8BE211EB5960600A1C0CA /* Images.xcassets in Resources */,
 				C6B658921EC82A43000410F2 /* Assets.xcassets in Resources */,
@@ -472,6 +491,7 @@
 				1E16A05F1EC9363F00B51F6E /* ActivityCollectionView.swift in Sources */,
 				4DB4AE941EC53D34002C4DB3 /* ActivityViewController.swift in Sources */,
 				1E16A0651EC9369300B51F6E /* PlaylistCollectionCell.swift in Sources */,
+				1E16A0711ECC893900B51F6E /* ImageUtil.swift in Sources */,
 				1E345ED71EBF9A3B005FA0A2 /* SettingViewController.swift in Sources */,
 				C6A8BE221EB5960600A1C0CA /* InteractivePlayerView.swift in Sources */,
 				4DB4AE8C1EC11F03002C4DB3 /* Activity.swift in Sources */,
