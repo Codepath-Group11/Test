@@ -104,7 +104,7 @@ class SpotifyService: NSObject, SPTAudioStreamingPlaybackDelegate, SPTAudioStrea
                         userDefaults.synchronize()
                         NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
                          Spartan.authorizationToken = session.accessToken
-                         self.auth.session = session
+                        self.session = session
                     } else {
                         userDefaults.removeObject(forKey: "SpotifySession")
                     }
