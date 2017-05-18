@@ -249,7 +249,8 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
 
        // cell.activityResultsLabel.text = "1000 of 2000"
 
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 12
+        cell.clipsToBounds = true
         cell.backgroundColor = .clear
         
         switch indexPath.row {

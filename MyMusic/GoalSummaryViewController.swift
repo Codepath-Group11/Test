@@ -14,6 +14,8 @@ class GoalSummaryViewController: UIViewController {
     @IBOutlet var activityTitleLabel: UILabel!
     @IBOutlet var motivationSuggestionTitleLabel: UILabel!
     @IBOutlet var motivationSuggestionSummaryLabel: UILabel!
+    @IBOutlet var motivationLabel: UILabel!
+    @IBOutlet var motivationalTipTitleLabel: UILabel!
     
     @IBOutlet var barChartView: BarChartView!
     
@@ -47,6 +49,8 @@ class GoalSummaryViewController: UIViewController {
             dataEntries.append(dataEntry!)
             i += 1
          }
+            motivationLabel.text = "You've accomplished your weekly goals for calories, congrats!!! \n\nBased off your results, it looks like you like to lift weights more than running."
+            motivationalTipTitleLabel.textColor = UIColor(red: 255/255, green: 94/255, blue: 61/255, alpha: 1)
         }else if(goalType == "Steps")
         {
             title = "Steps"
@@ -55,6 +59,8 @@ class GoalSummaryViewController: UIViewController {
                 dataEntries.append(dataEntry!)
                 i += 1
             }
+            motivationLabel.text = "It looks like you havent quite hit your goal yet but don't worry! \n\nGo for a run while listening to the either the Run or Treadmill playlists."
+            motivationalTipTitleLabel.textColor = UIColor(red: 28/255, green: 166/255, blue: 223/255, alpha: 1)
         }else {
             title = "ActiveMinutes"
             for activeMinutes in activeMinPerDay! {
@@ -62,6 +68,8 @@ class GoalSummaryViewController: UIViewController {
                 dataEntries.append(dataEntry!)
                 i += 1
             }
+            motivationLabel.text = "Active Minutes"
+            motivationalTipTitleLabel.textColor = UIColor(red: 72/255, green: 164/255, blue: 29/255, alpha: 1)
         }
         let chartDataSet = BarChartDataSet(values: dataEntries, label: goalType)
         let chartData = BarChartData(dataSet: chartDataSet)
@@ -87,6 +95,7 @@ class GoalSummaryViewController: UIViewController {
         barChartView.leftAxis.labelTextColor = UIColor.white
         barChartView.rightAxis.labelTextColor = UIColor.white
         barChartView.xAxis.labelPosition = .bottom
+        
     }
     
     @IBAction func didTapDone(_ sender: Any) {
